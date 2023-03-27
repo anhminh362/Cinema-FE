@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --maincolor: #06111D;
+    --title--color: #E00813;
+    --text--color: beige;
+    --h1-font-size: 3.5rem;
+    --h2-font-size: 3.25rem;
+    --h3-font-size: 3rem;
+    --logo-font-size: 2rem;
+    --font-types-product:3.5rem;
+    --font-medium:700;
+    --font-text-footer:100;
+    /* #### body font */
+    --body-font: 'Georgia', sans-serif;
+}
+body{
+    background-color: var(--maincolor);
+}
+/* background */
+.background-left{
+    background-color: #06121E;
+    height: 46.7rem;
+}
+.background-right{
+    background-color: #0B1A2A;
+    height: 46.7rem;
+}
+/* logo */
+.logo{
+    position: relative;
+    left: 2rem;
+    height: 8rem;
+    width: 8rem;
+}
+.logo_text{
+    position: relative;
+    left: 1rem;
+    top: 0rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--title--color);
+}
+/* icon-item */
+.icon-item{
+    position: relative;
+    color: #ffff;
+    font-size: 2rem;
+    left: 2rem;
+    top: 3rem;
+    text-decoration: none;
+}
+.icon-item:hover{
+    color: #FFC107;
+}
+/* Account */
+.icon-acc{
+    font-size: 3rem;
+    color: #ffff;
+}
+.text-signout {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #ffff;
+    position: relative;
+    top: -1rem;
+}
+.text-signout:hover{
+    color:#FFC107;
+}
+/* bar  */
+.line-line{
+    color: #fff;
+    position: relative;
+    top: 0.7rem;
+}
+.bar-user{
+    color: #fff;
+    position: relative;
+    top: 0.7rem;
+}
+.bar-film{
+    color: #ffff;
+    position: relative;
+    top: 0.7rem;
+   
+}
+.bar-user:hover{
+    color: #FFC107;
+}
+.bar-film:hover{
+    color: #FFC107;
+}
+.mess{
+    color: #06111D;
+    position: relative;
+    top: 0.7rem;
+}
+.name-acc{
+    color: aliceblue;
+    position: relative;
+    top: 0.7rem;
+}
+.backgroud-bar{
+    background-color: #858C94;
+    height: 3rem;
+}
+/*  */
+.sub-item{
+    color: #ffff;
+}
+.btn-type{
+    background-color: #E00813;
+    color: #ffff;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+}
+.btn-input{
+    width: 40rem;
+    border-radius: 0.3rem;
+    border: none;
+    padding: 0.3rem;
+}
+.btn-dis{
+    border-radius: 0.3rem;
+    border: none;
+    padding: 0.3rem;
+}
