@@ -12,11 +12,9 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        background: url(https://www.sciencealert.com/images/2021-05/s2-orbit_1024.gif);
-        /* background: linear-gradient(to top left, var(--br1),var(--br2)); */
-        /* background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover; */
+        background-color: #06121E;
+        /* background: url(https://www.sciencealert.com/images/2021-05/s2-orbit_1024.gif); */
+       
         font-family: Poppins-Regular,sans-serif;
         
     }
@@ -80,8 +78,17 @@
     span{
         margin-right: 0.5em;
     }
-    .checkbox{
+    /* .checkbox{
         margin-bottom: 5em;
+    } */
+    .register{
+        display: flex;
+        justify-content: space-between;
+       
+    }
+    a{ text-decoration: none;}
+    a:hover{
+        text-decoration: underline;
     }
     button{
         border: none;
