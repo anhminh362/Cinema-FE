@@ -1,0 +1,61 @@
+.book-ticket {
+    padding-top: 50px;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.book-ticket-container {
+    border-top: 2px solid black;
+    
+}
+
+.date-list,
+.provinces-list,
+.sub-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.provinces-list {
+    border-top: 2px solid black;
+}
+
+.sub-list {
+    gap: 5px;
+    padding: 20px 40px;
+    border-top: 2px solid black;
+}
+
+.show-time {
+    padding: 20px 40px;
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+.time {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.day {
+    border: 2px solid whitesmoke;
+    color: #2b2b2b;
+    height: 58px;
+    width: 65px;
+    position: relative;
+
+}
+
+.day>span {
+    color: #2b2b2b;
+    font-size: 12px;
+    left: 10px;
+    position: absolute;
+    top: 10px;
+
+}
