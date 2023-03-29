@@ -24,13 +24,13 @@ body{
     background-color: var(--maincolor);
 }
 /* background */
-.background-left{
+ .background-left {
     background-color: #06121E;
-    height: 46.7rem;
-}
+    height: 49.3rem;
+} 
 .background-right{
     background-color: #0B1A2A;
-    height: 46.7rem;
+    height: 49.3rem;
 }
 /* logo */
 .logo{
@@ -51,12 +51,24 @@ body{
 .icon-item{
     position: relative;
     color: #ffff;
-    font-size: 2rem;
+    font-size: 1.6rem;
     left: 2rem;
     top: 3rem;
     text-decoration: none;
 }
 .icon-item:hover{
+    color: #FFC107;
+}
+/* icon-play */
+.icon-play{
+    position: relative;
+    color: #ffff;
+    font-size: 1.6rem;
+    left: 2rem;
+    top: 3rem;
+    text-decoration: none;
+}
+.icon-play:hover{
     color: #FFC107;
 }
 /* Account */
@@ -116,13 +128,18 @@ body{
     color: #ffff;
 }
 .btn-type{
-    background-color: #E00813;
-    color: #ffff;
     padding: 0.3rem;
     border-radius: 0.3rem;
+    border: none;
+    width: 30rem;
 }
 .btn-input{
-    width: 40rem;
+    width: 30rem;
+    border-radius: 0.3rem;
+    border: none;
+    padding: 0.3rem;
+}
+.btn-select{
     border-radius: 0.3rem;
     border: none;
     padding: 0.3rem;
@@ -131,4 +148,22 @@ body{
     border-radius: 0.3rem;
     border: none;
     padding: 0.3rem;
+}
+.btn-sub{
+    border: none;
+    background-color: #E00813;
+    color: #fff;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+}
+/* Moble: Width < 740px  */
+@media only screen and (max-width: 46.1875em){
+
+}
+
+/* Tablet: width >= 740px and width < 1024px */
+@media (min-width: 768px) and (max-width: 991.98em) {
+    .background-left{
+        width: 20%;
+    }
 }

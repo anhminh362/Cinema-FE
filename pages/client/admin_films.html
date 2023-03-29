@@ -22,16 +22,20 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 background-left">
-                <div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
-                <a href="#" class="icon-item">
-                    <ion-icon name="person"  ></ion-icon>
-                    <b> User</b>
-                </a> <br><br>
-                <a href="#" class="icon-item">
-                    <ion-icon name="play-circle"></ion-icon>
-                    <b> Films</b>
-                </a>
+            <div class="col-lg-2 background-left ">
+                <div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
+                <div class="row">
+                    <a href=""  class="icon-item">
+                        <ion-icon name="person"  ></ion-icon>
+                        <b> User</b>
+                    </a> 
+                </div><br><br>
+                <div class="row"> 
+                    <a hreft="#" class="icon-play">
+                        <ion-icon name="play-circle"></ion-icon>
+                        <b> Films</b>
+                    </a>
+                </div>
             </div>
             <div class="col-lg-10 background-right">
                 <div class="row"> 
@@ -46,12 +50,12 @@
                     </div>
                 </div>
                 <div class="row backgroud-bar">
-                    <div class="col-sm-2"> 
+                    <div class="col-sm-3"> 
                         <span class="bar-user">User </span>
                         <span class="line-line">/</span>
                         <span class="bar-film">Films</span>
                     </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         <!--  -->
                     </div>
                     <div class="col-sm-3">
@@ -60,56 +64,82 @@
                     </div>  
                 </div>
                 <div class="container"> <br><br>
-                    <div class="row">
-                        <div class="col-lg-4">  
-                            <span class="sub-item">Type :</span>
-                            <span class="btn-type">HD</span>
+                    <!-- form -->
+                    <form action="">
+                        <div class="row">
+                            <div class="col-lg-8">  
+                                <span class="sub-item">Avatar :</span>
+                                <span><input class="btn-type" type="url" placeholder=" Link"></span>
+                            </div>
+                            <div class="col-lg-4">
+                                <!--  -->
+                            </div>
+                        </div><br><br>
+                        <div class="row">
+                            <div class="col-lg-8"> 
+                                <span class="sub-item">Name :</span>
+                                <span ><input class="btn-input" type="text" placeholder=" Input film"></span>
+                            </div>
+                            <div class="col-lg-4">
+                                <!--  -->
+                            </div>
+                        </div> <br><br>
+                        <div class="row">
+                            <div class="col-sm-8"> 
+                                <span class="sub-item">Premiere date:</span>
+                                <span><input class="btn-dis" type="datetime-local"></span>
+                            </div>
+                            <div class="col-sm-4">
+                                <!--  -->
+                            </div>
+                        </div><br><br>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <span class="sub-item">Country :</span>
+                                <span ><select class="btn-select">
+                                    <option value=""></option>
+                                    <option value="">US</option>
+                                    <option value="">UK</option>
+                                    <option value="">Vietnam</option>
+                                    <option value="">Korea</option>
+                                </select></span></span>
+                            </div>
+                            <div class="col-lg-4">
+                                <!--  -->
+                            </div>
+                        </div><br><br>
+                        <div class="row">
+                            <div class="col-lg-8"> 
+                                <span class="sub-item">Describe :</span>
+                                <span ><input class="btn-input" type="text" placeholder=" Input film"></span>
+                            </div>
+                            <div class="col-lg-4">
+                                <!--  -->
+                            </div>
+                        </div> <br><br>
+                        <div class="row">
+                            <div class="col-sm-5"> 
+                                <span class="sub-item">Trailer :</span>
+                                <span><input class="btn-dis" type="file"></span>
+                            </div>
+                            <div class="col-sm-7">
+                                <!--  -->
+                            </div>
+                        </div><br><br>
+                        <div class="row">
+                            <div class="col-sm-5"> 
+                                <span class="sub-item">Action :</span>
+                                <span><button class="btn-sub" type="submit">Update</button></span>
+                            </div>
+                            <div class="col-sm-7">
+                                <!--  -->
+                            </div>
                         </div>
-                        <div class="col-lg-8">
-                            <!--  -->
-                        </div>
-                    </div><br><br>
-                    <div class="row">
-                        <div class="col-lg-8"> 
-                            <span class="sub-item">Film :</span>
-                            <span ><input class="btn-input" type="text" placeholder=" Input film"></span>
-                        </div>
-                        <div class="col-lg-4">
-                            <!--  -->
-                        </div>
-                    </div> <br><br>
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <span class="sub-item">Describe :</span>
-                            <span ><input class="btn-input" type="text" placeholder=" Input des"></span>
-                        </div>
-                        <div class="col-lg-3">
-                            <!--  -->
-                        </div>
-                    </div><br><br>
-                    <div class="row">
-                        <div class="col-sm-4"> 
-                            <span class="sub-item">Release date :</span>
-                            <span><input class="btn-dis" type="datetime-local"></span>
-                        </div>
-                        <div class="col-sm-9">
-                            <!--  -->
-                        </div>
-                    </div><br><br>
-                    <div class="row">
-                        <div class="col-sm-5"> 
-                            <span class="sub-item">Trailer :</span>
-                            <span><input class="btn-dis" type="file"></span>
-                        </div>
-                        <div class="col-sm-7">
-                            <!--  -->
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
-    </div>
+    
 </body>
 </html>
