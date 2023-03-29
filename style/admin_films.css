@@ -24,10 +24,10 @@ body{
     background-color: var(--maincolor);
 }
 /* background */
-/* .bg-dark{
+ .background-left {
     background-color: #06121E;
     height: 49.3rem;
-} */
+} 
 .background-right{
     background-color: #0B1A2A;
     height: 49.3rem;
@@ -51,7 +51,7 @@ body{
 .icon-item{
     position: relative;
     color: #ffff;
-    font-size: 2rem;
+    font-size: 1.6rem;
     left: 2rem;
     top: 3rem;
     text-decoration: none;
@@ -63,7 +63,7 @@ body{
 .icon-play{
     position: relative;
     color: #ffff;
-    font-size: 2rem;
+    font-size: 1.6rem;
     left: 2rem;
     top: 3rem;
     text-decoration: none;
