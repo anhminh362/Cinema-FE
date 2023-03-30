@@ -10,7 +10,7 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>REGISTER</title>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="../../style/register.css">
 </head>
 <body>
 
@@ -22,34 +22,33 @@ session_start()
         <label for="email" >Email</label> <br>
         <div class="form-input">
             <!-- <span class="material-symbols-outlined">person</span> -->
-            <input type="text" class="form-control" id="email" name="email" required=true>
+            <input type="text" class="form-control" id="email" name="email" required>
         </div>
       </div>
       <div class="form-group">
         <label for="pwd">Password</label><br>
         <div class="form-input">
           
-            <input type="password" class="form-control" id="pwd" name="pwd" required=true>
+            <input type="password" class="form-control" id="pwd" name="pwd" required>
         </div>
       </div>
       <div class="form-group">
         <label for="confirm-pwd">Confirm Password</label><br>
         <div class="form-input">
             
-            <input type="password" class="form-control" id="cf_pwd" name="cf_pwd" required=true>
+            <input type="password" class="form-control" id="cf_pwd" name="cf_pwd" required>
         </div>
       </div>
       
       <button type="submit" class="btn btn-default" name="btn">Register</button>
      <div>
-     <!-- <?php
+     <?php
     //  echo '233333';
     // $a=array("Dog"=>"gogo","Cat"=>"mailmail","Bear"=>"grown");
         if(isset($_POST['btn'])){
             $email=$_POST['email'];
             $pass=$_POST['pwd'];
-           
-            $check=false;
+            echo "aaa";
            
               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
               //   echo("$email is a valid email address");
@@ -66,7 +65,7 @@ session_start()
             
         }
 
-    ?> -->
+    ?>
     <br><br>
      </div>
 
