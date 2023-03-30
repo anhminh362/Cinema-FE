@@ -40,7 +40,7 @@ session_start()
         </div>
       </div>
       
-      <button type="submit" class="btn btn-default" name="btn">Register</button>
+      <button type="submit" class="btn btn-default btn-regiter" name="btn">Register</button>
      <div>
      <?php
     //  echo '233333';
@@ -48,24 +48,64 @@ session_start()
         if(isset($_POST['btn'])){
             $email=$_POST['email'];
             $pass=$_POST['pwd'];
-            echo "aaa";
+            $cf_pass=$_POST['cf_pwd'];
            
               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
               //   echo("$email is a valid email address");
               // } else {
                 echo("$email is not a valid email address");
               }
-              else{ if(count($pass)<8){
+              else if(count($pass)<8){
                 echo("Vui long nhap mat khau tu 8 ky tu tro len");
               }
+              else if($pass!==$cf_pass){
+                echo("Vui long xac nhan lai mat khau");
+                
+              }
               else{
-                header("Location: http://localhost:8080/cinema/pages/client/verify_code.php",);
-              }}
-             
-            
-        }
+                //header("Location: http://localhost:8080/cinema/pages/client/verify_code.php");
+                ?>
+              <script>
+      let apiUser = "https://6424101a4740174043320fe7.mockapi.io/account";
 
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const bntSignup = document.querySelector(".btn-regiter");
+// signup
+
+const handleRegister=(e)=>{
+  e.preventDefault();
+  if (email.value == "" || password.value == "") {
+    alert("Please enter your email and password");
+  } else {
+    const user = {
+      Email: email.value,
+      password: password.value,
+    };
+    fetch(apiUser, {
+      method: "POST",
+      
+      headers: {
+        "Content-Type": "application/json",
+        
+      },
+      body: JSON.stringify(account),
+
+    })
+    
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+      alert("Sign Up Success");
+      window.location.href = "verify_code.php?id="<?php echo $email ?>;
+  }
+};
+
+    </script>
+    <?php
+              }}
+        
     ?>
+    
     <br><br>
      </div>
 
