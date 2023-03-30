@@ -97,6 +97,16 @@ body{
     text-transform: uppercase;
     letter-spacing: 0.7;
 }
+.btn:hover{
+    background-color: #FFC107;
+}
+a{ 
+    text-decoration: none;
+    color:#FFC107;
+}
+a:hover{
+    text-decoration: underline;
+}
 .btn-primary{
     color: #FFFF;
     background-color: #101D2D;
