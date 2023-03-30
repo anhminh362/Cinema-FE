@@ -1,3 +1,7 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,41 +22,41 @@
         <label for="email" >Email</label> <br>
         <div class="form-input">
             <!-- <span class="material-symbols-outlined">person</span> -->
-            <input type="text" class="form-control" id="email" name="email"  >
+            <input type="text" class="form-control" id="email" name="email" required>
         </div>
       </div>
       <div class="form-group">
         <label for="pwd">Password</label><br>
         <div class="form-input">
-            <!-- <span class="material-symbols-outlined">lock</span> -->
-            <input type="password" class="form-control" id="pwd" name="pwd">
+          
+            <input type="password" class="form-control" id="pwd" name="pwd" required>
         </div>
       </div>
       <div class="form-group">
         <label for="confirm-pwd">Confirm Password</label><br>
         <div class="form-input">
-            <!-- <span class="material-symbols-outlined">lock</span> -->
-            <input type="password" class="form-control" id="pwd" name="pwd">
+            
+            <input type="password" class="form-control" id="cf_pwd" name="cf_pwd" required>
         </div>
       </div>
-      <!-- <div class="form-group register">
-        <div><p><a href="">Register</a></p></div>
-        <div><p><a href="">Forgot password ?</a></p></div>
-      </div> -->
+      
       <button type="submit" class="btn btn-default" name="btn">Register</button>
      <div>
      <!-- <?php
     //  echo '233333';
-    $a=array("Dog"=>"gogo","Cat"=>"mailmail","Bear"=>"grown");
+    // $a=array("Dog"=>"gogo","Cat"=>"mailmail","Bear"=>"grown");
         if(isset($_POST['btn'])){
-            $user=$_POST['username'];
+            $email=$_POST['email'];
             $pass=$_POST['pwd'];
+           
             $check=false;
            
-            if($user==''||$pass==''){
-                echo "Vui long nhap day du ten va mat khau";
-            }
-            else {
+              if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo("$email is a valid email address");
+              } else {
+                echo("$email is not a valid email address");
+              }
+              if(count($pass)){}
                 foreach($a as $u => $p){
                     if($user==$u){
                         if($pass==$p){
@@ -69,7 +73,7 @@
                 if($check==false){
                     echo 'Tai khoan khong ton tai';
                 }
-            }
+            
         }
 
     ?> -->
