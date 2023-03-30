@@ -22,21 +22,21 @@ session_start()
         <label for="email" >Email</label> <br>
         <div class="form-input">
             <!-- <span class="material-symbols-outlined">person</span> -->
-            <input type="text" class="form-control" id="email" name="email" required>
+            <input type="text" class="form-control" id="email" name="email" required=true>
         </div>
       </div>
       <div class="form-group">
         <label for="pwd">Password</label><br>
         <div class="form-input">
           
-            <input type="password" class="form-control" id="pwd" name="pwd" required>
+            <input type="password" class="form-control" id="pwd" name="pwd" required=true>
         </div>
       </div>
       <div class="form-group">
         <label for="confirm-pwd">Confirm Password</label><br>
         <div class="form-input">
             
-            <input type="password" class="form-control" id="cf_pwd" name="cf_pwd" required>
+            <input type="password" class="form-control" id="cf_pwd" name="cf_pwd" required=true>
         </div>
       </div>
       
@@ -51,28 +51,18 @@ session_start()
            
             $check=false;
            
-              if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo("$email is a valid email address");
-              } else {
+              if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+              //   echo("$email is a valid email address");
+              // } else {
                 echo("$email is not a valid email address");
               }
-              if(count($pass)){}
-                foreach($a as $u => $p){
-                    if($user==$u){
-                        if($pass==$p){
-                            $check=true;
-                            echo 'Dang nhap thanh cong';break;
-                        }
-                        else{
-                            $check=true;
-                            echo 'Sai mat khau. Vui long nhap lai';break;
-                        }
-                    }
-                   
-                }
-                if($check==false){
-                    echo 'Tai khoan khong ton tai';
-                }
+              else{ if(count($pass)<8){
+                echo("Vui long nhap mat khau tu 8 ky tu tro len");
+              }
+              else{
+                header("Location: http://localhost:8080/cinema/pages/client/verify_code.php",);
+              }}
+             
             
         }
 
