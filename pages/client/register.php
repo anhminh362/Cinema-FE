@@ -66,7 +66,7 @@ session_start()
                 //header("Location: http://localhost:8080/cinema/pages/client/verify_code.php");
                 ?>
               <script>
-      let apiUser = "https://6424101a4740174043320fe7.mockapi.io/account";
+      let apiAccount = "https://6424101a4740174043320fe7.mockapi.io/account";
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -75,14 +75,14 @@ const bntSignup = document.querySelector(".btn-regiter");
 
 const handleRegister=(e)=>{
   e.preventDefault();
-  if (email.value == "" || password.value == "") {
-    alert("Please enter your email and password");
-  } else {
-    const user = {
+  // if (email.value == "" || password.value == "") {
+  //   alert("Please enter your email and password");
+  // } else {
+    const account = {
       Email: email.value,
       password: password.value,
     };
-    fetch(apiUser, {
+    fetch(apiAccount, {
       method: "POST",
       
       headers: {
@@ -98,7 +98,7 @@ const handleRegister=(e)=>{
       alert("Sign Up Success");
       window.location.href = "verify_code.php?id="<?php echo $email ?>;
   }
-};
+// };
 
     </script>
     <?php
