@@ -16,31 +16,31 @@ session_start()
 
 
 <div class="form-login">
-    <form method="post">
+    <form >
     <h1><strong>Register</strong></h1>
       <div class="form-group">
         <label for="email" >Email</label> <br>
         <div class="form-input">
             <!-- <span class="material-symbols-outlined">person</span> -->
-            <input type="text" class="form-control" id="email" name="email" required>
-        </div>
+            <input type="text" class="form-control" id="email" name="email" required value="<?php if(isset($_POST['email'])){echo $_POST['email'];};?>">
+</div>
       </div>
       <div class="form-group">
         <label for="pwd">Password</label><br>
         <div class="form-input">
           
-            <input type="password" class="form-control" id="pwd" name="pwd" required>
+            <input type="password" class="form-control" id="pwd" name="pwd" required value="<?php  if(isset($_POST['pwd'])){echo $_POST['pwd'];}?>">
         </div>
       </div>
       <div class="form-group">
         <label for="confirm-pwd">Confirm Password</label><br>
         <div class="form-input">
             
-            <input type="password" class="form-control" id="cf_pwd" name="cf_pwd" required>
+            <input type="password" class="form-control" id="cf_pwd" name="cf_pwd" required value="<?php  if(isset($_POST['pwd'])){echo $_POST['cf_pwd'];}?>">
         </div>
       </div>
       
-      <button type="submit" class="btn btn-default btn-regiter" name="btn">Register</button>
+      <button class="btn btn-default btn-regiter" name="btn">Register</button>
      <div>
      <?php
     //  echo '233333';
@@ -55,7 +55,7 @@ session_start()
               // } else {
                 echo("$email is not a valid email address");
               }
-              else if(count($pass)<8){
+              else if(strlen($pass)<8){
                 echo("Vui long nhap mat khau tu 8 ky tu tro len");
               }
               else if($pass!==$cf_pass){
