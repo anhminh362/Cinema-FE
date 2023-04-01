@@ -19,8 +19,6 @@
     --font-text-footer:100;
     /* #### body font */
     --body-font: 'Georgia', sans-serif;
-}
-body{
     background-color: var(--maincolor);
 }
 /* background */
@@ -57,12 +55,12 @@ body{
     text-decoration: none;
 }
 .icon-item:hover{
-    color: #FFC107;
+    color: #FFF;
 }
 /* icon-play */
 .icon-play{
     position: relative;
-    color: #ffff;
+    color: #FFC107;
     font-size: 1.6rem;
     left: 2rem;
     top: 3rem;
@@ -96,15 +94,16 @@ body{
     color: #fff;
     position: relative;
     top: 0.7rem;
+    text-decoration: none;
 }
 .bar-film{
-    color: #ffff;
+    color: #FFC107;
     position: relative;
     top: 0.7rem;
    
 }
 .bar-user:hover{
-    color: #FFC107;
+    color: #FFF;
 }
 .bar-film:hover{
     color: #FFC107;
@@ -139,4 +138,14 @@ body{
 /* table */
 #dataTable{
     color: #ffff;
+}
+.icon-ac-edit{
+    color: #FFC107;
+    font-size: 1.4rem;
+    
+}
+.icon-ac-del{
+    color: #E00813;
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
 }
