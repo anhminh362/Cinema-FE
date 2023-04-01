@@ -67,7 +67,7 @@
     text-decoration: none;
 }
 .icon-play:hover{
-    color: #FFC107;
+    color:  #ffff;
 }
 /* Account */
 .icon-acc{
@@ -99,12 +99,8 @@
     color: #ffff;
     position: relative;
     top: 0.7rem;
-   
 }
 .bar-user:hover{
-    color: #FFC107;
-}
-.bar-film:hover{
     color: #FFC107;
 }
 .mess{
