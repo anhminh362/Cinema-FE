@@ -274,32 +274,27 @@ footer{
    }
     
 .slider .slide:nth-child(1) {
-    background-image: url('https://cdnimg.vietnamplus.vn/uploaded/bokttj/2023_01_02/avatar_the_way_of_water.jpg');
-    opacity: 0.6;  
+    background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://cdnimg.vietnamplus.vn/uploaded/bokttj/2023_01_02/avatar_the_way_of_water.jpg');
     animation-delay: 0s;
    }
    
 .slider .slide:nth-child(2) {
-    background-image: url('https://touchcinema.com/storage/phim-gia-dinh-addams/phim-gia-dinh-addams.jpg');
-    opacity: 0.6; 
+    background-image:linear-gradient(to right, rgba(0, 0, 6, 1),rgba(57, 54, 54, 0.3)), url('https://touchcinema.com/storage/phim-gia-dinh-addams/phim-gia-dinh-addams.jpg');
     animation-delay: -5s;
 }
    
 .slider .slide:nth-child(3) {
-    background-image: url('https://images4.alphacoders.com/119/1199746.jpg');
-    opacity: 0.6; 
+    background-image:linear-gradient(to right, rgba(0, 0, 6, 1),rgba(57, 54, 54, 0.3)), url('https://images4.alphacoders.com/119/1199746.jpg');
     animation-delay: -10s;
 }
    
 .slider .slide:nth-child(4) {
-    background-image: url('https://cdnimg.vietnamplus.vn/uploaded/bokttj/2023_01_02/avatar_the_way_of_water.jpg');
-    opacity: 0.6; 
+    background-image:linear-gradient(to right, rgba(0, 0, 6, 1),rgba(57, 54, 54, 0.3)), url('https://cdnimg.vietnamplus.vn/uploaded/bokttj/2023_01_02/avatar_the_way_of_water.jpg');
     animation-delay: -15s;
 }
    
 .slider .slide:nth-child(5) {
-    background-image: url('https://touchcinema.com/storage/phim-gia-dinh-addams/phim-gia-dinh-addams.jpg');
-    opacity: 0.6; 
+    background-image:linear-gradient(to right, rgba(0, 0, 6, 1),rgba(57, 54, 54, 0.3)), url('https://touchcinema.com/storage/phim-gia-dinh-addams/phim-gia-dinh-addams.jpg');
     animation-delay: -20s;
 }
    .text-movie{

@@ -23,6 +23,64 @@
 body{
     background-color: var(--maincolor);
 }
+/* nav */
+.logo{
+    position: relative;
+    left: 70px;
+    height: 70px;
+    width: 90px;
+}
+.logo_text{
+    position: relative;
+    left: 80px;
+    top: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 25px;
+    color: var(--title--color);
+}
+.header ul {
+    display: flex;
+    justify-content:center;
+    list-style: none;
+    
+} 
+.header{
+    position: fixed;
+    font-family: Verdana, Tahoma, sans-serif;
+    background: rgba(0,0,0,0.8);
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+}
+
+.header ul li{
+    position: relative;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    left: 100px;
+    bottom: 45px;
+    font-size: 18px;  
+}
+.header ul li a{
+    text-decoration: none;
+    color: beige;
+}
+.header ul li a:hover{
+    color: var(--title--color);
+}
+.header #type-movies{
+    display: inline-block;
+    position: absolute;
+    right: -1.6rem;
+    top: 4.5rem;
+    display: none;
+    
+}
+.header ul li:hover #type-movies{
+    display: block;
+}
+
 /* Backgroud-img */
 .background-img{
     height: 100vh;
@@ -34,49 +92,6 @@ body{
     background-size: 100% auto ;
     background-repeat: no-repeat;
     column-gap: 30px;
-}
-
-/* header */
-.logo{
-    position: relative;
-    left: 70px;
-    height: 100px;
-    width: 130px;
-}
-.logo_text{
-    position: relative;
-    left: 80px;
-    top: 10px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 30px;
-    color: var(--title--color);
-}
-.header{
-    position: fixed;
-    font-family: Verdana, Tahoma, sans-serif;
-    background: rgba(0,0,0,0.8);
-    height: 110px;
-    width: 100%;
-}
-.header ul {
-    display: flex;
-    justify-content:center;
-}
-.header ul li{
-    position: relative;
-    list-style: none;
-    margin-left: 60px;
-    margin-right: 60px;
-    left: 100px;
-    bottom: 60px;
-    font-size: 18px;  
-}
-.header ul li a{
-    text-decoration: none;
-    color: beige;
-}
-.header ul li a:hover{
-    color: var(--title--color);
 }
 /* card-img */
 .card-item{
@@ -276,23 +291,16 @@ video:focus{
 /* footer */
 footer{
     background-color:#091725;
+    width: 100%;
 }
-hr{
-    position: relative;
-    left: 80px;
-    width: 40px;
-    border: 1px solid var(--text--color);
 
-}
 .text-footer{
     color: var(--title--color);
-    text-align: center;
-    
 }
 .container .row .col-sm-3 ul li{
     list-style-type: none;
     position: relative;
-    left: 50px;
+    right: 35px;
 }
 .container .row .col-sm-3 ul li a{
     text-decoration: none;
@@ -303,12 +311,9 @@ hr{
 }
 .container .row .col-sm-3 .text{
  color: var(--text--color);
- position: relative;
- left: 40px;
+
 }
 .container .row .col-sm-3 .Send{
-    position: relative;
-    left: 40px;
     height: 40px;
     border-radius: 5px;
     border-color: var(--title--color);
@@ -316,7 +321,6 @@ hr{
 }
 .container .row .col-sm-3 button{
     position: relative;
-    left: 40px;
     bottom: 3px;
     background-color: var(--title--color);
     color: var(--text--color);
@@ -327,12 +331,126 @@ hr{
 }
 .container .row .col-sm-3 .contact_icon{
     position: relative;
-    left: 40px;
     bottom: 20px;
     color: white;
-    
 }
 .container .row .col-sm-3 .fa-brands {
     size: 100px;
 }
+.container .row .col-sm-3 .btn{
+    position: relative;
+    left: 13rem;
+    bottom: 2.5rem;
+}
+/* réponsive */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .logo{
+        position: relative;
+        left: 30px;
+        height: 60px;
+        width: 80px;
+        top: 10px;
+    }
+    .logo_text{
+        position: relative;
+        left: 30px;
+        top: 10px;
+        font-family: 'Dancing Script', cursive;
+        font-size: 20px;
+        color: var(--title--color);
+    }
+    .header ul li{
+        position: relative;
+        margin-left: 2.5rem;
+        margin-right:2.5rem;
+        left: 100px;
+        bottom: 35px;
+        font-size: 18px;  
+    }
+    .header #type-movies{
+        display: inline-block;
+        position: absolute;
+        right: 2rem;
+        top: 4rem;
+        display: none; 
+    }
+    .text-footer{
+        color: var(--title--color);
+    }
+    /* .container .row .col-sm-3 ul li{
+        right: 2rem;
+    } */
+    .container .row .col-sm-3 ul li a{
+        text-decoration: none;
+        color: var(--text--color);
+        right: 2rem;
+        font-size: 15px;
+    }
+    .container .row .col-sm-3 ul li a:hover{
+        color: var(--title--color);
+    }
+   
+    .container .row .col-sm-3 .Send{
+        height: 30px;
+        border-radius: 5px;
+        border-color: var(--title--color);
+    
+    }
+    .container .row .col-sm-3 button{
+        position: relative;
+        bottom: 3px;
+        width: 4rem;
+        height: 2rem;
+        background-color: var(--title--color);
+        color: var(--text--color);
+    }
+    .container .row .col-sm-3 button:hover{
+        background-color: var(--text--color);
+        color: var(--maincolor);
+    }
+    .container .row .col-sm-3 .contact_icon{
+        position: relative;
+        bottom: 20px;
+        color: white;
+    }
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 758px){
+    .checkbtn{
+        display: block;
+        bottom:25.5rem;
+    }
+    .header ul li{
+        text-align: center;
+        top: 0.7rem;
+        border-bottom: 1px solid rgb(58, 57, 54);
+        font-size: 18px;  
+        height: 5rem;
+        left: -7rem;
+        width: 100%;
+        background-color: rgba(78, 73, 73, 0.5);
+    }
+    .header ul{
+        display: block;
+        left: 10px;
+        
+    }
+    .header ul li a{
+        position: relative;
+        font-size: 20px;
+        top: 1.5rem;
+    }
+    .header ul li a:hover{
+        color: var(--title--color);
+        background: rgba(34, 8, 8, 0.8);
+    }
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 540px){
+    .container{
+        text-align: center;
+    }
+    .container .col-sm-3 .hr{
+        position: relative;
+        left: 40px;
+    }
 
+}

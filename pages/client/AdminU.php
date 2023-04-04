@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin_USERS_CRUD</title>
     <!-- link CSS -->
-    <link href='/style/au-CRUD.css' rel='stylesheet'>
+    <link href="/style/AdminU.css" rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

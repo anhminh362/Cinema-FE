@@ -23,19 +23,23 @@
 
 <body>
     <!-- Header -->
-    <header>
-        <nav class="header">
-            <div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Movies</a></li>
-                <li><a href="">Upcoming movie</a></li>
-                <li><a href="">Upcoming movie</a></li>
-                <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
-                <li><a href="">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
-            </ul>
-        </nav>
-    </header> 
+    <nav class="header">
+        <div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Movies</a>
+                <!-- <ul id="type-movies">
+                    <li><a href="">Playing</a></li>
+                    <li><a href="">Upcoming</a></li>
+                </ul> -->
+            </li>
+            <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
+            <li><a href="">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+        </ul>
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+    </nav>
     <!-- Background-img -->
     <div class="background-img">
         <!-- Content -->
@@ -202,8 +206,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""></div>
-                    <p class="text">We guarantee quality and satisfaction when coming to our movie ticket booking site.</p> 
+                    <ul>
+                        <li><div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt="">Moonlight</div></li>
+                        <li><p class="text">We guarantee quality and satisfaction when coming to our movie ticket booking site.</p> </li>
+                    </ul>
+                    
                     <div class="contact_icon">
                         <i class="fa-brands fa-square-facebook"></i> 
                         <i class="fa-brands fa-square-twitter" ></i>
@@ -212,7 +219,7 @@
                     </div>                  
                 </div>
                 <div class="col-sm-3"><br>
-                    <h5 class="text-footer">Quick Link</h4><hr>
+                    <h5 class="text-footer">Quick Link</h4>
                     <ul>
                         <li><a href="">About Us</a></li>
                         <li><a href="">Movies</a></li>
@@ -221,7 +228,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-3"><br>
-                    <h5 class="text-footer">Important</h5><hr>
+                    <h5 class="text-footer">Important</h5>
                     <ul>
                         <li><a href="">Support</a></li>
                         <li><a href="">FAQ</a></li>
@@ -230,14 +237,17 @@
                     </ul>
                 </div>
                 <div class="col-sm-3"><br>
-                    <h5 class="text-footer">Contact</h5><hr>
-                    <p class="text">Subscribe our newsletter to get latest update & news.</p>
-                    <input type="text" name="Send" class="Send" placeholder="   Enter Email">
-                    <button type="submit" class="btn btn-primary">Send</button>
+                        <h5 class="text-footer">Contact</h5>
+                        <ul>
+                            <li><p class="text">Subscribe our newsletter to get latest update & news.</p></li>
+                            <li><input type="text" name="Send" class="Send" placeholder="   Enter Email">
+                            <button type="submit" class="btn btn-primary">Send</button></li>
+                        </ul>
                 </div>
             </div>
         </div>
-    </footer>
+        </div>
+</footer>
 <!--JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script>
