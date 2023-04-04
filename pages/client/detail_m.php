@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail_Movies</title>
     <!-- link CSS -->
-    <link href='/style/detail_m.css' rel='stylesheet'>
+    <link href='../../style/detail_m.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -24,7 +24,7 @@
 <body>
     <!-- Header -->
     <nav class="header">
-        <div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
+        <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
         <ul>
             <li><a href="">Home</a></li>
             <li><a href="">Movies</a>
@@ -207,7 +207,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <ul>
-                        <li><div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt="">Moonlight</div></li>
+                        <li><div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt="">Moonlight</div></li>
                         <li><p class="text">We guarantee quality and satisfaction when coming to our movie ticket booking site.</p> </li>
                     </ul>
                     

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin_Films_CRUD</title>
     <!-- link CSS -->
-    <link href='/style/admin_fCRUD.css' rel='stylesheet'>
+    <link href='../../style/admin_fCRUD.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 background-left ">
-                <div><img class="logo" src="/asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
+                <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
                 <div class="row">
                     <a href=""  class="icon-item">
                         <ion-icon name="person"  ></ion-icon>
