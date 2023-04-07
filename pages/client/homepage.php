@@ -18,10 +18,10 @@
             <ul>
                 <li><a href="">Home</a></li>
                 <li><a href="">Movies</a>
-                    <!-- <ul id="type-movies">
+                    <ul id="type-movies">
                         <li><a href="">Playing</a></li>
                         <li><a href="">Upcoming</a></li>
-                    </ul> -->
+                    </ul>
                 </li>
                 <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
                 <li><a href="">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
