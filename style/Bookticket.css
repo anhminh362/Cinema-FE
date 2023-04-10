@@ -1,15 +1,25 @@
 .book-ticket {
     padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    background-color: #06121E
+
 }
 
 .container {
-    max-width: 1250px;
+    max-width: 1220px;
     margin: 0 auto;
 }
 
 .book-ticket-container {
-    border-top: 2px solid black;
+    background-color:#0B1A2A;
+    border-top: 2px;
+    padding: 20px 40px
     
+}
+.date-item{
+    list-style: none;  
 }
 
 .date-list,
@@ -19,43 +29,94 @@
     flex-wrap: wrap;
     padding: 20px;
 }
-
 .provinces-list {
-    border-top: 2px solid black;
+    border-top: 2px solid rgb(212, 202, 202);
+    display: block;
+    padding: 20px 40px;
+
 }
 
 .sub-list {
-    gap: 5px;
+    border-top: 2px solid rgb(212, 202, 202);
+    display: block;
     padding: 20px 40px;
-    border-top: 2px solid black;
 }
+
 
 .show-time {
     padding: 20px 40px;
-    border-top: 2px solid black;
-    border-bottom: 1px solid black;
+    border-top: 2px solid rgb(212, 202, 202);
+    border-bottom: 2px solid rgb(212, 202, 202);
 }
-
+/* .place {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    position: relative;
+} */
 .time {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-}
 
+    
+}
+button{
+    font-size: 20px;
+    font-family: serif;
+    border: none;
+    border-radius: 3px;
+
+}
 .day {
     border: 2px solid whitesmoke;
-    color: #2b2b2b;
-    height: 58px;
+    color: rgb(212, 202, 202);
+    font-family: serif;
+    font-size: 20px;
+    height: 60px;
     width: 65px;
+    margin-left: 10px;
     position: relative;
+    left: 13px;
 
+}
+.day:hover{
+    border: 2px solid #d8bd24;
 }
 
 .day>span {
-    color: #2b2b2b;
-    font-size: 12px;
-    left: 10px;
+    color: rgb(212, 202, 202);
+    font-family: serif;
+    font-size: 20px;
+    left: 2px;
     position: absolute;
-    top: 10px;
+    top: 0px;
 
 }
+.day> em{
+    color:rgb(212, 202, 202);
+    font-family: serif;
+    font-size: 20px;
+    left: 2px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.day> strong{
+    color: rgb(212, 202, 202);
+    font-family: serif;
+    font-size: 30px;
+    right: 0px;
+    position: absolute;
+    top: 10px;
+}
+h2{
+    font-family: serif;
+    font-size: 20px;
+    color: rgb(212, 202, 202);
+}
+.place button:hover, .time button:hover{
+    background-color: #d8bd24;
+    border: none;
+}
+
