@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin_Films_CRUD</title>
+    <title>Admin_USERS_CRUD</title>
     <!-- link CSS -->
-    <link href='../../style/admin_fCRUD.css' rel='stylesheet'>
+    <link href="../../style/ad_user.css" rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -25,16 +25,16 @@
             <div class="col-lg-2 background-left ">
                 <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
                 <div class="row">
-                    <a href=""  class="icon-item">
+                    <a href="ad_user.php"  class="icon-item">
                         <ion-icon name="person"  ></ion-icon>
                         <b> User</b>
                     </a> 
                 </div><br><br>
                 <div class="row"> 
-                    <p class="icon-play">
+                    <a href="admin_films.php" class="icon-play">
                         <ion-icon name="play-circle"></ion-icon>
                         <b> Films</b>
-                    </p>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-10 background-right">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="row backgroud-bar">
                     <div class="col-sm-3"> 
-                        <a href="" class="bar-user"><span >User </span></a>
+                        <span class="bar-user">User </span>
                         <span class="line-line">/</span>
                         <span class="bar-film">Films</span>
                     </div>
@@ -64,33 +64,29 @@
                     </div>  
                 </div>
                 <div class="container"> <br><br>
-                    <!-- table -->
-                    <a class="add-btn" href="#">Add +</a> <br><br>
+                    <!-- table -->  
                     <div class="table-responsive">
                         <table class="table table-responsive" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Avatar</th>
-                                    <th>Name</th>
-                                    <th>Premiere date</th>
-                                    <th>Country</th>
-                                    <th>Describe</th>
-                                    <th>Trailer</th>
+                                    <th>Full name</th>
+                                    <th>Create at</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="tab">
                                 <td>01</td>
-                                <td></td>
-                                <td>Doraemon</td>
-                                <td>28/11/2023</td>
-                                <td>Japan</td>
-                                <td>Very funny</td>
-                                <td></td>
+                                <td>Kieu hi</td>
+                                <td>29/11/2023</td>
+                                <td>0987678901</td>
+                                <td>kieu.ho24@gmai.com</td>
+                                <td>Hoạt động</td>
                                 <td>
-                                    <span><ion-icon name="pencil-outline"class="icon-ac-edit"></ion-icon></span>
-                                    <span><ion-icon name="trash-outline" class="icon-ac-del"></ion-icon></span>
+                                    <ion-icon name="trash-outline" class="del-icon"></ion-icon>
                                 </td>
                             </tbody>
                         </table>

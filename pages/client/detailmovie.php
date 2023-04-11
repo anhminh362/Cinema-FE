@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail_Movies</title>
     <!-- link CSS -->
-    <link href='../../style/detail_m.css' rel='stylesheet'>
+    <link href='../../style/detailmovie.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -26,12 +26,10 @@
     <nav class="header">
         <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Movies</a>
-              
-            </li>
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="homepage.php">Movies</a></li>
             <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
-            <li><a href="">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+            <li><a href="login.php">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
         </ul>
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>

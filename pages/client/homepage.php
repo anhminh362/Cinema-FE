@@ -341,19 +341,19 @@
                     <div class="col-sm-3"><br>
                         <h5 class="text-footer">Quick Link</h4>
                         <ul>
-                            <li><a href="">About Us</a></li>
-                            <li><a href="">Movies</a></li>
-                            <li><a href="">Partner</a></li>
-                            <li><a href="">Help</a></li>
+                            <li><a href="homepage.php">About Us</a></li>
+                            <li><a href="homepage.php">Movies</a></li>
+                            <li><a href="homepage.php">Partner</a></li>
+                            <li><a href="homepage.php">Help</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-3"><br>
                         <h5 class="text-footer">Important</h5>
                         <ul>
-                            <li><a href="">Support</a></li>
-                            <li><a href="">FAQ</a></li>
-                            <li><a href="">Contact Us</a></li>
-                            <li><a href="">Check</a></li>
+                            <li><a href="homepage.php">Support</a></li>
+                            <li><a href="homepage.php">FAQ</a></li>
+                            <li><a href="homepage.php">Check</a></li>
+                            <li><a href="homepage.php">Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-3"><br>

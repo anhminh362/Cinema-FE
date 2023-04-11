@@ -25,7 +25,7 @@
             <div class="col-lg-2 background-left ">
                 <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
                 <div class="row">
-                    <a href=""  class="icon-item">
+                    <a href="#"  class="icon-item">
                         <ion-icon name="person"  ></ion-icon>
                         <b> User</b>
                     </a> 
@@ -51,7 +51,7 @@
                 </div>
                 <div class="row backgroud-bar">
                     <div class="col-sm-3"> 
-                        <a href="" class="bar-user"><span >User </span></a>
+                        <a href="#" class="bar-user"><span >User </span></a>
                         <span class="line-line">/</span>
                         <span class="bar-film">Films</span>
                     </div>
