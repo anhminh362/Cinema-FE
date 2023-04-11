@@ -19,7 +19,7 @@ body{
     
 }
 
-.form-login{
+.form-register{
    
     display: block;
     width: 40%;
@@ -61,14 +61,8 @@ body{
     font-size: 0.5rem;
     
 }
-/* .form-group input:active{
-    border: none;
-} */
-/* .checkbox{
-    justify-content: space-between;
-} */
 
-#email, #pwd{
+#email, #pwd, #cf_pwd{
     font-size: 0.7rem;
     font-family: Poppins-Regular,sans-serif;
     /* padding-bottom: 0.1rem; */
@@ -78,9 +72,7 @@ body{
 span{
     margin-right: 0.5em;
 }
-/* .checkbox{
-    margin-bottom: 5em;
-} */
+
 .register{
     display: flex;
     justify-content: space-between;

@@ -25,13 +25,13 @@
             <div class="col-lg-2 background-left ">
                 <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
                 <div class="row">
-                    <p href="#"  class="icon-item">
+                    <a href="AdminU.php"  class="icon-item">
                         <ion-icon name="person"  ></ion-icon>
                         <b> User</b>
-                    </p> 
+                    </a> 
                 </div><br><br>
                 <div class="row"> 
-                    <a hreft="#" class="icon-play">
+                    <a href="admin_films.php" class="icon-play">
                         <ion-icon name="play-circle"></ion-icon>
                         <b> Films</b>
                     </a>
