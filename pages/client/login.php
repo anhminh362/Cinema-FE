@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +21,14 @@
         <label for="username" >Username</label> <br>
         <div class="form-input">
             <span class="material-symbols-outlined">person</span>
-            <input type="text" class="form-control" id="username" name="username"  placeholder="Type your username">
+            <input type="text" class="form-control" id="username" name="username"  placeholder="Type your username" required>
         </div>
       </div>
       <div class="form-group">
         <label for="pwd">Password</label><br>
         <div class="form-input">
             <span class="material-symbols-outlined">lock</span>
-            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Type your password">
+            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Type your password" required>
         </div>
       </div>
       <div class="form-group register">
@@ -34,41 +37,42 @@
       </div>
       <button type="submit" class="btn btn-default" name="btn">LOGIN</button>
      <div>
-     <!-- <?php
-    //  echo '233333';
-    $a=array("Dog"=>"gogo","Cat"=>"mailmail","Bear"=>"grown");
-        if(isset($_POST['btn'])){
-            $user=$_POST['username'];
-            $pass=$_POST['pwd'];
-            $check=false;
-           
-            if($user==''||$pass==''){
-                echo "Vui long nhap day du ten va mat khau";
-            }
-            else {
-                foreach($a as $u => $p){
-                    if($user==$u){
-                        if($pass==$p){
-                            $check=true;
-                            echo 'Dang nhap thanh cong';break;
-                        }
-                        else{
-                            $check=true;
-                            echo 'Sai mat khau. Vui long nhap lai';break;
-                        }
-                    }
-                   
-                }
-                if($check==false){
-                    echo 'Tai khoan khong ton tai';
-                }
-            }
-        }
-
-    ?> -->
+     
     <br><br>
      </div>
+    <?php
+    if(isset($_POST['btn'])){
+        $email=$_POST['username'];
+        $pass=$_POST['pwd'];
+        $connect = mysqli_connect("localhost", "root", "", "cinema") or die("abc");
+        $sql = "select * from account where email='$email'";
+        $result = mysqli_query($connect, $sql) or die("fail");
+         if (mysqli_num_rows($result ) > 0) {
+            $row = mysqli_fetch_assoc($result );
+            $checkPass=password_verify($pass,$row['password']);
+            $account=$row['id'];
+             if ($checkPass) {
+                $account = mysqli_query($connect,"select * from users where account_id='$account'" ) or die("fail");
+                $query = mysqli_fetch_assoc($account );
+               $string=$query['full_name'];
+                for($i=0;$i<strlen($string);$i++){
+                    if($string[$i]==" "){
+                        $a=$i;
+                    }
+                }
+                $_SESSION['user']=substr($string, -$a-1);
+                // echo "Đăng nhập thành công! Hãy đến " . "<a href='check.php' >Trang chủ";
+                header("Location: http://localhost:8080/cinema/pages/client/homepage.php");
+             } else {
+                 echo  "Your password is incorrect";
+             }
+         }else{
+             echo"This account doesn't exit";
+         }
+    }
+   
 
+    ?>
      
     </form>
 </div>

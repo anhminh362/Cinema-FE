@@ -64,21 +64,23 @@ session_start();
                         echo("$email is not a valid email address");
                       }
                       else if(mysqli_num_rows($result) > 0){
-                        echo ("Email da ton tai");
+                        echo ("This email address already exits. Do you want to ");?><a href="login.php">Login</a>
+
+                        <?php
                       }
                       else if(strlen($pass)<8){
-                        echo("Vui long nhap mat khau tu 8 ky tu tro len");
+                        echo("Password must be at least 8 characters");
                       }
                       else if($pass!==$cf_pass){
-                        echo("Vui long xac nhan lai mat khau");
+                        echo("The password confirmation doesn't match");
 
                       }
                       else{
                         $_SESSION['email']=$email;
                         $password=password_hash($pass,PASSWORD_DEFAULT);
                         $insert=mysqli_query($connect,"INSERT INTO `account`( `email`, `password`) VALUES ('$email','$password')");
-                        echo "done";
-                    //header("Location: http://localhost:8080/cinema/pages/client/verify_code.php");
+                        
+                        header("Location: http://localhost:8080/cinema/pages/client/verify_mail.php");
 
                       }
                 }
