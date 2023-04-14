@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,18 +20,19 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 background-left ">
                 <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
                 <div class="row">
-                    <a href="ad_user.php"  class="icon-item">
-                        <ion-icon name="person"  ></ion-icon>
+                    <a href="ad_user.php" class="icon-item">
+                        <ion-icon name="person"></ion-icon>
                         <b> User</b>
-                    </a> 
+                    </a>
                 </div><br><br>
-                <div class="row"> 
+                <div class="row">
                     <a href="admin_films.php" class="icon-play">
                         <ion-icon name="play-circle"></ion-icon>
                         <b> Films</b>
@@ -38,19 +40,19 @@
                 </div>
             </div>
             <div class="col-lg-10 background-right">
-                <div class="row"> 
+                <div class="row">
                     <div class="col-lg-10">
                         <!--  -->
                     </div>
                     <div class="col-lg-2">
-                        <div class="icon-user">   
+                        <div class="icon-user">
                             <ion-icon name="person-circle" class="icon-acc"></ion-icon>
                             <a class="text-signout" href="#">Kieu</a>
                         </div>
                     </div>
                 </div>
                 <div class="row backgroud-bar">
-                    <div class="col-sm-3"> 
+                    <div class="col-sm-3">
                         <span class="bar-user">User </span>
                         <span class="line-line">/</span>
                         <span class="bar-film">Films</span>
@@ -61,10 +63,10 @@
                     <div class="col-sm-3">
                         <span class="mess">Hello!</span>
                         <span class="name-acc">Kieu hi</span>
-                    </div>  
+                    </div>
                 </div>
                 <div class="container"> <br><br>
-                    <!-- table -->  
+                    <!-- table -->
                     <div class="table-responsive">
                         <table class="table table-responsive" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -79,6 +81,56 @@
                                 </tr>
                             </thead>
                             <tbody id="tab">
+                                <?php
+                                $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
+                                $query = "select * from users ";
+                                $result = mysqli_query($connect, $query) or die("query Erorr!");
+                                $i = 1;
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $account_id = $row['account_id'];
+                                    $account = mysqli_query($connect, "select * from account where id='$account_id'") or die("query Erorr!");
+                                ?>
+                                    <tr>
+                                        <td><?php echo $row['id'] ?></td>
+                                        <td><?php echo $row['full_name'] ?></td>
+                                        <td><?php echo $row['create_at'] ?></td>
+                                        <td><?php echo $row['phone'] ?></td>
+                                        <?php
+                                        while ($row1 = mysqli_fetch_assoc($account)) {
+                                        ?>
+                                            <td><?php echo $row1['email'] ?></td>
+                                            <td><?php {
+                                                    if ($row1['status']) {
+                                                        echo "Active";
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <ion-icon name="trash-outline" class="del-icon"></ion-icon>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                                                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                                                </svg>
+                                            </td>
+                                        <?php
+                                                    } else {
+                                                        echo "<p style='color: gray'>Inactive</p>"; ?>
+                                            </td>
+                                            <td>
+                                                <button id="btn_act"><ion-icon name="trash-outline" class="del-icon"></ion-icon></button>
+                                                <button id="btn_act"><svg class="block-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-unlock" viewBox="0 0 16 16">
+                                                    <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2zM3 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H3z" />
+                                                </svg>
+                                                </button>
+                                            </td>
+                                <?php
+                                                    }
+                                                }
+                                            }; ?>
+                                    </tr>
+                                <?php
+                                    $i++;
+                                }
+                                ?>
+
                                 <td>01</td>
                                 <td>Kieu hi</td>
                                 <td>29/11/2023</td>
@@ -95,6 +147,7 @@
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>

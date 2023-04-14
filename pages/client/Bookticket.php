@@ -1,3 +1,9 @@
+<?php
+
+use function PHPSTORM_META\type;
+
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,92 +18,37 @@
     <section class="book-ticket">
         <div class="container">
             <div class="book-ticket-container">
+                <div>
                 <ul class="date-list">
-                    <li class="date-item">
+                <?php 
+                    $id=6;
+                    $connect=mysqli_connect("localhost","root","","cinema")or die('Connect Error!');
+                    $query="select * from schedule where movie_id='$id' ";
+                    $result=mysqli_query($connect,$query) or die( "query Erorr!");
+                    $i=1;
+                    while ($row=mysqli_fetch_assoc($result)){
+                        $dateValue = strtotime($row['movie_date']);
+                        $mon = date('n', $dateValue); 
+                        $day = date('j', $dateValue);
+                        $name_day= substr(date('l',$dateValue), 0,3);
+                ?>
+                <form id="my-form">
+                <label><input class="selection" type="radio" name="option1" value="<?php echo $row['movie_date']?>"> <li class="date-item">
                         <div class="day">
-                            <span>03</span>
-                            <em>Mon</em>
-                            <strong>02</strong>
+                        
+                            <span><?php if($mon>9){echo $mon;} else{echo "0".$mon;}?></span>
+                           
+                            <em><?php echo $name_day;?></em>
+                            <strong><?php if($day>9){echo $day;} else{echo "0".$day;};?></strong>
                         </div>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Tue</em>
-                            <strong>03</strong>
-                        </div>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Wed</em>
-                            <strong>04</strong>
-                        </div>
-                    </li><li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Thu</em>
-                            <strong>05</strong>
-                        </div>
-                    </li><li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Fri</em>
-                            <strong>06</strong>
-                        </div>
-                    </li><li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Sat</em>
-                            <strong>07</strong>
-                        </div>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Sun</em>
-                            <strong>08</strong>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Mon</em>
-                            <strong>09</strong>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Tue</em>
-                            <strong>10</strong>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Wed</em>
-                            <strong>11</strong>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Thu</em>
-                            <strong>12</strong>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Fri</em>
-                            <strong>13</strong>
-                    </li>
-                    <li class="date-item">
-                        <div class="day">
-                            <span >03</span>
-                            <em>Sat</em>
-                            <strong>14</strong>
-                    </li>                            
+                    </li></label>
+                    <?php
+                        $i++;
+                        }
+                        ?>
                 </ul>
-
-
-                <div class="provinces-list"> 
+                </div>
+                <!-- <div class="provinces-list"> 
                     <h2>City</h2>
                     <div class="place">
                         <button>Hồ Chí Minh</button>
@@ -106,30 +57,107 @@
                         <button>Đồng Nai</button>
                         <button>Hà Nội</button>
                     </div>
-                </div>
+                </div> -->
                 <div class="sub-list">
                     <h2>Sub</h2>
                     <div class="place">
-                        <button>English</button>
-                        <button>English(US)</button>
-                        <button>Vietnam</button>
-                        <button>Korean</button>
-                        <button>Germeny</button>
-                        <button>Franch</button>
+                    <?php 
+                    
+                    $sub="select * from movie_sub where movie_id='$id' ";
+                    $result=mysqli_query($connect,$sub) or die( "query Erorr!");
+                    $i=1;
+                    while ($row=mysqli_fetch_assoc($result)){
+                        $sub_id=$row['sub_id'];
+                        $sub_name=mysqli_query($connect,"select * from sub where id='$sub_id'") or die( "query Erorr!");
+                        $sub=mysqli_fetch_assoc($sub_name)['name'];
+                        
+                ?>
+                <label><input class="selection" type="radio" name="option2"  value="<?php echo $sub ?>"> 
+                <button><?php echo  $sub?></button>
+                </label>
+                    <?php
+                        $i++;
+                        }
+                        ?>
+                    
                     </div>
                 </div>
                 <div class="show-time">
                     <h2>Time</h2>
                     <div class="time">
-                        <button>17:50 PM</button>
-                        <button>19:30 PM</button>
-                        <button>22:00 PM</button>
-                        <button>23:00 PM</button>
+                    <?php 
+                    $i=1;
+                    $result=mysqli_query($connect,$query) or die( "query Erorr!");
+                    
+                    while ($row=mysqli_fetch_assoc($result)){
+                        $time=date("H:i", strtotime($row['time_begin']));     
+                ?>
+                <label><input class="selection" type="radio" name="option3"  value="<?php echo $time  ?>"> 
+                <button class="btn_time"><?php echo  $time?></button>
+                </label>
+                    <?php
+                            $i++;
+                            }
+                            ?>
+                        
+                       
                     </div>
                 </div>
             </div>
+            <!-- <input type="submit">OK</input> -->
         </div>
+       
+        </form>                   
+        <!-- <?php
+        function movietime($h1,$m1,$h2,$m2){
+            if($m2>=$m1){
+                $m=$m2-$m1;
+            }
+            else{
+                $m=$m2+60-$m1;
+                $h1+=1;
+            }
+            if($h2>=$h1){
+                $h=$h2-$h1;
+            }
+            else{
+                $h=24+$h2-$h1;
+            }
+            return $h."h ".$m."min";
+        }
+        $connect=mysqli_connect("localhost","root","","cinema")or die('Connect Error!');
+        $time="select * from schedule where movie_id='$id' limit 1 ";
+        $result=mysqli_query($connect,$time) or die( "query Erorr!");
+        $row=mysqli_fetch_assoc($result);
+        $h_begin = date("H", strtotime($row['time_begin']));
+        $h_end=date("H", strtotime($row['time_end']));
+        $m_begin=date("i", strtotime($row['time_begin']));
+        $m_end=date("i", strtotime($row['time_end']));
+        echo movietime( $h_begin,$m_begin,$h_end,$m_end);
+        ?> -->
     </section>
+    
 
+<script>
+  const form = document.getElementById('my-form');
+  const radios = form.elements['option1'];
+    const sub=form.elements['option2'];
+    const time=form.elements['option3'];
+    function getvalue($variable) {
+      const selectedValue = this.value;
+      console.log(selectedValue);
+    //   return selectedValue;
+    }
+  for (let i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('click', getvalue(radios));
+  }
+  for (let i = 0; i < sub.length; i++) {
+    sub[i].addEventListener('click', getvalue(sub));
+  }
+  for (let i = 0; i < time.length; i++) {
+    time[i].addEventListener('click', getvalue(time));
+  }
+  
+</script>
 </body>
 </html>

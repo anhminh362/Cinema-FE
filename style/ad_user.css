@@ -139,3 +139,8 @@
     font-size: 1.4rem;
     margin-left: 1rem;
 }
+button{
+    background-color: #0B1A2A;
+    border: none;
+    color: #fff;
+}
