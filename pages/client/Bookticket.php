@@ -19,7 +19,7 @@ session_start();
         <div class="container">
             <div class="book-ticket-container">
                 <div>
-                <ul class="date-list">
+                <div class="date-list">
                 <?php 
                     $id=6;
                     $connect=mysqli_connect("localhost","root","","cinema")or die('Connect Error!');
@@ -33,7 +33,7 @@ session_start();
                         $name_day= substr(date('l',$dateValue), 0,3);
                 ?>
                 <form id="my-form">
-                <label><input class="selection" type="radio" name="option1" value="<?php echo $row['movie_date']?>"> <li class="date-item">
+                <label><input class="selection" type="radio" name="option1" value="<?php echo $row['movie_date']?>"> 
                         <div class="day">
                         
                             <span><?php if($mon>9){echo $mon;} else{echo "0".$mon;}?></span>
@@ -41,12 +41,12 @@ session_start();
                             <em><?php echo $name_day;?></em>
                             <strong><?php if($day>9){echo $day;} else{echo "0".$day;};?></strong>
                         </div>
-                    </li></label>
+                    </label>
                     <?php
                         $i++;
                         }
                         ?>
-                </ul>
+                </div>
                 </div>
                 <!-- <div class="provinces-list"> 
                     <h2>City</h2>

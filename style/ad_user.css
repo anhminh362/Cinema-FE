@@ -134,8 +134,12 @@
 #dataTable{
     color: #ffff;
 }
-.del-icon{
+.del-icon, .lock-icon{
     color: #E00813;
+    font-size: 1.4rem;
+    margin-left: 1rem;
+}
+ .unlock-icon{
     font-size: 1.4rem;
     margin-left: 1rem;
 }
