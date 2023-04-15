@@ -1,3 +1,22 @@
+<?php
+   $host = "localhost";
+   $user = "root";
+   $password = "";
+   $database = "cinema";
+
+   // Create connection
+   $conn = mysqli_connect($host,$user,$password,$database);
+   mysqli_set_charset($conn,"UTF8");
+
+   // Check connection
+   if(!$conn){
+        die("Connection failed: ".mysqli_connect_error());
+   }
+   
+      //  echo "Connected Successfully !";
+      error_reporting(0);	
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,17 +82,91 @@
                         <span class="name-acc">Kieu hi</span>
                     </div>  
                 </div>
-                <div class="container"> <br><br>
-                    <!-- table -->
-                    <a class="add-btn" href="#">Add +</a> <br><br>
+                <div class="container"> <br>
+                    <!-- Nút mở modal -->
+                    <button type="button" class="btn bg-danger text-white" data-toggle="modal" data-target="#myModal">
+                    Add +
+                    </button>
+                    <!-- Modal -->
+                    <div id="myModal" tabindex="-1" role="dialog" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">FOMR ADD</h5>
+                                <button type="button" name="close" class="close" data-dismiss="modal" aria-label="Đóng">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" class="form-form" action="add.php"> <br>
+                                    <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
+                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                    <label for="name" class="title-title" >Name:</label>
+                                    <input type="text" class="input-btn" name="name" value="<?php echo $row['name']; ?>"><br><br>
+                                    <label for="avatar" class="title-title">Avatar:</label>
+                                    <input type="file" class="input-btn" name="avatar" value="<?php echo $row['avatar']; ?>"><br><br>
+                                    <label for="date" class="title-title">Premiere date:</label>
+                                    <input type="date" class="input-btn" name="premiere_date" value="<?php echo $row['premiere_date']; ?>"><br><br>
+                                    <label for="country" class="title-title">Country:</label>
+                                    <input  name="country" class="input-btn" value="<?php echo $row['country'];?>"><br> <br> 
+                                    <label for="describe" class="title-title">Describe:</label>
+                                    <input  name="description" type="text" class="input-btn" value="<?php echo $row['description'];?>"><br> <br> 
+                                    <label for="trailer" class="title-title">Trailer:</label>
+                                    <input  name="trailer" type="file" class="input-btn" value="<?php echo $row['trailer'];?>"><br> <br> 
+                                    <div class="modal-footer">
+                                        <input type="submit" name='submit' class="btn bg-danger text-white" value="Add">
+                                    </div>
+                                </form>
+                            </div>
+                           
+                            </div>
+                        </div>
+                    </div>  <br><br>
+                     <!-- Nút mở modal -->
+
+                    <!-- Modal Edit -->
+                    <div id="meModal" tabindex="-1" role="dialog" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">FOMR EDIT</h5>
+                                <button type="button" name="close" class="close" data-dismiss="modal" aria-label="Đóng">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" class="form-form" action="edit.php"> <br>
+                                    <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
+                                    <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>">
+                                    <label for="name" class="title-title" >Name:</label>
+                                    <input type="text" id="name" class="input-btn" name="name" value="<?php echo $row['name']; ?>"><br><br>
+                                    <label for="avatar"  class="title-title">Avatar:</label>
+                                    <input type="file"id="avatar" class="input-btn" name="avatar" value="<?php echo $row['avatar']; ?>"><br><br>
+                                    <label for="date" class="title-title">Premiere date:</label>
+                                    <input type="date" id="premiere_date" class="input-btn" name="premiere_date" value="<?php echo $row['premiere_date']; ?>"><br><br>
+                                    <label for="country" class="title-title">Country:</label>
+                                    <input  name="country" id="country" class="input-btn" value="<?php echo $row['country'];?>"><br> <br> 
+                                    <label for="describe" class="title-title">Describe:</label>
+                                    <input  name="description" id="description" type="text" class="input-btn" value="<?php echo $row['description'];?>"><br> <br> 
+                                    <label for="trailer" class="title-title">Trailer:</label>
+                                    <input  name="trailer" id="trailer" type="file" class="input-btn" value="<?php echo $row['trailer'];?>"><br> <br> 
+                                    <div class="modal-footer">
+                                        <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
+                                    </div>
+                                </form>
+                            </div>
+                           
+                            </div>
+                        </div>
+                    </div> 
                     <div class="table-responsive">
                         <table class="table table-responsive" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Avatar</th>
                                     <th>Name</th>
-                                    <th>Premiere date</th>
+                                    <th>Avater</th>
+                                    <th>PremiereDate</th>
                                     <th>Country</th>
                                     <th>Describe</th>
                                     <th>Trailer</th>
@@ -81,17 +174,26 @@
                                 </tr>
                             </thead>
                             <tbody id="tab">
-                                <td>01</td>
-                                <td></td>
-                                <td>Doraemon</td>
-                                <td>28/11/2023</td>
-                                <td>Japan</td>
-                                <td>Very funny</td>
-                                <td></td>
-                                <td>
-                                    <span><ion-icon name="pencil-outline"class="icon-ac-edit"></ion-icon></span>
-                                    <span><ion-icon name="trash-outline" class="icon-ac-del"></ion-icon></span>
-                                </td>
+                            <?php
+                                $sql = "SELECT * FROM movie";
+                                $sqli=mysqli_query($conn,$sql);
+                                if (mysqli_num_rows($sqli) > 0) {
+                                    while ($row = mysqli_fetch_assoc($sqli)) {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['id'] . "</td>";
+                                        echo "<td>" . $row['name'] . "</td>";
+                                        echo "<td>" . $row['avatar'] . "</td>";
+                                        echo "<td>" . $row['premiere_date'] . "</td>";
+                                        echo "<td>" . $row['country'] . "</td>";
+                                        echo "<td>" . $row['description'] . "</td>";
+                                        echo "<td>" . $row['trailer'] . "</td>";
+                                        echo "<td><span data-toggle='modal' data-target='#meModal' class='btn-edit' data-id=".$row['id']."><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=". $row['id'] ."'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                    echo "Không có sản phẩm nào.";
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -99,6 +201,36 @@
             </div>
         </div>
     </div>
+
     
+     <!--modal  -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+            <?php
+            // Lấy dữ liệu từ data attribute của nút chỉnh sửa
+            // Lấy thông tin sản phẩm để sửa
+											
+            if (isset($_GET['id']))							
+            {							
+            if (isset($_GET['es'])) {							
+            echo "<script type=\"text/javascript\">alert(\"Bạn đã sửa sản phẩm thành công!\");</script>";					
+            }							
+            if (isset($_GET['ef'])) {							
+            echo "<script type=\"text/javascript\">alert(\"Sửa sản phẩm thất bại!\");</script>";							
+            }							
+            }  
+
+            if (isset($_GET['id']))							
+            {							
+                $id = $_GET['id'];							
+                $sql = "SELECT * FROM movie WHERE id = " . $id;							
+                $sqli = mysqli_query($conn,$sql);	
+                $row = mysqli_fetch_assoc($sqli);					
+            }
+
+            // Điền dữ liệu vào form
+        ?>
 </body>
 </html>
