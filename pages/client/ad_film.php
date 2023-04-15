@@ -12,10 +12,28 @@
    if(!$conn){
         die("Connection failed: ".mysqli_connect_error());
    }
-   
+  
       //  echo "Connected Successfully !";
-      error_reporting(0);	
+     error_reporting(0);
+    //   Lấy thông tin sản phẩm để sửa
+											
+    //   if (isset($_GET['id']))							
+    //   {							
+    //   if (isset($_GET['es'])) {							
+    //   echo "<script type=\"text/javascript\">alert(\"Bạn đã sửa sản phẩm thành công!\");</script>";					
+    //   }							
+    //   if (isset($_GET['ef'])) {							
+    //   echo "<script type=\"text/javascript\">alert(\"Sửa sản phẩm thất bại!\");</script>";							
+    //   }							
+    //   }  
 
+    //   if (isset($_GET['id']))							
+    //   {							
+    //       $id = $_GET['id'];							
+    //       $sql = "SELECT * FROM movie WHERE id = " . $id;							
+    //       $sqli = mysqli_query($conn,$sql);	
+    //       $row = mysqli_fetch_assoc($sqli);					
+    //   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -187,7 +205,7 @@
                                         echo "<td>" . $row['country'] . "</td>";
                                         echo "<td>" . $row['description'] . "</td>";
                                         echo "<td>" . $row['trailer'] . "</td>";
-                                        echo "<td><span data-toggle='modal' data-target='#meModal' class='btn-edit' data-id=".$row['id']."><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=". $row['id'] ."'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
+                                        echo "<td><span data-toggle='modal' data-target='#meModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=". $row['id'] ."'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -207,30 +225,29 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-            <?php
-            // Lấy dữ liệu từ data attribute của nút chỉnh sửa
-            // Lấy thông tin sản phẩm để sửa
-											
-            if (isset($_GET['id']))							
-            {							
-            if (isset($_GET['es'])) {							
-            echo "<script type=\"text/javascript\">alert(\"Bạn đã sửa sản phẩm thành công!\");</script>";					
-            }							
-            if (isset($_GET['ef'])) {							
-            echo "<script type=\"text/javascript\">alert(\"Sửa sản phẩm thất bại!\");</script>";							
-            }							
-            }  
-
-            if (isset($_GET['id']))							
-            {							
-                $id = $_GET['id'];							
-                $sql = "SELECT * FROM movie WHERE id = " . $id;							
-                $sqli = mysqli_query($conn,$sql);	
-                $row = mysqli_fetch_assoc($sqli);					
-            }
-
-            // Điền dữ liệu vào form
-        ?>
+        <script>
+            
+            $(document).ready(function() {
+            // Khi nút chỉnh sửa được click
+            $(".btn-edit").click(function() {
+                // Lấy dữ liệu từ data attribute của nút chỉnh sửa
+                var id = $(this).data("id");
+                var name = $(this).data("name");
+                var avatar = $(this).data("avatar");
+                var premiere_date = $(this).data("premiere_date");
+                var country = $(this).data("country");
+                var description = $(this).data("description");
+                var trailer = $(this).data("trailer");
+                // Điền dữ liệu vào form
+                $("#id").val(id);
+                $("#name").val(name);
+                $("#avatar").val(avatar);
+                $("#premiere_date").val(premiere_date);
+                $("#country").val(country);
+                $("#description").val(description);
+                $("#trailer ").val(trailer );
+            });
+            });
+        </script>
 </body>
 </html>

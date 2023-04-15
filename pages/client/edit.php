@@ -13,7 +13,7 @@ mysqli_set_charset($conn,"UTF8");
 if(!$conn){
      die("Connection failed: ".mysqli_connect_error());
 }
-
+    //  echo "Connected Successfully !";
     	
     
     // Đẩy data lên database
@@ -25,7 +25,7 @@ if(!$conn){
         $country = $_POST['country'];
         $describe = $_POST['description'];
         $trailer = $_POST['trailer'];
-        $sql = "UPDATE movie SET `name`='$name', `avatar` = '$avatar', `premiere_date` = '$date', `country` ='$country',`description` ='$describe',`trailer`=' $trailer' WHERE id = '$id'";
+        $sql = "UPDATE movie SET `name`='$name', `avatar` = '$avatar', `premiere_date` = '$date', `country` ='$country',`description` ='$describe',`trailer`=' $trailer' WHERE id = $id";
         $sqli = mysqli_query($conn,$sql);
         header('location:ad_film.php');
     }

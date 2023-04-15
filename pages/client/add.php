@@ -14,6 +14,7 @@ if(!$conn){
 }
 
    //  echo "Connected Successfully !";
+  
    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
