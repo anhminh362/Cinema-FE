@@ -11,7 +11,6 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookTicket</title>
-    <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="../../style/Bookticket.css">
 </head>
 <body>
@@ -33,7 +32,7 @@ session_start();
                         $name_day= substr(date('l',$dateValue), 0,3);
                 ?>
                 <form id="my-form">
-                <label><input class="selection" type="radio" name="option1" value="<?php echo $row['movie_date']?>"> 
+                <input class="selection" type="radio" name="option1" value="<?php echo $row['movie_date']?>"> 
                         <div class="day">
                         
                             <span><?php if($mon>9){echo $mon;} else{echo "0".$mon;}?></span>
@@ -41,7 +40,7 @@ session_start();
                             <em><?php echo $name_day;?></em>
                             <strong><?php if($day>9){echo $day;} else{echo "0".$day;};?></strong>
                         </div>
-                    </label>
+                    
                     <?php
                         $i++;
                         }
@@ -72,7 +71,7 @@ session_start();
                         $sub=mysqli_fetch_assoc($sub_name)['name'];
                         
                 ?>
-                <label><input class="selection" type="radio" name="option2"  value="<?php echo $sub ?>"> 
+                <input class="selection" type="radio" name="option2"  value="<?php echo $sub ?>"> 
                 <button><?php echo  $sub?></button>
                 </label>
                     <?php
@@ -92,9 +91,9 @@ session_start();
                     while ($row=mysqli_fetch_assoc($result)){
                         $time=date("H:i", strtotime($row['time_begin']));     
                 ?>
-                <label><input class="selection" type="radio" name="option3"  value="<?php echo $time  ?>"> 
+                <input class="selection" type="radio" name="option3"  value="<?php echo $time  ?>"> 
                 <button class="btn_time"><?php echo  $time?></button>
-                </label>
+                
                     <?php
                             $i++;
                             }

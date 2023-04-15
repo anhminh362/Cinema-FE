@@ -80,7 +80,7 @@ button{
     left: 13px;
 
 }
-.day:hover, .day:focus{
+.day:hover, .day:active{
     border: 2px solid #d8bd24;
 }
 
