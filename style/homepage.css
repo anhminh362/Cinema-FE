@@ -62,6 +62,9 @@ body{
 .header ul li a:hover{
     color: var(--title--color);
 }
+.header ul li a:hover > .icon_user {
+    color: var(--title--color);
+}
 .header #type-movies{
     display: inline-block;
     position: absolute;
@@ -526,4 +529,44 @@ footer{
     height: 45rem;
     position: relative;
     left: 7.3rem;
+}
+#search {
+    border-radius: 20px;
+}
+
+
+#search:focus {
+
+    outline: 4px solid red;
+}
+.search_site{
+    background-color: #06111D;
+    width: 12%;
+    z-index: 10;
+    position: fixed;
+    top: 7%;
+    display: block;
+    left: 55%;
+}
+
+
+.movie_item{
+    padding: 2px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 57%;
+    grid-gap: 3%;
+}
+.movie_card{
+    margin: 10px 5px;
+    background-color: wheat;
+}
+
+.movie_img img{
+    width: 100%;
+}
+
+
+.display_none{
+    display: none;
 }

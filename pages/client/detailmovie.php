@@ -214,7 +214,7 @@
                     </div>                  
                 </div>
                 <div class="col-sm-3"><br>
-                    <h5 class="text-footer">Quick Link</h4>
+                    <h4 class="text-footer">Quick Link</h4>
                     <ul>
                         <li><a href="">About Us</a></li>
                         <li><a href="">Movies</a></li>
