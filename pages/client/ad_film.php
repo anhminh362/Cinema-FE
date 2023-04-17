@@ -147,7 +147,7 @@
                                     <label for="country" class="title-title">Country:</label>
                                     <input  name="country" id="country" class="input-btn" value="<?php echo $row['country'];?>"><br> <br> 
                                     <label for="describe" class="title-title">Describe:</label>
-                                    <input  name="description" id="description" type="text" class="input-btn" value="<?php echo $row['description'];?>"><br> <br> 
+                                    <textarea  name="description" id="description" type="text" class="input-btn" value="<?php echo $row['description'];?>"></textarea><br> <br> 
                                     <label for="trailer" class="title-title">Trailer:</label>
                                     <input  name="trailer" id="trailer" type="file" class="input-btn" value="<?php echo $row['trailer'];?>"><br> <br> 
                                     <div class="modal-footer">
@@ -250,6 +250,6 @@
 
             // }
 
-        <!-- </script> 
+        </script> 
 </body>
 </html>

@@ -161,4 +161,6 @@
 }
 .title-title{
     color: #FFF;
+    display: flex;
+    align-items: start;
 }
