@@ -79,10 +79,13 @@ button{
     left: 13px;
 
 }
-.day:hover, .day:active{
+.day:hover{
     border: 2px solid #d8bd24;
 }
-
+.selected{
+    background-color: #d8bd24;
+    border: none;
+}
 .day>span {
     color: #0B1A2A;
     font-family: serif;
@@ -116,7 +119,7 @@ h2{
     font-size: 20px;
     color: rgb(212, 202, 202);
 }
-.place button:hover, .time button:hover,.place button:focus , .time button:focus {
+.place button:hover, .time button:hover {
     background-color: #d8bd24;
     border: none;
 }

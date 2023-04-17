@@ -127,7 +127,19 @@ session_start();
 
         const buttons = document.querySelectorAll("button");
         buttons.forEach((button) => {
-            button.addEventListener("click", handleClick);
+            button.addEventListener("click", () => {
+                handleClick;
+                // Loại bỏ class 'selected' khỏi tất cả các button trong cùng div
+                const div = button.closest('div');
+                const divButtons = div.querySelectorAll('button');
+                divButtons.forEach(divButton => {
+                    divButton.classList.remove('selected');
+                });
+
+                // Thêm class 'selected' cho button được click
+                button.classList.add('selected');
+            });
+
         });
 
         const submitBtn = document.getElementById("submit-btn");
