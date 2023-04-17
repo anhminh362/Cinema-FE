@@ -106,10 +106,20 @@ session_start();
             let value = button.getAttribute('value');
             selectedValues[name] = value;
             console.log(selectedValues);
+            // Loại bỏ class 'selected' khỏi tất cả các button trong cùng div
+            const div = button.closest('div');
+            const divButtons = div.querySelectorAll('button');
+            divButtons.forEach(divButton => {
+                divButton.classList.remove('selected');
+            });
+
+            // Thêm class 'selected' cho button được click
+            button.classList.add('selected');
+
         }
 
         function handleSubmit() {
-
+            console.log(selectedValues["btn_day"]);
             if (
                 selectedValues["btn_day"] &&
                 selectedValues["btn_sub"] &&
@@ -127,19 +137,8 @@ session_start();
 
         const buttons = document.querySelectorAll("button");
         buttons.forEach((button) => {
-            button.addEventListener("click", () => {
-                handleClick;
-                // Loại bỏ class 'selected' khỏi tất cả các button trong cùng div
-                const div = button.closest('div');
-                const divButtons = div.querySelectorAll('button');
-                divButtons.forEach(divButton => {
-                    divButton.classList.remove('selected');
-                });
-
-                // Thêm class 'selected' cho button được click
-                button.classList.add('selected');
-            });
-
+            button.addEventListener("click",
+                handleClick);
         });
 
         const submitBtn = document.getElementById("submit-btn");
