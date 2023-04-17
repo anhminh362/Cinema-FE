@@ -18,149 +18,120 @@ session_start();
 <body>
     <section class="book-ticket">
         <div class="container">
-        <form id="my-form">
+
             <div class="book-ticket-container">
-                    <div>
-                        <div class="date-list">
-                        <!-- <div class="day"> -->
-                            <?php
-                            $id = 6;
-                            $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
-                            $query = "select * from schedule where movie_id='$id' ";
-                            $result = mysqli_query($connect, $query) or die("query Erorr!");
-                            $i = 1;
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $dateValue = strtotime($row['movie_date']);
-                                $mon = date('n', $dateValue);
-                                $day = date('j', $dateValue);
-                                $name_day = substr(date('l', $dateValue), 0, 3);
-                            ?>
-                                <!-- <input class="selection" type="radio" name="option1" value=""> -->
-                                <button type="button" class="day selection" onclick="getFormValue(event)" value="<?php echo $row['movie_date'] ?>">
-                                    <span><?php if ($mon > 9) {
-                                                echo $mon;
-                                            } else {
-                                                echo "0" . $mon;
-                                            } ?></span>
 
-                                    <em><?php echo $name_day; ?></em>
-                                    <strong><?php if ($day > 9) {
-                                                echo $day;
-                                            } else {
-                                                echo "0" . $day;
-                                            }; ?>
-                                    </strong>
-                                </button>
-                                    <?php
-                                        $i++;
-                                    }
-                                    ?>
-                            <!-- </div> -->
-                        </div>
-                    </div>
-                    <!-- <div class="provinces-list"> 
-                    <h2>City</h2>
+                <div class="date-list">
+                    <?php
+                    $id = 6;
+                    $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
+                    $query = "select * from schedule where movie_id='$id' ";
+                    $result = mysqli_query($connect, $query) or die("query Erorr!");
+                    $i = 1;
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $dateValue = strtotime($row['movie_date']);
+                        $mon = date('n', $dateValue);
+                        $day = date('j', $dateValue);
+                        $name_day = substr(date('l', $dateValue), 0, 3);
+                    ?>
+                        <button type="button" class="day " name="btn_day" value="<?php echo $row['movie_date'] ?>">
+                            <span><?php if ($mon > 9) {
+                                        echo $mon;
+                                    } else {
+                                        echo "0" . $mon;
+                                    } ?></span>
+
+                            <em><?php echo $name_day; ?></em>
+                            <strong><?php if ($day > 9) {
+                                        echo $day;
+                                    } else {
+                                        echo "0" . $day;
+                                    }; ?>
+                            </strong>
+                        </button>
+                    <?php
+                        $i++;
+                    }
+                    ?>
+                </div>
+
+
+                <div class="sub-list">
+                    <h2>Sub</h2>
                     <div class="place">
-                        <button>Hồ Chí Minh</button>
-                        <button>Đà Nẵng</button>
-                        <button>Kon Tum</button>
-                        <button>Đồng Nai</button>
-                        <button>Hà Nội</button>
-                    </div>
-                </div> -->
-                    <div class="sub-list">
-                        <h2>Sub</h2>
-                        <div class="place">
-                            <?php
-                            $sub = "select * from movie_sub where movie_id='$id' ";
-                            $result = mysqli_query($connect, $sub) or die("query Erorr!");
-                            $i = 1;
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $sub_id = $row['sub_id'];
-                                $sub_name = mysqli_query($connect, "select * from sub where id='$sub_id'") or die("query Erorr!");
-                                $sub = mysqli_fetch_assoc($sub_name)['name'];
+                        <?php
+                        $sub = "select * from movie_sub where movie_id='$id' ";
+                        $result = mysqli_query($connect, $sub) or die("query Erorr!");
+                        $i = 1;
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $sub_id = $row['sub_id'];
+                            $sub_name = mysqli_query($connect, "select * from sub where id='$sub_id'") or die("query Erorr!");
+                            $sub = mysqli_fetch_assoc($sub_name)['name'];
 
-                            ?>
-                                <!-- <input class="selection" type="radio" name="option2" value=""> -->
-                                <button type="button" onclick="getFormValue(event)" value="<?php echo  $sub ?>"><?php echo $sub ?></button>
-                            <?php
-                                $i++;
-                            }
-                            ?>
-                        </div>
+                        ?>
+                            <button class='btn_sub' name='btn_sub' type="button" value="<?php echo  $sub ?>"><?php echo $sub ?></button>
+                        <?php
+                            $i++;
+                        }
+                        ?>
                     </div>
-                    <div class="show-time">
-                        <h2>Time</h2>
-                        <div class="time">
-                            <?php
-                            $i = 1;
-                            $result = mysqli_query($connect, $query) or die("query Erorr!");
+                </div>
+                <div class="show-time">
+                    <h2>Time</h2>
+                    <div class="time">
+                        <?php
+                        $i = 1;
+                        $result = mysqli_query($connect, $query) or die("query Erorr!");
 
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $time = date("H:i", strtotime($row['time_begin']));
-                            ?>
-                                <!-- <input class="selection" type="radio" name="option3" value=""> -->
-                                <button type="button" class="btn_time" onclick="getFormValue(event)" value="<?php echo  $time ?>"><?php echo $time  ?></button>
-                            <?php
-                                $i++;
-                            }
-                            ?>
-                        </div>
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $time = date("H:i", strtotime($row['time_begin']));
+                        ?>
+                            <button type="button" name='btn_time' class="btn_time" value="<?php echo  $time ?>"><?php echo $time  ?></button>
+                        <?php
+                            $i++;
+                        }
+                        ?>
                     </div>
-                
+                </div>
             </div>
-        </form>
-            <!-- <input type="submit">OK</input> -->
+            <button id="submit-btn">Submit</button>
         </div>
-
-        
-        <!-- <?php
-                function movietime($h1, $m1, $h2, $m2)
-                {
-                    if ($m2 >= $m1) {
-                        $m = $m2 - $m1;
-                    } else {
-                        $m = $m2 + 60 - $m1;
-                        $h1 += 1;
-                    }
-                    if ($h2 >= $h1) {
-                        $h = $h2 - $h1;
-                    } else {
-                        $h = 24 + $h2 - $h1;
-                    }
-                    return $h . "h " . $m . "min";
-                }
-                $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
-                $time = "select * from schedule where movie_id='$id' limit 1 ";
-                $result = mysqli_query($connect, $time) or die("query Erorr!");
-                $row = mysqli_fetch_assoc($result);
-                $h_begin = date("H", strtotime($row['time_begin']));
-                $h_end = date("H", strtotime($row['time_end']));
-                $m_begin = date("i", strtotime($row['time_begin']));
-                $m_end = date("i", strtotime($row['time_end']));
-                echo movietime($h_begin, $m_begin, $h_end, $m_end);
-                ?> -->
     </section>
-
-
     <script>
-        // const form = document.getElementById('my-form');
-        // const radios = form.elements['option1'];
-        // const sub = form.elements['option2'];
-        // const time = form.elements['option3'];
-        
-        function getFormValue(e) {
-            e.preventDefault()
-            e.stopPropagation()
-            // const selectedValue = this.value;
-            console.log(11, e.target.value);
-            //   return selectedValue;
+        let selectedValues = {};
+
+        function handleClick(e) {
+            let button = e.target.closest('button');
+            let name = button.getAttribute('name');
+            let value = button.getAttribute('value');
+            selectedValues[name] = value;
+            console.log(selectedValues);
         }
-        // function getvalue() {
-        //     const selectedValue = this.value;
-        //     console.log(selectedValue);
-        //     //   return selectedValue;
-        // }
+
+        function handleSubmit() {
+
+            if (
+                selectedValues["btn_day"] &&
+                selectedValues["btn_sub"] &&
+                selectedValues["btn_time"]
+            ) {
+                // all values have been selected, redirect to another page
+                const url = "http://localhost:8080/cinema/pages/client/bookseat.php?day=" + selectedValues["btn_day"] +
+                    "&sub=" + selectedValues["btn_sub"] +
+                    "&time=" + selectedValues["btn_time"];
+                window.location.href = url;
+            } else {
+                alert("Please select an option from each div");
+            }
+        }
+
+        const buttons = document.querySelectorAll("button");
+        buttons.forEach((button) => {
+            button.addEventListener("click", handleClick);
+        });
+
+        const submitBtn = document.getElementById("submit-btn");
+        submitBtn.addEventListener("click", handleSubmit);
     </script>
 </body>
 

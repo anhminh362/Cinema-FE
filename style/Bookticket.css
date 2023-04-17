@@ -3,8 +3,8 @@
     padding-bottom: 50px;
     padding-right: 50px;
     padding-left: 50px;
-    background-color: #06121E
-
+    background-color: #06121E;
+    display: flex;
 }
 
 .container {
@@ -15,8 +15,7 @@
 .book-ticket-container {
     background-color:#0B1A2A;
     border-top: 2px;
-    padding: 20px 40px
-    
+    padding: 20px 40px;
 }
 .date-item{
     list-style: none;  
@@ -85,30 +84,32 @@ button{
 }
 
 .day>span {
-    color: rgb(212, 202, 202);
+    color: #0B1A2A;
     font-family: serif;
     font-size: 20px;
     left: 2px;
     position: absolute;
     top: 0px;
-
+    pointer-events: none;
 }
 .day> em{
-    color:rgb(212, 202, 202);
+    color:#0B1A2A;
     font-family: serif;
     font-size: 20px;
     left: 2px;
     position: absolute;
     bottom: 0px;
+    pointer-events: none;
 }
 
 .day> strong{
-    color: rgb(212, 202, 202);
+    color: #0B1A2A;
     font-family: serif;
     font-size: 30px;
     right: 0px;
     position: absolute;
     top: 10px;
+    pointer-events: none;
 }
 h2{
     font-family: serif;
