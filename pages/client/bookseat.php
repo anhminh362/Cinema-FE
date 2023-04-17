@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,6 +11,9 @@
     <title>Movie Seat Booking</title>
   </head>
   <body>
+    <!-- <?php
+    echo $_GET['sub'];
+    ?> -->
     <div class="movie-container">
       <label> Select a movie:</label>
       <select id="movie">
