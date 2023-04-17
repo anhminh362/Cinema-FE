@@ -129,7 +129,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">FOMR EDIT</h5>
+                                <h5 class="modal-title">EDIT</h5>
                                 <button type="button" name="close" class="close" data-dismiss="modal" aria-label="Đóng">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
