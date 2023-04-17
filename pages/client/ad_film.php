@@ -15,26 +15,8 @@
   
       //  echo "Connected Successfully !";
      error_reporting(0);
-    //   Lấy thông tin sản phẩm để sửa
-											
-    //   if (isset($_GET['id']))							
-    //   {							
-    //   if (isset($_GET['es'])) {							
-    //   echo "<script type=\"text/javascript\">alert(\"Bạn đã sửa sản phẩm thành công!\");</script>";					
-    //   }							
-    //   if (isset($_GET['ef'])) {							
-    //   echo "<script type=\"text/javascript\">alert(\"Sửa sản phẩm thất bại!\");</script>";							
-    //   }							
-    //   }  
-
-    //   if (isset($_GET['id']))							
-    //   {							
-    //       $id = $_GET['id'];							
-    //       $sql = "SELECT * FROM movie WHERE id = " . $id;							
-    //       $sqli = mysqli_query($conn,$sql);	
-    //       $row = mysqli_fetch_assoc($sqli);					
-    //   }
-?>
+   
+// ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +47,7 @@
                     <a href="#"  class="icon-item">
                         <ion-icon name="person"  ></ion-icon>
                         <b> User</b>
-                    </a> 
+                    </a>
                 </div><br><br>
                 <div class="row"> 
                     <p class="icon-play">
@@ -143,7 +125,7 @@
                      <!-- Nút mở modal -->
 
                     <!-- Modal Edit -->
-                    <div id="meModal" tabindex="-1" role="dialog" class="modal fade" data-backdrop="static">
+                    <div id="editModal" tabindex="-1" role="dialog" class="modal fade" data-backdrop="static">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -159,7 +141,7 @@
                                     <label for="name" class="title-title" >Name:</label>
                                     <input type="text" id="name" class="input-btn" name="name" value="<?php echo $row['name']; ?>"><br><br>
                                     <label for="avatar"  class="title-title">Avatar:</label>
-                                    <input type="file"id="avatar" class="input-btn" name="avatar" value="<?php echo $row['avatar']; ?>"><br><br>
+                                    <input type="file" id="avatar" class="input-btn" name="avatar" value="<?php echo $row['avatar']; ?>"><br><br>
                                     <label for="date" class="title-title">Premiere date:</label>
                                     <input type="date" id="premiere_date" class="input-btn" name="premiere_date" value="<?php echo $row['premiere_date']; ?>"><br><br>
                                     <label for="country" class="title-title">Country:</label>
@@ -169,7 +151,7 @@
                                     <label for="trailer" class="title-title">Trailer:</label>
                                     <input  name="trailer" id="trailer" type="file" class="input-btn" value="<?php echo $row['trailer'];?>"><br> <br> 
                                     <div class="modal-footer">
-                                        <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
+                                    <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
                                     </div>
                                 </form>
                             </div>
@@ -177,6 +159,8 @@
                             </div>
                         </div>
                     </div> 
+
+                    
                     <div class="table-responsive">
                         <table class="table table-responsive" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -198,6 +182,7 @@
                                 if (mysqli_num_rows($sqli) > 0) {
                                     while ($row = mysqli_fetch_assoc($sqli)) {
                                         echo "<tr>";
+                                        // echo "<td id='getid' value='".$row['id']."'>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>" . $row['avatar'] . "</td>";
@@ -205,7 +190,7 @@
                                         echo "<td>" . $row['country'] . "</td>";
                                         echo "<td>" . $row['description'] . "</td>";
                                         echo "<td>" . $row['trailer'] . "</td>";
-                                        echo "<td><span data-toggle='modal' data-target='#meModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=". $row['id'] ."'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
+                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='". $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=". $row['id'] ."'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -221,7 +206,7 @@
     </div>
 
     
-     <!--modal  -->
+     
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -246,8 +231,25 @@
                 $("#country").val(country);
                 $("#description").val(description);
                 $("#trailer ").val(trailer );
+                // Mở modal chỉnh sửa
+                $("#editModal").modal("show");
             });
             });
-        </script>
+
+            //     let id = document.querySelectorAll('#getid')
+            //     let idArray = [...id]
+            //     console.log(idArray);
+
+
+            //     idArray.foreach((e) => {
+            //         e.addEventListener('onclick',function {
+            //             console.log(e.textContent);
+            //         })
+            //     })
+            // function edit(id) {
+
+            // }
+
+        <!-- </script> 
 </body>
 </html>

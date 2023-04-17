@@ -26,8 +26,11 @@ if(!$conn){
         $sql = "INSERT INTO `movie`( `name`, `avatar`, `premiere_date`, `country`, `description`, `trailer`) 
         VALUES ('$name',' $avatar','$date','$country','$describe',' $trailer')";
             if (mysqli_query($conn, $sql)) {
-                echo "thanh cong";
-                header('location:ad_film.php');
+                echo "<script> 
+                alert ('Thêm thành công');
+                window.location.href = 'ad_film.php';
+                </script>";
+                // header('location:ad_film.php');
             } else {
                 echo "Lỗi: " . mysqli_error($conn);
             }}
