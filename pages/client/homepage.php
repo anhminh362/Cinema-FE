@@ -22,8 +22,8 @@ session_start();
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Movies</a>
                     <ul id="type-movies">
-                        <li><a href="">Playing</a></li>
-                        <li><a href="">Upcoming</a></li>
+                        <li><a href="playing.php">Playing</a></li>
+                        <li><a href="upcoming.php">Upcoming</a></li>
                     </ul>
                 </li>
                 <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
@@ -221,7 +221,7 @@ session_start();
                          <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-6.jpg" alt="" class="movies1">
                          <div class="overlay1">
                             <h5>Babylon</h5>
-                            <p>History, Psychology, Comedy</p>
+                            <p>History, Psychology</p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
@@ -279,7 +279,7 @@ session_start();
                     <img src="https://lh3.googleusercontent.com/Vp_YCC8pHCZJsB-bifndGRBs88QX0fFLv3Y_wT6nh_8oPyTT2DyZ9LD3hsX88FpOKqfDaUtzgjhtmA" alt="" class="movies2">
                     <div class="overlay2">
                         <h5>Xứ Sở Các Nguyên Tố</h5>
-                        <p>Family, Comedy, Animation</p>
+                        <p>Comedy, Animation</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -295,7 +295,7 @@ session_start();
                     <img src="https://i.ytimg.com/vi/WWWDskI46Js/hq720.jpg" alt="" class="movies2">
                     <div class="overlay2">
                         <h5>Quái Thú Nổi Dậy</h5>
-                        <p>Action, Sci-Fi, Adventure</p>
+                        <p>Action, Adventure</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>

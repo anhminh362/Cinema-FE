@@ -1,0 +1,144 @@
+:root{
+    --maincolor: #06111D;
+    --title--color: #E00813;
+    --text--color: rgb(216, 216, 191);
+    --h1-font-size: 3.5rem;
+    --h2-font-size: 3.25rem;
+    --h3-font-size: 3rem;
+    --logo-font-size: 2rem;
+    --font-types-product:3.5rem;
+    --font-medium:700;
+    --font-text-footer:100;
+    /* #### body font */
+    --body-font: 'Georgia', sans-serif;
+}
+
+body{
+    background-color: var(--maincolor);
+}
+
+.logo{
+    position: relative;
+    left: 70px;
+    height: 70px;
+    width: 90px;
+}
+.logo_text{
+    position: relative;
+    left: 80px;
+    top: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 25px;
+    color: var(--title--color);
+}
+.header ul {
+    display: flex;
+    justify-content:center;
+    list-style: none;
+    
+} 
+.header{
+    font-family: Verdana, Tahoma, sans-serif;
+    background: rgba(0,0,0,0.8);
+    height: 80px;
+    width: 100%;
+}
+
+.header ul li{
+    position: relative;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    left: 100px;
+    bottom: 45px;
+    font-size: 18px;  
+}
+.header ul li a{
+    text-decoration: none;
+    color: beige;
+}
+.header ul li a:hover{
+    color: var(--title--color);
+}
+.header #type-movies{
+    display: inline-block;
+    position: absolute;
+    right: -1.6rem;
+    top: 4.5rem;
+    display: none;
+    
+}
+.header ul li:hover #type-movies{
+    display: block;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 60px;
+    position: relative;
+    bottom: 6.5rem;
+    display: none;
+}
+.check{
+    display: none;
+}
+
+.background::before{
+    content: "";
+    display: block;
+    width: 100vw;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.5);
+    
+}
+
+
+/* footer */
+footer{
+    background-color:#091725;
+    width: 100%;
+}
+
+.text-footer{
+    color: var(--title--color);
+}
+.container .row .col-sm-3 ul li{
+    list-style-type: none;
+    position: relative;
+    right: 35px;
+}
+.container .row .col-sm-3 ul li a{
+    text-decoration: none;
+    color: var(--text--color);
+}
+.container .row .col-sm-3 ul li a:hover{
+    color: var(--title--color);
+}
+.container .row .col-sm-3 .text{
+ color: var(--text--color);
+
+}
+.container .row .col-sm-3 .Send{
+    height: 40px;
+    border-radius: 5px;
+    border-color: var(--title--color);
+
+}
+.container .row .col-sm-3 button{
+    position: relative;
+    left: 11.5rem;
+    bottom: 2.5rem;
+    background-color: var(--title--color);
+    color: var(--text--color);
+}
+.container .row .col-sm-3 button:hover{
+    background-color: var(--text--color);
+    color: var(--maincolor);
+}
+.container .row .col-sm-3 .contact_icon{
+    position: relative;
+    bottom: 20px;
+    color: white;
+}
