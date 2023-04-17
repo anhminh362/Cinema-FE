@@ -17,7 +17,7 @@
             <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
             <ul>
                 <li><a href="homepage.php">Home</a></li>
-                <li><a href="homepage.php">Movies</a>
+                <li><a href="#">Movies</a>
                     <ul id="type-movies">
                         <li><a href="playing.php">Playing</a></li>
                         <li><a href="upcoming.php">Upcoming</a></li>
@@ -35,7 +35,7 @@
 <div style="border-bottom:1px solid rgb(216, 216, 191); ">
     <p style="position: relative; font-size: 17px; margin:8px; padding-left:7rem; ">
         <a href="homepage.php"><i class="fa-sharp fa-solid fa-house" style="color:rgb(216, 216, 191);"></i></a><i class="fa-solid fa-chevron-right" style="padding-left:0.5rem; padding-right:0.5rem; color:#7c2f33;"></i>
-        <span><a href="homepage.php" style="color:rgb(216, 216, 191); text-decoration:none; ">Movie</a><i class="fa-solid fa-chevron-right" style="padding-left:0.5rem; padding-right:0.5rem; color:#7c2f33;"></i></span>
+        <span><a href="#" style="color:rgb(216, 216, 191); text-decoration:none; ">Movie</a><i class="fa-solid fa-chevron-right" style="padding-left:0.5rem; padding-right:0.5rem; color:#7c2f33;"></i></span>
         <span><a href="upcoming.php" style="color:rgb(216, 216, 191);"><b>Upcoming</b></a></span>
     </p>
 </div><br>
