@@ -118,7 +118,7 @@ session_start();
                     </div>
                     <div class="row">
                        <div class="col-sm-4"> <br><br>
-                            <a href="#" class="book-btn">Book now</a>
+                            <a href="bookticket.php" class="book-btn">Book now</a>
                        </div>
                        <div class="col-sm-8">
                         <!--  -->
