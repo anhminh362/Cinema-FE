@@ -1,6 +1,8 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,17 +26,33 @@
 <body>
     <!-- Header -->
     <nav class="header">
-        <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
-        <ul>
-            <li><a href="homepage.php">Home</a></li>
-            <li><a href="homepage.php">Movies</a></li>
-            <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
-            <li><a href="login.php">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
-        </ul>
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-    </nav>
+            <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li><a href="#">Movies</a>
+                    <ul id="type-movies">
+                        <li><a href="playing.php">Playing</a></li>
+                        <li><a href="upcoming.php">Upcoming</a></li>
+                    </ul>
+                </li>
+                <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
+                <?php if(isset($_SESSION['user'])){
+                    ?>
+                <li><a href="logout.php"><?php echo $_SESSION['user'] ?><i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+                <?php
+                }
+                else{
+                    ?>
+                <li><a href="login.php">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+
+                <?php
+                }
+                 ?>
+            </ul>
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+        </nav>
     <!-- Background-img -->
     <div class="background-img">
         <!-- Content -->
