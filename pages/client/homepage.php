@@ -44,6 +44,34 @@ session_start();
                 <i class="fas fa-bars"></i>
             </label>
         </nav>
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "cinema";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $database);
+        mysqli_set_charset($conn, 'UTF8');
+        // session_start();
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+        echo "Connected successfully";
+        $query="Select * from movie where id=6";
+        $result=mysqli_query($conn,$query)or die("Error");
+        $row =mysqli_fetch_assoc($result)
+        // if(isset($_GET['ID'])){
+        //     $id = $_GET['ID'];
+        //     $result = $conn->query("SELECT id, names, avatar FROM movie"); 
+        //     $rows = $result->fetch_row();
+        //  }
+        // $sql = "SELECT id, names, avatar FROM movie";
+        // $result = mysqli_query($conn, $sql);
+        // $rows = $result->fetch_row();
+
+?>
         <div id="slider" class="carousel carousel-light slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -54,7 +82,7 @@ session_start();
               <div class="carousel-item active" data-bs-interval="10000">
                   <div class="img" style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://cdnimg.vietnamplus.vn/uploaded/bokttj/2023_01_02/avatar_the_way_of_water.jpg');"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-movie">AVATAR</h3>
+                    <h3 class="text-movie"><?php echo $row['name']?></h3>
                     <p class="text-movies">
                         Avatar is a Hollywood blockbuster.The film was carefully<br>
                         invested in both technical effects and content when the <br>
@@ -66,7 +94,7 @@ session_start();
               <div class="carousel-item" data-bs-interval="2000">
                 <div class="img" style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://touchcinema.com/storage/phim-gia-dinh-addams/phim-gia-dinh-addams.jpg');"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-movie">WEDNESDAY</h3>
+                    <h3 class="text-movie"><?php echo $row['name']?></h3>
                     <p class="text-movies">
                         Wednesday is an American teen horror, comedy and supernatural<br>
                         television series based on the character Wednesday - the "dark"<br>
@@ -79,7 +107,7 @@ session_start();
               <div class="carousel-item" data-bs-interval="3000">
                 <div class="img" style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://images4.alphacoders.com/119/1199746.jpg');"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-movie">DEATH ON NILE</h3>
+                    <h3 class="text-movie"><?php echo $row['name']?></h3>
                     <p class="text-movies">
                         It is a long established fact that a reader will be readable<br>
                         content of a page when looking at its layout. The point of using<br>
@@ -101,6 +129,7 @@ session_start();
           </div>
      <!-- Body -->
      <br><br>
+     
      <h5 class="text-title">Trending</h5>
     <div class="direction">
         <button id="prev"><b><</b></button>
@@ -111,7 +140,7 @@ session_start();
                 <div class="item">
                     <img src="https://i.ytimg.com/vi/l0_xBH0vhwM/maxresdefault.jpg" alt="" class="movies">
                     <div class="overlay">
-                        <h5>the last god dragon</h5>
+                        <h5></h5>
                         <p>Children/Advent</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
