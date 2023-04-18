@@ -57,6 +57,12 @@ error_reporting(0);
                         <ion-icon name="play-circle"></ion-icon>
                         <b> Films</b>
                     </p>
+                </div><br>
+                <div class="row">
+                    <a href="ad_schedule.php" class="icon-item">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <b> Schedule</b>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-10 background-right">

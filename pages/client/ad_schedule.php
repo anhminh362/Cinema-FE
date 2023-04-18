@@ -27,7 +27,7 @@
             <div class="col-lg-2 background-left ">
                 <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
                 <div class="row">
-                    <a href="ad_user.php" class="icon-item">
+                    <a href="ad_user.php" class="icon-play">
                         <ion-icon name="person"></ion-icon>
                         <b> User</b>
                     </a>
@@ -39,7 +39,7 @@
                     </a>
                 </div><br><br>
                 <div class="row">
-                    <a href="ad_schedule.php" class="icon-play">
+                    <a href="ad_schedule.php" class="icon-item">
                         <i class="fa-solid fa-calendar-days"></i>
                         <b> Schedule</b>
                     </a>
@@ -78,71 +78,16 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Full name</th>
-                                    <th>Create at</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
+                                    <th>Room Id</th>
+                                    <th>Movie Date</th>
+                                    <th>Time Begin</th>
+                                    <th>Time End</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="tab">
-                                <?php
-                                $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
-                                $query = "select * from users ";
-                                $result = mysqli_query($connect, $query) or die("query Erorr!");
-                                $i = 1;
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $account_id = $row['account_id'];
-                                    $account = mysqli_query($connect, "select * from account where id='$account_id'") or die("query Erorr!");
-                                ?>
-                                    <tr>
-                                        <td><?php echo $row['id'] ?></td>
-                                        <td><?php echo $row['full_name'] ?></td>
-                                        <td><?php echo $row['create_at'] ?></td>
-                                        <td><?php echo $row['phone'] ?></td>
-                                        <?php
-                                        while ($row1 = mysqli_fetch_assoc($account)) {
-                                        ?>
-                                            <td><?php echo $row1['email'] ?></td>
-                                            <td><?php {
-                                                    if ($row1['status']) {
-                                                        echo "Active";
-                                                ?>
-                                            </td>
-                                            <td>
-                                                <ion-icon name="trash-outline" class="del-icon"></ion-icon>
-                                                <ion-icon name="lock-closed-outline" class="lock-icon"></ion-icon>
-                                            </td>
-                                        <?php
-                                                    } else {
-                                                        echo "<p style='color: gray'>Inactive</p>"; ?>
-                                            </td>
-                                            <td>
-                                                <button id="btn_act"><ion-icon name="trash-outline" class="del-icon"></ion-icon></button>
-                                                <button id="btn_act"><ion-icon name="lock-open-outline" class="unlock-icon"></ion-icon>
-                                                </button>
-                                            </td>
-                                <?php
-                                                    }
-                                                }
-                                            }; ?>
-                                    </tr>
-                                <?php
-                                    $i++;
-                                }
-                                ?>
 
-                                <td>01</td>
-                                <td>Kieu hi</td>
-                                <td>29/11/2023</td>
-                                <td>0987678901</td>
-                                <td>kieu.ho24@gmai.com</td>
-                                <td>Hoạt động</td>
-                                <td>
-                                    <ion-icon name="trash-outline" class="del-icon"></ion-icon>
-                                </td>
-                            </tbody>
+                                
                         </table>
                     </div>
                 </div>
