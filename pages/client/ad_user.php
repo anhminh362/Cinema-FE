@@ -33,7 +33,7 @@
                     </a>
                 </div><br><br>
                 <div class="row">
-                    <a href="admin_films.php" class="icon-play">
+                    <a href="ad_film.php" class="icon-play">
                         <ion-icon name="play-circle"></ion-icon>
                         <b> Films</b>
                     </a>
