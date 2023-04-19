@@ -1,21 +1,3 @@
-<?php
-   $host = "localhost";
-   $user = "root";
-   $password = "";
-   $database = "cinema";
-
-   // Create connection
-   $conn = mysqli_connect($host,$user,$password,$database);
-   mysqli_set_charset($conn,"UTF8");
-
-   // Check connection
-   if(!$conn){
-        die("Connection failed: ".mysqli_connect_error());
-   }
-   
-      //  echo "Connected Successfully !";
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,70 +153,6 @@
         <div class="col-sm-3"></div>
     </div><br><br>
 </div>
-
-<!-- PHP -->
-<?php
-    $so_du_lieu = 3;
-    $sql = "SELECT count(*) FROM movie";
-    $sqli = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($sqli);
-    $so_trang = ceil($row[0]/$so_du_lieu);
-  
-    if(!isset($_GET['trang']))
-    {
-        $vtbd=0;}else{$vtbd=($_GET['trang']-1)*$so_du_lieu;
-    }
-    $sql = "SELECT id,names,price,photo,thuoc_menu FROM san_pham ORDER BY id DESC limit $vtbd,$so_du_lieu";
-    $sqli = mysqli_query($conn,$sql);
-    echo "<table>";
-    while($row = mysqli_fetch_array($sqli))
-    {
-        echo "<tr>";
-            for($i=1;$i<=3;$i++)
-            {
-                echo "<td align='center' width='215px' valign='top' >";
-                    if($row!=false)
-                    {
-                        $link_photo="img/san_pham/".$row['photo'];
-                        $link_chi_tiet="?thamso=chi_tiet_san_pham&id=".$row['id'];
-
-                        echo "<a href='$link_chi_tiet' >";
-                            echo "<img src='$link_photo' width='150px' >";
-                        echo "</a>";
-                        echo "<br>";
-                        echo "<a href='$link_chi_tiet' >";
-                            echo $row['name'];
-                        echo "</a>";
-                        echo "<br>";
-                        echo $row['price'];echo "<br>";echo "<br>";
-                    }
-                    else
-                    {
-                        echo "&nbsp;";
-                    }
-                echo "</td>";
-                if($i!=3)
-                {
-                    $row=mysqli_fetch_array($tv_1);
-                }
-            }
-        echo "</tr>";
-    }
-    echo "<tr>";
-        echo "<td colspan='3' align='center' >";
-            echo "<div class='phan_trang' >";
-                for( $i=1;$i<=$so_trang;$i++)
-                {
-                    $link="?thamso=xuat_san_pham_2&trang=".$i;
-                    echo "<a href='$link' >";
-                        echo $i;echo " ";
-                    echo "</a>";
-                }
-            echo "</div>";
-        echo "</td>";
-    echo "</tr>";
-    echo "</table>";
-?>
 <!--  -->
 <footer>
     <div class="container">
