@@ -107,7 +107,7 @@ error_reporting(0);
                                         <label for="name" class="title-title">Name:</label>
                                         <input type="text" class="input-btn" name="name" value="<?php echo $row['name']; ?>"><br><br>
                                         <label for="avatar" class="title-title">Avatar:</label>
-                                        <input type="file" class="input-btn" name="avatar" value="<?php echo $row['avatar']; ?>"><br><br>
+                                        <input type="file" style="color:white;" class="input-btn" name="avatar" value="<?php echo $row['avatar']; ?>"><br><br>
                                         <label for="date" class="title-title">Premiere date:</label>
                                         <input type="date" class="input-btn" name="premiere_date" value="<?php echo $row['premiere_date']; ?>"><br><br>
                                         <label for="country" class="title-title">Country:</label>
@@ -115,9 +115,9 @@ error_reporting(0);
                                         <label for="describe" class="title-title">Describe:</label>
                                         <textarea rows="3" cols="50" name="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
                                         <label for="trailer" class="title-title">Trailer:</label>
-                                        <input name="trailer" type="file" class="input-btn" value="<?php echo $row['trailer']; ?>"><br> <br>
+                                        <input name="trailer" style="color:white;" type="file" class="input-btn" value="<?php echo $row['trailer']; ?>"><br> <br>
                                         <label for="name" class="title-title">Category:</label>
-                                        <td>
+                                        <div class='category'>
                                             <label>
                                                 <input style="background:pink; border:2px solid white; border-radius:15px;" type="checkbox"name="action" value="action">Action 
                                             </label>
@@ -157,7 +157,7 @@ error_reporting(0);
                                             <label>
                                                 <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="documentary" value="documentary">Documentary
                                             </label> 
-                                        </td>
+                                        </div >
                                         <div class="modal-footer"> 
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Add">
                                         </div>
@@ -198,7 +198,7 @@ error_reporting(0);
                                         <input style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" value="<?php echo $row['trailer']; ?>">
                                         <input type="file" style="color:white;" name="up_trailer" value="<?php echo $row['trailer']; ?>"><br> <br>
                                         <label for="name" class="title-title">Category:</label>
-                                        <td>
+                                        <div class='category'>
                                             <label>
                                                 <input style="background:pink; border:2px solid white; border-radius:15px;" type="checkbox"name="action" value="action">Action 
                                             </label>
@@ -238,7 +238,7 @@ error_reporting(0);
                                             <label>
                                                 <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="documentary" value="documentary">Documentary
                                             </label> 
-                                        </td>
+                                        </div>
                                         <div class="modal-footer">
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
                                         </div>

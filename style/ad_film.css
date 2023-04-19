@@ -209,3 +209,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 } */
+
+.category{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.form-form label {
+    color:white;
+}
