@@ -113,10 +113,52 @@ error_reporting(0);
                                         <label for="country" class="title-title">Country:</label>
                                         <input name="country" class="input-btn" value="<?php echo $row['country']; ?>"><br> <br>
                                         <label for="describe" class="title-title">Describe:</label>
-                                        <input name="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"><br> <br>
+                                        <textarea rows="3" cols="50" name="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
                                         <label for="trailer" class="title-title">Trailer:</label>
                                         <input name="trailer" type="file" class="input-btn" value="<?php echo $row['trailer']; ?>"><br> <br>
-                                        <div class="modal-footer">
+                                        <label for="name" class="title-title">Category:</label>
+                                        <td>
+                                            <label>
+                                                <input style="background:pink; border:2px solid white; border-radius:15px;" type="checkbox"name="action" value="action">Action 
+                                            </label>
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="drama" value="drama">Drama 
+                                            </label>
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="horror" value="horror">Horror
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="thrille" value="thrille">Thrille
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="comedy" value="comedy">Comedy
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="fantasy" value="fantasi">Fantasy
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="romance" value="romance">Romance
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="history" value="history">History
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="animation" value="animation">Animation
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="family" value="family">Family
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="adventure" value="adventure">Adventure
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="sciencefiction" value="sciencefiction">Science fiction
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="documentary" value="documentary">Documentary
+                                            </label> 
+                                        </td>
+                                        <div class="modal-footer"> 
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Add">
                                         </div>
                                     </form>
@@ -151,10 +193,52 @@ error_reporting(0);
                                         <label for="country" class="title-title">Country:</label>
                                         <input name="country" id="country" class="input-btn" value="<?php echo $row['country']; ?>"><br> <br>
                                         <label for="describe" class="title-title">Describe:</label>
-                                        <textarea rows="6" cols="50" name="description" id="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
+                                        <textarea rows="3" cols="50" name="description" id="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
                                         <label for="trailer" class="title-title">Trailer:</label>
                                         <input style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" value="<?php echo $row['trailer']; ?>">
                                         <input type="file" style="color:white;" name="up_trailer" value="<?php echo $row['trailer']; ?>"><br> <br>
+                                        <label for="name" class="title-title">Category:</label>
+                                        <td>
+                                            <label>
+                                                <input style="background:pink; border:2px solid white; border-radius:15px;" type="checkbox"name="action" value="action">Action 
+                                            </label>
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="drama" value="drama">Drama 
+                                            </label>
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="horror" value="horror">Horror
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="thrille" value="thrille">Thrille
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="comedy" value="comedy">Comedy
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="fantasy" value="fantasi">Fantasy
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="romance" value="romance">Romance
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="history" value="history">History
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="animation" value="animation">Animation
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="family" value="family">Family
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="adventure" value="adventure">Adventure
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="sciencefiction" value="sciencefiction">Science fiction
+                                            </label> 
+                                            <label>
+                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="documentary" value="documentary">Documentary
+                                            </label> 
+                                        </td>
                                         <div class="modal-footer">
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
                                         </div>
