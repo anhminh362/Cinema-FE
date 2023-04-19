@@ -61,7 +61,7 @@
                     <div class="col-sm-3">
                         <span class="bar-user">User </span>
                         <span class="line-line">/</span>
-                        <span class="bar-film">Films</span>
+                        <span class="bar-film">Schedule</span>
                     </div>
                     <div class="col-sm-6">
                         <!--  -->
@@ -71,6 +71,7 @@
                         <span class="name-acc">Kieu hi</span>
                     </div>
                 </div>
+                
                 <div class="container"> <br><br>
                     <!-- table -->
                     <div class="table-responsive">
@@ -78,16 +79,15 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Room Id</th>
+                                    <th>Movie</th>
+                                    <th>Room</th>
                                     <th>Movie Date</th>
                                     <th>Time Begin</th>
                                     <th>Time End</th>
                                     <th>Price</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>
-
-                                
+                            </thead>     
                         </table>
                     </div>
                 </div>
