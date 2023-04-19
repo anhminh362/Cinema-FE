@@ -293,6 +293,7 @@ error_reporting(0);
                 var trailer = $(this).data("trailer");
                 // Điền dữ liệu vào form
                 $("#id").val(id);
+                console.log('edit', $("#id").val(id));
                 $("#name").val(name);
                 $("#premiere_date").val(premiere_date);
                 $("#country").val(country);
@@ -304,6 +305,7 @@ error_reporting(0);
                 var id = $(this).data("id");
                 $("#id").val(id);
                 console.log(id);
+                console.log("schedule",$("#id").val(id));
             })
         });
     </script>
