@@ -92,7 +92,7 @@ error_reporting(0);
                     </div>
                 </div>
                 <div class="container"> <br>
-                    <!-- Nút mở modal -->
+                    <!-- Nút mở modal Add Film -->
                     <button type="button" class="btn bg-danger text-white" data-toggle="modal" data-target="#myModal">
                         Add +
                     </button>
@@ -109,7 +109,7 @@ error_reporting(0);
                                 <div class="modal-body">
                                     <form method="post" class="form-form" action="add.php"> <br>
                                         <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
-                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                        <!-- <input type="hidden" name="id" value="<?php echo $row['id']; ?>"> -->
                                         <label for="name" class="title-title">Name:</label>
                                         <input type="text" class="input-btn" name="name" value="<?php echo $row['name']; ?>"><br><br>
                                         <label for="avatar" class="title-title">Avatar:</label>
@@ -130,7 +130,9 @@ error_reporting(0);
 
                             </div>
                         </div>
-                    </div> <br><br>
+                    </div> 
+                    <br><br>
+
                     <!-- Nút mở modal -->
 
                     <!-- Modal Edit -->
@@ -171,7 +173,46 @@ error_reporting(0);
                         </div>
                     </div>
 
+                     <!-- Nút mở modal -->
+                    <!-- Modal Add Schedule-->
+                    <div id="scheduleModal" tabindex="-1" role="dialog" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">FOMR ADD SCHEDULE</h5>
+                                    <button type="button" name="close" class="close" data-dismiss="modal" aria-label="Đóng">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="modal-body">
+                                    <form method="post" class="form-form" action="" > <br>
+                                        <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
+                                        <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>"/>
+                                        
+                                        <label for="room" class="title-title">Room:</label>
+                                        <select id="room" name="room">
+                                        <option value="<?php echo $row[''] ?>">Theater 1</option>
+                                        <option value="<?php echo $row[''] ?>">Theater 2</option>
+                                        <option value="<?php echo $row[''] ?>">Theater 3</option>
+                                        </select><br><br>
+                                        <label for="date" class="title-title">Movie date:</label>
+                                        <input type="date" class="input-btn" name="movie_date" value="<?php echo $row['movie_date'] ?>"><br><br>
+                                        <label for="begin" class="title-title">Time begin:</label>
+                                        <input name="begin" type="time" class="input-btn" value="<?php $row['begin'] ?>"><br> <br>
+                                        <label for="end" class="title-title">Time end:</label>
+                                        <input name="end" type="time" class="input-btn" value="<?php $row['end'] ?>"><br> <br>
+                                        <label for="price" class="title-title">Price:</label>
+                                        <input name="price" type="number" class="input-btn" value="<?php $row['price'] ?>"><br> <br>
+                                        <div class="modal-footer">
+                                            <input type="submit" name='submit' class="btn bg-danger text-white" value="Add">
+                                        </div>
+                                    </form>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div> 
+                    
                     <div class="table-responsive">
                         <table class="table table-responsive" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -216,7 +257,9 @@ error_reporting(0);
                                             echo "</p>";
                                         }
                                         echo  "</td>";
-                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
+                                        echo "<td><button type='button' data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></button>
+                                        <a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a>
+                                        <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='".$row['id']."'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -241,6 +284,7 @@ error_reporting(0);
             // Khi nút chỉnh sửa được click
             $(".btn-edit").click(function() {
                 // Lấy dữ liệu từ data attribute của nút chỉnh sửa
+                var id = $(this).data("id");
                 var name = $(this).data("name");
                 var avatar = $(this).data("avatar");
                 var premiere_date = $(this).data("premiere_date");
@@ -248,7 +292,6 @@ error_reporting(0);
                 var description = $(this).data("description");
                 var trailer = $(this).data("trailer");
                 // Điền dữ liệu vào form
-                var id = $(this).data("id");
                 $("#id").val(id);
                 $("#name").val(name);
                 $("#premiere_date").val(premiere_date);
@@ -256,10 +299,12 @@ error_reporting(0);
                 $("#description").val(description);
                 $("#trailer ").val(trailer);
                 $("#avatar").val(avatar);
-                // Mở modal chỉnh sửa
-                $("#editModal").modal("show");
-                
             });
+            $(".btn-schedule").click(function() {
+                var id = $(this).data("id");
+                $("#id").val(id);
+                console.log(id);
+            })
         });
     </script>
 </body>

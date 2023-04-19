@@ -16,7 +16,7 @@ if(!$conn){
    //  echo "Connected Successfully !";
   
    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
-       
+        $id = $_POST['id'];
         $name = $_POST['name'];
         $avatar = $_POST['avatar'];
         $date = $_POST['premiere_date'];
@@ -25,12 +25,15 @@ if(!$conn){
         $trailer = $_POST['trailer'];
         $sql = "INSERT INTO `movie`( `name`, `avatar`, `premiere_date`, `country`, `description`, `trailer`) 
         VALUES ('$name',' $avatar','$date','$country','$describe',' $trailer')";
-            if (mysqli_query($conn, $sql)) {
-                echo "<script> 
-                alert ('Thêm thành công');
-                window.location.href = 'ad_film.php';
-                </script>";
-            } else {
-                echo "Lỗi: " . mysqli_error($conn);
-            }}
+            // if (mysqli_query($conn, $sql)) {
+
+            //     echo "<script> 
+            //     alert ('Thêm thành công');
+            //     window.location.href = 'ad_film.php';
+            //     </script>";
+            //     // header('location:ad_film.php');
+            // } else {
+            //     echo "Lỗi: " . mysqli_error($conn);
+            // }
+        }
 ?>
