@@ -59,17 +59,21 @@ session_start();
         die("Connection failed: " . $conn->connect_error);
         }
         echo "Connected successfully";
-        $query="Select * from movie where id=6";
+        $query="SELECT * FROM `movie` WHERE id<'4';";
         $result=mysqli_query($conn,$query)or die("Error");
-        $row =mysqli_fetch_assoc($result)
-        // if(isset($_GET['ID'])){
-        //     $id = $_GET['ID'];
-        //     $result = $conn->query("SELECT id, names, avatar FROM movie"); 
-        //     $rows = $result->fetch_row();
-        //  }
-        // $sql = "SELECT id, names, avatar FROM movie";
-        // $result = mysqli_query($conn, $sql);
-        // $rows = $result->fetch_row();
+        $row =mysqli_fetch_assoc($result);
+        
+        // Lấy số hàng trả về
+    
+    // if ($row) {
+    //     while ($row = mysqli_fetch_array($result)) {            
+    //     } 
+    // } 
+        // $dbs = array();
+        // while($db = mysqli_fetch_row($result))
+        // $dbs[] = $db[0];
+        // echo implode('<br/>', $dbs);
+
 
 ?>
         <div id="slider" class="carousel carousel-light slide" data-bs-ride="carousel">
@@ -129,7 +133,18 @@ session_start();
           </div>
      <!-- Body -->
      <br><br>
-     
+     <?php 
+     $query="Select * from movie where id<4";
+    //  $result=mysqli_query($conn,$query)or die("Error");
+    //  $row =mysqli_fetch_assoc($result);
+     if ($result->num_rows > 0) {
+         // output data of each row
+         while($row = $result->fetch_assoc()) {
+         }
+       } else {
+         echo "0 results";
+       }
+     ?>
      <h5 class="text-title">Trending</h5>
     <div class="direction">
         <button id="prev"><b><</b></button>
