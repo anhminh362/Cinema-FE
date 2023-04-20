@@ -113,50 +113,21 @@ error_reporting(0);
                                         <label for="country" class="title-title">Country:</label>
                                         <input name="country" class="input-btn" value="<?php echo $row['country']; ?>"><br> <br>
                                         <label for="describe" class="title-title">Describe:</label>
-                                        <textarea rows="3" cols="50" name="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
+                                        <textarea rows="4" cols="50" name="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
                                         <label for="trailer" class="title-title">Trailer:</label>
                                         <input name="trailer" style="color:white;" type="file" class="input-btn" value="<?php echo $row['trailer']; ?>"><br> <br>
                                         <label for="name" class="title-title">Category:</label>
                                         <div class='category'>
+                                            <?php 
+                                            $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                            While($category=mysqli_fetch_assoc($sql_cat)){
+                                            ?>
                                             <label>
-                                                <input style="background:pink; border:2px solid white; border-radius:15px;" type="checkbox"name="action" value="action">Action 
+                                                <input type="checkbox"name="<?php echo $category['name'] ?>" value="<?php echo $category['name'] ?>"><?php echo $category['name'] ?>
                                             </label>
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="drama" value="drama">Drama 
-                                            </label>
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="horror" value="horror">Horror
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="thrille" value="thrille">Thrille
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="comedy" value="comedy">Comedy
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="fantasy" value="fantasi">Fantasy
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="romance" value="romance">Romance
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="history" value="history">History
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="animation" value="animation">Animation
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="family" value="family">Family
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="adventure" value="adventure">Adventure
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="sciencefiction" value="sciencefiction">Science fiction
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="documentary" value="documentary">Documentary
-                                            </label> 
+                                            <?php
+                                            }
+                                            ?>
                                         </div >
                                         <div class="modal-footer"> 
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Add">
@@ -193,51 +164,53 @@ error_reporting(0);
                                         <label for="country" class="title-title">Country:</label>
                                         <input name="country" id="country" class="input-btn" value="<?php echo $row['country']; ?>"><br> <br>
                                         <label for="describe" class="title-title">Describe:</label>
-                                        <textarea rows="3" cols="50" name="description" id="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
+                                        <textarea rows="4" cols="50" name="description" id="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
                                         <label for="trailer" class="title-title">Trailer:</label>
                                         <input style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" value="<?php echo $row['trailer']; ?>">
                                         <input type="file" style="color:white;" name="up_trailer" value="<?php echo $row['trailer']; ?>"><br> <br>
                                         <label for="name" class="title-title">Category:</label>
                                         <div class='category'>
+                                        <input type="hidden" name="cat" id="cat" value="" />
+                                        <?php 
+                                            $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                            $i=0;
+                                            $row['cat'] = json_decode($_POST['cat'], true);
+                                            var_dump($_POST['cat']);
+                                            if (isset($_POST['cat'])) {
+                                                // xử lý khi biến cat được gửi đến server
+                                                echo 111;
+                                            } else {
+                                                // xử lý khi biến cat không được gửi đến server
+                                                echo "khong gui dc";
+                                            };
+                                           
+                                            while($category=mysqli_fetch_assoc($sql_cat)){
+                                                
+                                                
+                                                $checked = (in_array($category['name'], explode(',', $row['cat']))) ? 'checked="checked"' : '';
+                                               
+                                        ?>
+                                                <label>
+                                                <input type="checkbox" class="input-btn" name="cat[]" id='cat-<?php echo $i+1 ?>' <?php echo $checked ?> value="<?php echo $category['name'] ?>"><?php echo $category['name'] ?>
+
+                                                </label>
+                                        <?php $i++;} ?>
+                                        <!-- <?php 
+                                            $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                            $i=0;
+                                            
+                                            while($category=mysqli_fetch_assoc($sql_cat)){
+                                                $checked = (in_array($category['name'], explode(',', $row['cat']))) ? 'checked' : '';
+                                        ?>
                                             <label>
-                                                <input style="background:pink; border:2px solid white; border-radius:15px;" type="checkbox"name="action" value="action">Action 
+                                                <input type="checkbox" name="cat[]" id="cat-<?php echo $i+1 ?>" <?php echo $checked ?> value="<?php echo $category['name'] ?>"><?php echo $category['name'] ?>
                                             </label>
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="drama" value="drama">Drama 
-                                            </label>
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="horror" value="horror">Horror
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="thrille" value="thrille">Thrille
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="comedy" value="comedy">Comedy
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="fantasy" value="fantasi">Fantasy
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="romance" value="romance">Romance
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="history" value="history">History
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="animation" value="animation">Animation
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="family" value="family">Family
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="adventure" value="adventure">Adventure
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="sciencefiction" value="sciencefiction">Science fiction
-                                            </label> 
-                                            <label>
-                                                <input style="background:pink; border:2px solid pink; border-radius:15px;" type="checkbox"name="documentary" value="documentary">Documentary
-                                            </label> 
+                                        <?php 
+                                                $i++;
+                                            } 
+                                        ?> -->
+
+                                        
                                         </div>
                                         <div class="modal-footer">
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
@@ -284,17 +257,20 @@ error_reporting(0);
                                         echo "<td class='trailer_'><p>" . $row['trailer'] . "</p></td>";
                                         echo "<td class='cat'>";
 
+                                        $data = array();
                                         while ($cat = mysqli_fetch_assoc($query)) {
                                             $cat_id = $cat['cat_id'];
                                             echo "<p>";
                                             $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
                                             while ($cat = mysqli_fetch_assoc($sql1)) {
                                                 echo $cat['name'];
+                                                array_push($data,$cat['name']);
                                             }
                                             echo "</p>";
                                         }
                                         echo  "</td>";
-                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
+                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] .
+                                         "'data-trailer='" . $row['trailer'] . "' data-cat='"; echo htmlspecialchars(json_encode($data)); echo "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -319,12 +295,14 @@ error_reporting(0);
             // Khi nút chỉnh sửa được click
             $(".btn-edit").click(function() {
                 // Lấy dữ liệu từ data attribute của nút chỉnh sửa
+                var data = JSON.parse($(this).attr('data-cat'));
                 var name = $(this).data("name");
                 var avatar = $(this).data("avatar");
                 var premiere_date = $(this).data("premiere_date");
                 var country = $(this).data("country");
                 var description = $(this).data("description");
                 var trailer = $(this).data("trailer");
+
                 // Điền dữ liệu vào form
                 var id = $(this).data("id");
                 $("#id").val(id);
@@ -334,8 +312,39 @@ error_reporting(0);
                 $("#description").val(description);
                 $("#trailer ").val(trailer);
                 $("#avatar").val(avatar);
-                // Mở modal chỉnh sửa
-                $("#editModal").modal("show");
+                var cat=JSON.stringify(data);
+                $('input[name="cat"]').val(cat);
+                // Thêm giá trị của 'cat' vào form
+                // $('input[name="cat"]').val(JSON.stringify(data));
+                // console.log($('input[name="cat"]').val(JSON.stringify(data)));
+                // console.log($('#cat').val(JSON.stringify(data)));
+                // for(i=0;i<data.length;i++){
+                //     check=$('#cat-' + (i+1)).val(data[i]);
+                //     console.log($('#cat-' + (i+1)),data[i]);
+                // }
+
+
+            //     // Đưa dữ liệu vào các phần tử mảng
+                
+            //     var name = $(this).data("name");
+            //     var avatar = $(this).data("avatar");
+            //     var premiere_date = $(this).data("premiere_date");
+            //     var country = $(this).data("country");
+            //     var description = $(this).data("description");
+            //     var trailer = $(this).data("trailer");
+            //     // Điền dữ liệu vào form
+            //     var id = $(this).data("id");
+            //     $("#id").val(id);
+            //     $("#name").val(name);
+            //     $("#premiere_date").val(premiere_date);
+            //     $("#country").val(country);
+            //     $("#description").val(description);
+            //     $("#trailer ").val(trailer);
+            //     $("#avatar").val(avatar);
+            //     // Mở modal chỉnh sửa
+            //     console.log($("#avatar"));
+            //    console.log($("#country").val(country));
+
                 
             });
         });
