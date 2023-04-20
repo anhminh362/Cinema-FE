@@ -282,6 +282,7 @@ error_reporting(0);
                                 <?php
                                 $sql = "SELECT * FROM movie";
                                 $sqli = mysqli_query($conn, $sql);
+                                $data=[];
                                 if (mysqli_num_rows($sqli) > 0) {
                                     while ($row = mysqli_fetch_assoc($sqli)) {
                                         $m_id = $row['id'];
@@ -303,13 +304,13 @@ error_reporting(0);
                                             $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
                                             while ($cat = mysqli_fetch_assoc($sql1)) {
                                                 echo $cat['name'];
+                                                array_push($data,$cat['name']);
                                             }
                                             echo "</p>";
                                         }
                                         echo  "</td>";
-                                        echo "<td><button type='button' data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></button>
-                                        <a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a>
-                                        <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='" . $row['id'] . "'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
+                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] .
+                                         "'data-trailer='" . $row['trailer'] . "' data-cat='"; echo htmlspecialchars(json_encode($data)); echo "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
                                         echo "</tr>";
                                     }
                                 } else {
