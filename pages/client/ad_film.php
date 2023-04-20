@@ -112,7 +112,7 @@ error_reporting(0);
                                         <!-- <input type="hidden" name="id" value="<?php echo $row['id']; ?>"> -->
                                         <label for="name" class="title-title">Name:</label>
                                         <input type="text" class="input-btn" name="name" value="<?php echo $row['name']; ?>"><br><br>
-                                        <label for="avatar" class="title-title">Avatar:</label>
+                                        <label for="avatar"  style="color:white;" class="title-title">Avatar:</label>
                                         <input type="file" class="input-btn" name="avatar" value="<?php echo $row['avatar']; ?>"><br><br>
                                         <label for="date" class="title-title">Premiere date:</label>
                                         <input type="date" class="input-btn" name="premiere_date" value="<?php echo $row['premiere_date']; ?>"><br><br>
@@ -120,8 +120,21 @@ error_reporting(0);
                                         <input name="country" class="input-btn" value="<?php echo $row['country']; ?>"><br> <br>
                                         <label for="describe" class="title-title">Describe:</label>
                                         <input name="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"><br> <br>
-                                        <label for="trailer" class="title-title">Trailer:</label>
+                                        <label for="trailer" style="color:white;" class="title-title">Trailer:</label>
                                         <input name="trailer" type="file" class="input-btn" value="<?php echo $row['trailer']; ?>"><br> <br>
+                                        <label for="name" class="title-title">Category:</label>
+                                        <div class='category'>
+                                            <?php
+                                            $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                            while ($category = mysqli_fetch_assoc($sql_cat)) {
+                                            ?>
+                                                <label>
+                                                    <input type="checkbox" name="<?php echo $category['name'] ?>" value="<?php echo $category['name'] ?>"><?php echo $category['name'] ?>
+                                                </label>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
                                         <div class="modal-footer">
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Add">
                                         </div>
@@ -130,7 +143,7 @@ error_reporting(0);
 
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <br><br>
 
                     <!-- Nút mở modal -->
@@ -163,6 +176,43 @@ error_reporting(0);
                                         <label for="trailer" class="title-title">Trailer:</label>
                                         <input style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" value="<?php echo $row['trailer']; ?>">
                                         <input type="file" style="color:white;" name="up_trailer" value="<?php echo $row['trailer']; ?>"><br> <br>
+                                        <div class='category'>
+                                            <input type="hidden" name="cat" id="cat" value="" />
+                                            <?php
+                                            $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                            $i = 0;
+                                            $row['cat'] = json_decode($_POST['cat'], true);
+                                            var_dump($_POST['cat']);
+                                            if (isset($_POST['cat'])) {
+                                                // xử lý khi biến cat được gửi đến server
+                                                echo 111;
+                                            } else {
+                                                // xử lý khi biến cat không được gửi đến server
+                                                echo "khong gui dc";
+                                            };
+                                            while ($category = mysqli_fetch_assoc($sql_cat)) {
+                                                $checked = (in_array($category['name'], explode(',', $row['cat']))) ? 'checked="checked"' : '';
+                                            ?>
+                                                <label>
+                                                    <input type="checkbox" class="input-btn" name="cat[]" id='cat-<?php echo $i + 1 ?>' <?php echo $checked ?> value="<?php echo $category['name'] ?>"><?php echo $category['name'] ?>
+                                                </label>
+                                            <?php $i++;
+                                            } ?>
+                                            <!-- <?php
+                                                    $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                                    $i = 0;
+
+                                                    while ($category = mysqli_fetch_assoc($sql_cat)) {
+                                                        $checked = (in_array($category['name'], explode(',', $row['cat']))) ? 'checked' : '';
+                                                    ?>
+                                            <label>
+                                                <input type="checkbox" name="cat[]" id="cat-<?php echo $i + 1 ?>" <?php echo $checked ?> value="<?php echo $category['name'] ?>"><?php echo $category['name'] ?>
+                                            </label>
+                                        <?php
+                                            $i++;
+                                        }
+                                        ?> -->
+                                        </div>
                                         <div class="modal-footer">
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
                                         </div>
@@ -173,7 +223,7 @@ error_reporting(0);
                         </div>
                     </div>
 
-                     <!-- Nút mở modal -->
+                    <!-- Nút mở modal -->
                     <!-- Modal Add Schedule-->
                     <div id="scheduleModal" tabindex="-1" role="dialog" class="modal fade" data-backdrop="static">
                         <div class="modal-dialog" role="document">
@@ -185,15 +235,15 @@ error_reporting(0);
                                     </button>
                                 </div>
                                 <div class="modal-body" id="modal-body">
-                                    <form method="post" class="form-form" action="" > <br>
+                                    <form method="post" class="form-form" action=""> <br>
                                         <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
-                                        <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>"/>
-                                        
+                                        <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>" />
+
                                         <label for="room" class="title-title">Room:</label>
                                         <select id="room" name="room">
-                                        <option value="<?php echo $row[''] ?>">Theater 1</option>
-                                        <option value="<?php echo $row[''] ?>">Theater 2</option>
-                                        <option value="<?php echo $row[''] ?>">Theater 3</option>
+                                            <option value="<?php echo $row[''] ?>">Theater 1</option>
+                                            <option value="<?php echo $row[''] ?>">Theater 2</option>
+                                            <option value="<?php echo $row[''] ?>">Theater 3</option>
                                         </select><br><br>
                                         <label for="date" class="title-title">Movie date:</label>
                                         <input type="date" class="input-btn" name="movie_date" value="<?php echo $row['movie_date'] ?>"><br><br>
@@ -211,8 +261,8 @@ error_reporting(0);
 
                             </div>
                         </div>
-                    </div> 
-                    
+                    </div>
+
                     <div class="table-responsive">
                         <table class="table table-responsive" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -259,7 +309,7 @@ error_reporting(0);
                                         echo  "</td>";
                                         echo "<td><button type='button' data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></button>
                                         <a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a>
-                                        <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='".$row['id']."'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
+                                        <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='" . $row['id'] . "'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -300,12 +350,21 @@ error_reporting(0);
                 $("#description").val(description);
                 $("#trailer ").val(trailer);
                 $("#avatar").val(avatar);
+                //cat
+                var data = JSON.parse($(this).attr('data-cat'));
+                var cat=JSON.stringify(data);
+                $('input[name="cat"]').val(cat);
+                // console.log($('input[name="cat"]').val(JSON.stringify(data)));
+                // console.log($('#cat').val(JSON.stringify(data)));
+                // for(i=0;i<data.length;i++){
+                //     check=$('#cat-' + (i+1)).val(data[i]);
+                //     console.log($('#cat-' + (i+1)),data[i]);
             });
             $(".btn-schedule").click(function() {
                 var id = $(this).data("id");
                 $("#id").val(id);
                 console.log(id);
-                console.log("schedule",$("#id").val(id));
+                console.log("schedule", $("#id").val(id));
             })
         });
     </script>
