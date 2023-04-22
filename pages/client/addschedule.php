@@ -16,24 +16,38 @@ if(!$conn){
    //  echo "Connected Successfully !";
   
    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $avatar = $_POST['avatar'];
-        $date = $_POST['premiere_date'];
-        $country = $_POST['country'];
-        $describe = $_POST['description'];
-        $trailer = $_POST['trailer'];
-        $sql = "INSERT INTO `movie`( `name`, `avatar`, `premiere_date`, `country`, `description`, `trailer`) 
-        VALUES ('$name',' $avatar','$date','$country','$describe',' $trailer')";
-            // if (mysqli_query($conn, $sql)) {
+        $movie_id = $_POST['id'];
+        $room = $_POST['room'];
+        $rooms=mysqli_fetch_assoc(mysqli_query($conn,"SELECT *from room where name='$room'"));
+        $room_id=$rooms['id'];
+        $movie_date = $_POST['movie_date'];
+        $begin = $_POST['begin'];
+        $end = $_POST['end'];
+        $price = $_POST['price'];
+        
+          $sql="INSERT INTO `schedule`( `movie_id`, `room_id`, `movie_date`, `time_begin`, `time_end`, `price`)
+           VALUES ('$movie_id','$room_id','$movie_date','$begin',' $end ','$price')";
+            if (mysqli_query($conn, $sql)) {
+               $id=mysqli_insert_id($conn);
+               echo 'Record inserted successfully into movie';
+                
+            } else {
+                echo "Lỗi: " . mysqli_error($conn);
+            }
+          $i=0;
+          $number=$rooms['amount'];
+          While($i<$number){
+               echo $i;
+               $sqli="INSERT INTO `ticket`(`schedule_id`) VALUES ('$id')";
+               if(mysqli_query($conn, $sqli)){
+                    echo  'Record inserted successfully into m_cat';
+                    header('location:ad_film.php');
+               }
+               else {
+                    echo "Lỗi: " . mysqli_error($conn);
+                }
+               $i++;
+          }
 
-            //     echo "<script> 
-            //     alert ('Thêm thành công');
-            //     window.location.href = 'ad_film.php';
-            //     </script>";
-            //     // header('location:ad_film.php');
-            // } else {
-            //     echo "Lỗi: " . mysqli_error($conn);
-            // }
         }
 ?>
