@@ -23,7 +23,7 @@ if(!$conn){
         $country = $_POST['country'];
         $describe = $_POST['description'];
         $trailer = $_POST['trailer'];
-        $cat=$_POST['cat[]'];
+        // $cat=$_POST['cat[]'];
         if(isset($_FILES['up_avatar'])){
             $file=$_FILES['up_avatar'];
             $filename= $file['name'];

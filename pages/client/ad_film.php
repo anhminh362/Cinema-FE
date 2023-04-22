@@ -107,7 +107,7 @@ error_reporting(0);
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" class="form-form" action="add.php"> <br>
+                                    <form method="post" class="form-form" action="add.php" enctype="multipart/form-data" > <br>
                                         <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
                                         <!-- <input type="hidden" name="id" value="<?php echo $row['id']; ?>"> -->
                                         <label for="name" class="title-title">Name:</label>
@@ -165,8 +165,8 @@ error_reporting(0);
                                         <label for="name" class="title-title">Name:</label>
                                         <input type="text" id="name" class="input-btn" name="name" ><br><br>
                                         <label for="avatar" class="title-title">Avatar:</label>
-                                        <input style="border:none; color:white; background-color: #0B1A2A" id="avatar" class="input-btn" type="text" name="avatar" >
-                                        <input type="file" style="color:white;" name="up_avatar" value="<?php echo $row['avatar']; ?>"> <br><br>
+                                        <input disabled style="border:none; color:white; background-color: #0B1A2A" id="avatar" class="input-btn" type="text" name="avatar" >
+                                        <input type="file" style="color:white;" name="up_avatar" > <br><br>
                                         <label for="date" class="title-title">Premiere date:</label>
                                         <input type="date" id="premiere_date" class="input-btn" name="premiere_date" ><br><br>
                                         <label for="country" class="title-title">Country:</label>
@@ -174,8 +174,8 @@ error_reporting(0);
                                         <label for="describe" class="title-title">Describe:</label>
                                         <textarea rows="6" cols="50" name="description" id="description" type="text" class="input-btn" ></textarea><br> <br>
                                         <label for="trailer" class="title-title">Trailer:</label>
-                                        <input style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" >
-                                        <input type="file" style="color:white;" name="up_trailer" value="<?php echo $row['trailer']; ?>"><br> <br>
+                                        <input disable style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" >
+                                        <input type="file" style="color:white;" name="up_trailer" ><br> <br>
                                         <div class='category'>
                                             <label for="name" class="title-title">Category</label>
                                             <input type="hidden" name="cat" id="cat" value="" />
@@ -213,13 +213,18 @@ error_reporting(0);
                                 </div>
                                 <div class="modal-body" id="modal-body">
                                     <form method="post" class="form-form" action="addschedule.php"> <br>
-                                        <input type="hidden" id="id" name="id"  />
+                                        <input type="hidden" id="schedule-id" name="id"  />
 
                                         <label for="room" class="title-title">Room:</label>
                                         <select id="room" name="room">
-                                            <option value="<?php echo $row[''] ?>">Theater 1</option>
-                                            <option value="<?php echo $row[''] ?>">Theater 2</option>
-                                            <option value="<?php echo $row[''] ?>">Theater 3</option>
+                                            <?php 
+                                            $queries=mysqli_query($conn,"SELECT * from room");
+                                            While($room=mysqli_fetch_assoc($queries)){
+                                            ?>
+                                            <option><?=$room['name'] ?></option>
+                                            <?php     
+                                            }
+                                            ?>
                                         </select>
                                         <br><br>
                                         <label for="date" class="title-title">Movie date:</label>
@@ -288,7 +293,7 @@ error_reporting(0);
                                         echo  "</td>";
                                         echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] .
                                          "'data-trailer='" . $row['trailer'] . "' data-cat='"; echo htmlspecialchars(json_encode($data)); echo "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a>
-                                         </td>";
+                                         <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='".$row['id']."'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -341,9 +346,9 @@ error_reporting(0);
             });
             $(".btn-schedule").click(function() {
                 var id = $(this).data("id");
-                $("#id").val(id);
-                console.log(id);
-                console.log("schedule", $("#id").val(id));
+                $("#schedule-id").val(id);
+                // console.log(id);
+                // console.log("schedule", $("#id").val(id));
             })
         });
     </script>

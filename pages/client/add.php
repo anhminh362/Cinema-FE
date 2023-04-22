@@ -13,16 +13,22 @@ if(!$conn){
      die("Connection failed: ".mysqli_connect_error());
 }
 
-   //  echo "Connected Successfully !";
-  
    if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
-       
+    
+        $file=$_FILES['avatar'];
+        $filename= $file['name'];
+        move_uploaded_file($file['tmp_name'],"../../asset/picture/$filename");
+        $avatar=$filename;
         $name = $_POST['name'];
-        $avatar = $_POST['avatar'];
         $date = $_POST['premiere_date'];
         $country = $_POST['country'];
         $describe = $_POST['description'];
-        $trailer = $_POST['trailer'];
+        if(isset($_POST['trailer'])){
+            $trailer = $_POST['trailer'];
+        }
+        else{
+            $trailer =null;
+        }
         $sql = "INSERT INTO `movie`( `name`, `avatar`, `premiere_date`, `country`, `description`, `trailer`) 
         VALUES ('$name',' $avatar','$date','$country','$describe',' $trailer')";
            if (mysqli_query($conn, $sql)) {
