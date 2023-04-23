@@ -1,4 +1,19 @@
 <?php
+    $host = "localhost";
+    $user = "root";
+    $password = "";
+    $database = "cinema";
+
+    // Create connection
+    $conn = mysqli_connect($host,$user,$password,$database);
+    mysqli_set_charset($conn,"UTF8");
+
+    // Check connection
+    if(!$conn){
+        die("Connection failed: ".mysqli_connect_error());
+    }
+
+   //  echo "Connected Successfully !";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -56,114 +71,44 @@ session_start();
     <div class="row">
         <h3>Playing Movies</h3>
     </div><br>
-    <div class="row">
-        <div class="col-sm-3">
+    <?php
+        $sql = "SELECT movie.name AS movie_name, GROUP_CONCAT(category.name SEPARATOR ', ') AS cat_names, movie.avatar AS avatar
+        FROM movie
+        LEFT JOIN movie_cat ON movie.id = movie_cat.movie_id
+        LEFT JOIN category ON movie_cat.cat_id = category.id WHERE movie.premiere_date < NOW()
+        GROUP BY movie.id";
+        $sqli = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($sqli) > 0) {
+        echo '<div class="row">';
+        while ($row = mysqli_fetch_assoc($sqli)) {
+            echo '<div class="col-md-3">';
+            ?>
             <div class="card" style="width:260px; background: rgba(0, 0, 0, 0.3); ">
-                <img class="card-img-top" src="https://i.ytimg.com/vi/-3y_dBRX_Hc/maxresdefault.jpg" alt="Card image" style="width:100%">
+                <img class="card-img-top" src="<?php echo $row['avatar']; ?>" style="width:100%">
                 <div class="card-body">
-                    <h5 class="card-title">Trận chiến thời tiền sử</h5>
-                    <p class="card-text">Science Fiction/Action</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:25px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
+                    <h5 class="card-title"><?php echo $row['movie_name']; ?></h5>
+                    <p class="card-text"><?php
+                    $cat_names = explode(', ', $row['cat_names']);
+                    foreach ($cat_names as $cat_name) {
+                        echo '<span class="badge badge-primary mr-1">'. $cat_name . '</span>';
+                    }
+                    ?></p>
+                    <p>
+                        <a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
+                        <span><a href="#" class="btn btn-success" style="margin-left:25px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span>
+                    </p>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                <img class="card-img-top" src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-2.jpg" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">Vong Nhi</h5>
-                    <p class="card-text">Mystic/Horror</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                <img class="card-img-top" src="https://i.ytimg.com/vi/l0_xBH0vhwM/maxresdefault.jpg" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">The last god dragon</h5>
-                    <p class="card-text">Children/Advent</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                <img class="card-img-top" src="https://i.ytimg.com/vi/33xtZdR0amI/maxresdefault.jpg" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">Mèo béo siêu đẳng</h5>
-                    <p class="card-text">Children/Comedy</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                </div>
-            </div>
-        </div>
-    </div><br><br>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                <img class="card-img-top" src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-6.jpg" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">Babylon</h5>
-                    <p class="card-text">History, Psychology</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                <img class="card-img-top" src="https://khenphim.com/wp-content/uploads/2022/02/MOONFALL-4-banner.jpg" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">Moonfall</h5>
-                    <p class="card-text">Science Fiction/Action</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                <img class="card-img-top" src="https://i.ytimg.com/vi/bf4yyStDWHE/maxresdefault.jpg" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">Avatar</h5>
-                    <p class="card-text">Science/Action</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                <img class="card-img-top" src="https://hocmay.vn/wp-content/uploads/2023/04/khac-tinh-cua-quy.png" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">Khắc tinh của quỷ</h5>
-                    <p class="card-text">Horrified</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                </div>
-            </div>
-        </div>
-    </div><br><br>
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                <img class="card-img-top" src="https://cinepop.com.br/wp-content/uploads/2020/03/the-flash-1.jpg" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">The Flash</h5>
-                    <p class="card-text">Action/Adventure</p>
-                    <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                    <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3"></div>
-    </div><br><br>
+            </div>  <br>  
+            <?php
+            echo '</div>';
+        }
+        echo '</div>';
+        } else {
+                echo "<script>
+                        alert(\"Không có phim nào phù hợp!\");
+                    </script>";  
+            }  
+?>
 </div>
 <!--  -->
 <footer>
