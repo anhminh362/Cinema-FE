@@ -152,17 +152,3 @@
 </footer>
 </body> 
 </html>
-<?php 
-    // $row = 1;
-    // while ($row <= 4) {
-    //     echo "<tr>";
-    //     $col = 1;
-    //     while ($col <= 3) {
-    //         echo "<td>Row: $row - Col: $col</td>";
-    //         $col++;
-    //     }
-    //     echo "</tr>";
-    //     $row++;
-    // }
-    ?>
-?>
