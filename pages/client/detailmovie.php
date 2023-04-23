@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,9 +30,24 @@
         <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
         <ul>
             <li><a href="homepage.php">Home</a></li>
-            <li><a href="homepage.php">Movies</a></li>
+            <li><a href="#">Movies</a>
+                <ul id="type-movies">
+                    <li><a href="playing.php">Playing</a></li>
+                    <li><a href="upcoming.php">Upcoming</a></li>
+                </ul>
+            </li>
             <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
-            <li><a href="login.php">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+            <?php if (isset($_SESSION['user'])) {
+            ?>
+                <li><a href="logout.php"><?php echo $_SESSION['user'] ?><i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+            <?php
+            } else {
+            ?>
+                <li><a href="login.php">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+
+            <?php
+            }
+            ?>
         </ul>
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
@@ -38,84 +56,132 @@
     <!-- Background-img -->
     <div class="background-img">
         <!-- Content -->
-        <div class="container"> 
+        <div class="container">
             <br><br><br><br><br><br>
             <div class="row">
-                <div class="col-sm-4">
-                    <img class="card-item"src="https://2sao.vietnamnetjsc.vn/2016/04/18/16/57/1.jpg" alt="">
-                </div>
-                <div class="col-sm-6">
-                    <h1 class="title-film">Avatar</h1>
-                    <!-- icon -->
-                    <div class="row">
-                        <div class="col-sm-3">
-                            </svg><link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
-                            <i  class="fi fi-rs-star"> 7.4</i>
+                <?php
+                function movietime($h1, $m1, $h2, $m2)
+                {
+                    if ($m2 >= $m1) {
+                        $m = $m2 - $m1;
+                    } else {
+                        $m = $m2 + 60 - $m1;
+                        $h1 += 1;
+                    }
+                    if ($h2 >= $h1) {
+                        $h = $h2 - $h1;
+                    } else {
+                        $h = 24 + $h2 - $h1;
+                    }
+                    return $h . "h " . $m . "min";
+                }
+
+
+                $_SESSION['id'] = 6;
+                if (isset($_SESSION['id'])) {
+                    $id = $_SESSION['id'];
+                    $connect = mysqli_connect("localhost", "root", "", "cinema") or die("abc");
+                    $sql = "SELECT * from movie where id='$id'";
+                    $result = mysqli_query($connect, $sql) or die("fail");
+                    $row = mysqli_fetch_array($result);
+                ?>
+
+                    <div class="col-sm-4">
+                        <img class="card-item" src="../../asset/picture/<?php echo $row['avatar'] ?>" alt="">
+                    </div>
+                    <div class="col-sm-6">
+                        <h1 class="title-film"><?php echo $row['name'] ?></h1>
+                        <!-- icon -->
+                        <div class="row">
+                            <div class="col-sm-3">
+                                </svg>
+                                <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+                                <i class="fi fi-rs-star"> 7.4</i>
+                            </div>
+                            <div class="col-sm-3">
+                                <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+                                <i class="fi fi-br-clock-five">
+                                    <?php 
+                                    $time = "SELECT * from schedule where movie_id='$id' limit 1 ";
+                                    $result1 = mysqli_query($connect, $time) or die("query Erorr!");
+                                    $row1 = mysqli_fetch_assoc($result1);
+                                    $h_begin = date("H", strtotime($row1['time_begin']));
+                                    $h_end = date("H", strtotime($row1['time_end']));
+                                    $m_begin = date("i", strtotime($row1['time_begin']));
+                                    $m_end = date("i", strtotime($row1['time_end']));
+                                    echo movietime($h_begin, $m_begin, $h_end, $m_end); 
+                                    ?> 
+                                </i>
+                            </div>
+                            <div class="col-sm-3">
+                                <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+                                <i class="fi fi-rr-social-network"> 90</i>
+                            </div>
+                            <div class="col-sm-3">
+                                <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+                                <i class="fi fi-ss-calendar"> <?php $date = $row['premiere_date'];
+                                                                echo date('Y', strtotime($date)) ?></i>
+                            </div>
+                        </div> <br>
+                        <div class="row">
+                            <p class="text-detail">
+                                <?php echo $row['description'] ?>
+                            </p>
+                        </div> <br><br><br>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+                                <i class="fi fi-sr-flag-alt"> Country</i>
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="contry-item"> <?php echo $row['country'] ?></button>
+                            </div>
+                            <div class="col-sm-4">
+                                <!--  -->
+                            </div>
+                        </div> <br><br>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+                                <i class="fi fi-ss-tags"> Genres</i>
+                            </div>
+                            <div class="col-sm-6">
+                                <?php
+                                    $query = mysqli_query($connect, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                                    while ($cat = mysqli_fetch_assoc($query)) {
+                                    $cat_id = $cat['cat_id'];
+                                    $sql1 = mysqli_query($connect, "SELECT * FROM category WHERE id='$cat_id'");
+                                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                                        echo  "<button class='type-tiem'>".$cat['name']."</button> &nbsp;";
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="col-sm-2">
+                                <!--  -->
+                            </div>
                         </div>
-                        <div class="col-sm-3">
-                            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-                            <i class="fi fi-br-clock-five"> 1h 40min</i>
-                        </div>
-                        <div class="col-sm-3">
-                            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-                            <i class="fi fi-rr-social-network"> 90</i>
-                        </div>
-                        <div class="col-sm-3">
-                            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
-                            <i class="fi fi-ss-calendar"> 2023</i>
-                        </div>
-                    </div> <br>
-                    <div class="row"> 
-                        <p class="text-detail">
-                            Avatar (also marketed as James Cameron's Avatar) is a 2009 epic science fiction 
-                            film directed, written, co-produced, and co-edited by James Cameron and starring
-                            Sam Worthington, Zoe Saldana , Stephen Lang, Michelle Rodriguez, and Sigourney Weaver.
-                        </p>
-                    </div> <br><br><br>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-                            <i class="fi fi-sr-flag-alt"> Country</i>
-                        </div>
-                        <div class="col-sm-4">
-                            <button  class="contry-item">US</button>
-                        </div>
-                        <div class="col-sm-4">
-                            <!--  -->
-                        </div>
-                    </div> <br><br> 
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
-                            <i class="fi fi-ss-tags"> Genres</i>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="type-tiem">Animation</button> &nbsp;
-                            <button class="type-tiem">Advanture</button>&nbsp;
-                            <button class="type-tiem">Comedy</button>
-                        </div>
-                        <div class="col-sm-2">
-                            <!--  -->
+                        <div class="row">
+                            <div class="col-sm-4"> <br><br>
+                                <a href="bookticket.php" class="book-btn">Book now</a>
+                            </div>
+                            <div class="col-sm-8">
+                                <!--  -->
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                       <div class="col-sm-4"> <br><br>
-                            <a href="#" class="book-btn">Book now</a>
-                       </div>
-                       <div class="col-sm-8">
-                        <!--  -->
-                       </div>
+                    <div class="col-sm-1"> <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <!-- traller film -->
+                        <div class="play-btn" onclick="playVideo('https://youtu.be/gq2xKJXYZ80')">
+                            <ion-icon name="play-circle"></ion-icon>
+                        </div>
                     </div>
-                </div> 
-                <div class="col-sm-1"> <br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <!-- traller film -->
-                    <div class="play-btn" onclick="playVideo('https://youtu.be/gq2xKJXYZ80')">
-                        <ion-icon name="play-circle"></ion-icon>
-                    </div> 
-                </div>
-                <div class="col-sm-1"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <h5 class="watch-trailer">Watch Trailer</h5>
-                </div>
+                    <div class="col-sm-1"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <h5 class="watch-trailer">Watch Trailer</h5>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -134,64 +200,71 @@
             </div><br>
             <div class="row">
                 <div class="main-carousel">
-                    
+                    <?php
+                        $result = mysqli_query($connect, "SELECT * from movie where id!='$id' limit 8") or die("fail");
+                        While($row = mysqli_fetch_assoc($result)){
+                         
+                    ?>
                     <div class="sell">
                         <div class="icon-play">
                             <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
                             <ion-icon name="play-circle"></ion-icon>
                         </div>
-                        <img src="https://nocodebuilding.com/wp-content/uploads/2021/03/xem-phim-raya-va-rong-than-cuoi-cung-full-thuyet-minh.jpg">
+                        <img src="../../asset/picture/<?php echo $row['avatar'] ?>">
                     </div>
-                    
-                    <div class="sell">
+                    <?php    
+                        }
+                    ?>
+
+                    <!-- <div class="sell">
                         <div class="icon-play">
                             <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
                             <ion-icon name="play-circle"></ion-icon>
                         </div>
                         <img src="https://i.ytimg.com/vi/33xtZdR0amI/maxresdefault.jpg">
                     </div>
-                   
+
                     <div class="sell">
                         <div class="icon-play">
                             <ion-icon name="play-circle"></ion-icon>
                         </div>
-                        <img src="https://static2.vieon.vn/vieplay-image/thumbnail_big_v4/2021/12/01/84wg13sf_1920x1080_bietdoisieuanhhung_1267_712.jpg" >
+                        <img src="https://static2.vieon.vn/vieplay-image/thumbnail_big_v4/2021/12/01/84wg13sf_1920x1080_bietdoisieuanhhung_1267_712.jpg">
                     </div>
-                   
+
                     <div class="sell">
                         <div class="icon-play">
                             <ion-icon name="play-circle"></ion-icon>
                         </div>
                         <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/01/phim-nha-ba-nu-1.jpg">
                     </div>
-                    
+
                     <div class="sell">
                         <div class="icon-play">
                             <ion-icon name="play-circle"></ion-icon>
                         </div>
                         <img src="https://simg.zalopay.com.vn/zlp-website/assets/phim_chieu_rap_Viet_Nam_moi_nhat_co_gai_tu_qua_khu_995a16d6a7.jpg">
                     </div>
-                    
+
                     <div class="sell">
                         <div class="icon-play">
                             <ion-icon name="play-circle"></ion-icon>
                         </div>
                         <img src="https://i.ytimg.com/vi/fVRchcTboNM/maxresdefault.jpg">
                     </div>
-                    
+
                     <div class="sell">
                         <div class="icon-play">
                             <ion-icon name="play-circle"></ion-icon>
                         </div>
                         <img src="https://i.ytimg.com/vi/UYgH1TJGXGU/maxresdefault.jpg">
                     </div>
-                   
+
                     <div class="sell">
                         <div class="icon-play">
                             <ion-icon name="play-circle"></ion-icon>
                         </div>
                         <img src="https://static1.dienanh.net/upload/202203/cd10ed7b-5122-4812-9346-3e5f04457fa7.jpg">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div> <br><br><br>
@@ -202,25 +275,29 @@
             <div class="row">
                 <div class="col-sm-3">
                     <ul>
-                        <li><div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt="">Moonlight</div></li>
-                        <li><p class="text">We guarantee quality and satisfaction when coming to our movie ticket booking site.</p> </li>
+                        <li>
+                            <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt="">Moonlight</div>
+                        </li>
+                        <li>
+                            <p class="text">We guarantee quality and satisfaction when coming to our movie ticket booking site.</p>
+                        </li>
                     </ul>
-                    
+
                     <div class="contact_icon">
-                        <i class="fa-brands fa-square-facebook"></i> 
-                        <i class="fa-brands fa-square-twitter" ></i>
-                        <i class="fa-brands fa-square-whatsapp" ></i>
+                        <i class="fa-brands fa-square-facebook"></i>
+                        <i class="fa-brands fa-square-twitter"></i>
+                        <i class="fa-brands fa-square-whatsapp"></i>
                         <i class="fa-brands fa-square-instagram"></i>
-                    </div>                  
+                    </div>
                 </div>
                 <div class="col-sm-3"><br>
                     <h5 class="text-footer">Quick Link</h4>
-                    <ul>
-                        <li><a href="">About Us</a></li>
-                        <li><a href="">Movies</a></li>
-                        <li><a href="">Partner</a></li>
-                        <li><a href="">Help</a></li>
-                    </ul>
+                        <ul>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Movies</a></li>
+                            <li><a href="">Partner</a></li>
+                            <li><a href="">Help</a></li>
+                        </ul>
                 </div>
                 <div class="col-sm-3"><br>
                     <h5 class="text-footer">Important</h5>
@@ -232,37 +309,43 @@
                     </ul>
                 </div>
                 <div class="col-sm-3"><br>
-                        <h5 class="text-footer">Contact</h5>
-                        <ul>
-                            <li><p class="text">Subscribe our newsletter to get latest update & news.</p></li>
-                            <li><input type="text" name="Send" class="Send" placeholder="   Enter Email">
-                            <button type="submit" class="btn btn-primary">Send</button></li>
-                        </ul>
+                    <h5 class="text-footer">Contact</h5>
+                    <ul>
+                        <li>
+                            <p class="text">Subscribe our newsletter to get latest update & news.</p>
+                        </li>
+                        <li><input type="text" name="Send" class="Send" placeholder="   Enter Email">
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
         </div>
-</footer>
-<!--JavaScript -->
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-<script>
-    $('.main-carousel').flickity({
-        //options
-        cellAlign:'left',
-        wrapAround:true ,
-        freesCroll:true
-    });
-</script>
-<script>
-    var videoPlayer = document.getElementById("videoPlayer");
-    var myVideo = document.getElementById("myVideo");
-    function stopVideo(){
-        videoPlayer.style.display = "none";
-    }
-    function playVideo(link){
-        myVideo.src = link;
-        videoPlayer.style.display = "block";
-    }
-</script>
+    </footer>
+    <!--JavaScript -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script>
+        $('.main-carousel').flickity({
+            //options
+            cellAlign: 'left',
+            wrapAround: true,
+            freesCroll: true
+        });
+    </script>
+    <script>
+        var videoPlayer = document.getElementById("videoPlayer");
+        var myVideo = document.getElementById("myVideo");
+
+        function stopVideo() {
+            videoPlayer.style.display = "none";
+        }
+
+        function playVideo(link) {
+            myVideo.src = link;
+            videoPlayer.style.display = "block";
+        }
+    </script>
 </body>
+
 </html>

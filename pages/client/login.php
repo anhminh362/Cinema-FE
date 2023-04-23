@@ -53,7 +53,7 @@ session_start();
             $account=$row['id'];
              if ($checkPass) {
                 $account = mysqli_query($connect,"select * from users where account_id='$account'" ) or die("fail");
-                $query = mysqli_fetch_assoc($account );
+                $query = mysqli_fetch_assoc($account);
                $string=$query['full_name'];
                 for($i=0;$i<strlen($string);$i++){
                     if($string[$i]==" "){

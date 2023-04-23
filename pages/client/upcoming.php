@@ -1,4 +1,5 @@
 <?php
+
    $host = "localhost";
    $user = "root";
    $password = "";
@@ -14,6 +15,8 @@
    }
    
       //  echo "Connected Successfully !";
+
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -42,8 +45,18 @@
                     </ul>
                 </li>
                 <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
+                <?php if(isset($_SESSION['user'])){
+                    ?>
+                <li><a href="logout.php"><?php echo $_SESSION['user'] ?><i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+                <?php
+                }
+                else{
+                    ?>
                 <li><a href="login.php">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
-            </ul>
+
+                <?php
+                }
+                 ?>            </ul>
             <label for="check" class="checkbtn">
                 <i class="fas fa-bars"></i>
             </label>
