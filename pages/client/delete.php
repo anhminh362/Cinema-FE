@@ -39,10 +39,23 @@
     mysqli_query($conn,$sql);
     $sql ="DELETE FROM movie_sub WHERE movie_id =$id";
     mysqli_query($conn,$sql);
-
+    $sql="SELECT * from movie WHERE id =$id";
+    $avatar=mysqli_fetch_assoc(mysqli_query($conn,$sql))['avatar'];
+    // echo $avatar;
+    $avatar = trim($avatar);
+    $link="../../asset/picture/$avatar";
+    echo $link;
+    if(unlink($link))
+    {
+        echo "File Deleted";
+    }
+    else
+    {
+        echo "Error Deleting File";
+    }
     $sql = "DELETE FROM movie WHERE id=$id";
     if (mysqli_query($conn, $sql)) {
-        header('location:ad_film.php');
+            header('location:ad_film.php');
     } else {
         echo "Lỗi: " . mysqli_error($conn);
     }

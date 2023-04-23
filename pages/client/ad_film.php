@@ -57,6 +57,12 @@ error_reporting(0);
                         <ion-icon name="play-circle"></ion-icon>
                         <b> Films</b>
                     </p>
+                </div><br>
+                <div class="row">
+                    <a href="ad_schedule.php" class="icon-item">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <b> Schedule</b>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-10 background-right">
@@ -86,7 +92,7 @@ error_reporting(0);
                     </div>
                 </div>
                 <div class="container"> <br>
-                    <!-- Nút mở modal -->
+                    <!-- Nút mở modal Add Film -->
                     <button type="button" class="btn bg-danger text-white" data-toggle="modal" data-target="#myModal">
                         Add +
                     </button>
@@ -101,21 +107,34 @@ error_reporting(0);
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" class="form-form" action="add.php"> <br>
+                                    <form method="post" class="form-form" action="add.php" enctype="multipart/form-data" > <br>
                                         <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
-                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                        <!-- <input type="hidden" name="id" value="<?php echo $row['id']; ?>"> -->
                                         <label for="name" class="title-title">Name:</label>
-                                        <input type="text" class="input-btn" name="name" value="<?php echo $row['name']; ?>"><br><br>
+                                        <input type="text" class="input-btn" name="name"  ><br><br>
                                         <label for="avatar" class="title-title">Avatar:</label>
-                                        <input type="file" class="input-btn" name="avatar" value="<?php echo $row['avatar']; ?>"><br><br>
+                                        <input type="file"  style="color:white;"  class="input-btn" name="avatar" ><br><br>
                                         <label for="date" class="title-title">Premiere date:</label>
-                                        <input type="date" class="input-btn" name="premiere_date" value="<?php echo $row['premiere_date']; ?>"><br><br>
+                                        <input type="date" class="input-btn" name="premiere_date" ><br><br>
                                         <label for="country" class="title-title">Country:</label>
-                                        <input name="country" class="input-btn" value="<?php echo $row['country']; ?>"><br> <br>
+                                        <input name="country" class="input-btn" ><br> <br>
                                         <label for="describe" class="title-title">Describe:</label>
-                                        <input name="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"><br> <br>
-                                        <label for="trailer" class="title-title">Trailer:</label>
-                                        <input name="trailer" type="file" class="input-btn" value="<?php echo $row['trailer']; ?>"><br> <br>
+                                        <input name="description" type="text" class="input-btn" ><br> <br>
+                                        <label for="trailer"  class="title-title">Trailer:</label>
+                                        <input name="trailer"style="color:white;" type="file" class="input-btn" ><br> <br>
+                                        <label for="name" class="title-title">Category:</label>
+                                        <div class='category'>
+                                            <?php
+                                            $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                            while ($category = mysqli_fetch_assoc($sql_cat)) {
+                                            ?>
+                                                <label>
+                                                    <input type="checkbox" name="<?php echo $category['name'] ?>" value="<?php echo $category['name'] ?>"><?php echo $category['name'] ?>
+                                                </label>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
                                         <div class="modal-footer">
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Add">
                                         </div>
@@ -124,7 +143,9 @@ error_reporting(0);
 
                             </div>
                         </div>
-                    </div> <br><br>
+                    </div>
+                    <br><br>
+
                     <!-- Nút mở modal -->
 
                     <!-- Modal Edit -->
@@ -140,21 +161,35 @@ error_reporting(0);
                                 <div class="modal-body" id="modal-body">
                                     <form method="post" class="form-form" action="edit.php" enctype="multipart/form-data"> <br>
                                         <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
-                                        <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>">
+                                        <input type="hidden" id="id" name="id" >
                                         <label for="name" class="title-title">Name:</label>
-                                        <input type="text" id="name" class="input-btn" name="name" value="<?php echo $row['name']; ?>"><br><br>
+                                        <input type="text" id="name" class="input-btn" name="name" ><br><br>
                                         <label for="avatar" class="title-title">Avatar:</label>
-                                        <input style="border:none; color:white; background-color: #0B1A2A" id="avatar" class="input-btn" type="text" name="avatar" value="<?php echo $row['avatar']; ?>">
-                                        <input type="file" style="color:white;" name="up_avatar" value="<?php echo $row['avatar']; ?>"> <br><br>
+                                        <input disabled style="border:none; color:white; background-color: #0B1A2A" id="avatar" class="input-btn" type="text" name="avatar" >
+                                        <input type="file" style="color:white;" name="up_avatar" > <br><br>
                                         <label for="date" class="title-title">Premiere date:</label>
-                                        <input type="date" id="premiere_date" class="input-btn" name="premiere_date" value="<?php echo $row['premiere_date']; ?>"><br><br>
+                                        <input type="date" id="premiere_date" class="input-btn" name="premiere_date" ><br><br>
                                         <label for="country" class="title-title">Country:</label>
-                                        <input name="country" id="country" class="input-btn" value="<?php echo $row['country']; ?>"><br> <br>
+                                        <input name="country" id="country" class="input-btn" ><br> <br>
                                         <label for="describe" class="title-title">Describe:</label>
-                                        <textarea rows="6" cols="50" name="description" id="description" type="text" class="input-btn" value="<?php echo $row['description']; ?>"></textarea><br> <br>
+                                        <textarea rows="6" cols="50" name="description" id="description" type="text" class="input-btn" ></textarea><br> <br>
                                         <label for="trailer" class="title-title">Trailer:</label>
-                                        <input style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" value="<?php echo $row['trailer']; ?>">
-                                        <input type="file" style="color:white;" name="up_trailer" value="<?php echo $row['trailer']; ?>"><br> <br>
+                                        <input disable style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" >
+                                        <input type="file" style="color:white;" name="up_trailer" ><br> <br>
+                                        <div class='category'>
+                                            <label for="name" class="title-title">Category</label>
+                                            <input type="hidden" name="cat" id="cat" value="" />
+                                            <?php
+                                            $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                            $i = 0;
+                                            while ($category = mysqli_fetch_assoc($sql_cat)) {
+                                            ?>
+                                                <label>
+                                                    <input type="checkbox" class="input-btn" name="cat[]" value="<?= $category['name'] ?>"><?php echo $category['name'] ?>
+                                                </label>
+                                            <?php $i++;
+                                            } ?>
+                                        </div>
                                         <div class="modal-footer">
                                             <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
                                         </div>
@@ -165,6 +200,50 @@ error_reporting(0);
                         </div>
                     </div>
 
+                    <!-- Nút mở modal -->
+                    <!-- Modal Add Schedule-->
+                    <div id="scheduleModal" tabindex="-1" role="dialog" class="modal fade" data-backdrop="static">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">FORM ADD SCHEDULE</h5>
+                                    <button type="button" name="close" class="close" data-dismiss="modal" aria-label="Đóng">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="modal-body">
+                                    <form method="post" class="form-form" action="addschedule.php"> <br>
+                                        <input type="hidden" id="schedule-id" name="id"  />
+
+                                        <label for="room" class="title-title">Room:</label>
+                                        <select id="room" name="room">
+                                            <?php 
+                                            $queries=mysqli_query($conn,"SELECT * from room");
+                                            While($room=mysqli_fetch_assoc($queries)){
+                                            ?>
+                                            <option><?=$room['name'] ?></option>
+                                            <?php     
+                                            }
+                                            ?>
+                                        </select>
+                                        <br><br>
+                                        <label for="date" class="title-title">Movie date:</label>
+                                        <input type="date" class="input-btn" name="movie_date"><br><br>
+                                        <label for="begin" class="title-title">Time begin:</label>
+                                        <input name="begin" type="time" class="input-btn" ><br> <br>
+                                        <label for="end" class="title-title">Time end:</label>
+                                        <input name="end" type="time" class="input-btn" ><br> <br>
+                                        <label for="price" class="title-title">Price:</label>
+                                        <input name="price" type="number" class="input-btn" ><br> <br>
+                                        <div class="modal-footer">
+                                            <input type="submit" name='submit' class="btn bg-danger text-white" >
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="table-responsive">
                         <table class="table table-responsive" id="dataTable" width="100%" cellspacing="0">
@@ -185,6 +264,7 @@ error_reporting(0);
                                 <?php
                                 $sql = "SELECT * FROM movie";
                                 $sqli = mysqli_query($conn, $sql);
+                                $data=[];
                                 if (mysqli_num_rows($sqli) > 0) {
                                     while ($row = mysqli_fetch_assoc($sqli)) {
                                         $m_id = $row['id'];
@@ -206,11 +286,14 @@ error_reporting(0);
                                             $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
                                             while ($cat = mysqli_fetch_assoc($sql1)) {
                                                 echo $cat['name'];
+                                                array_push($data,$cat['name']);
                                             }
                                             echo "</p>";
                                         }
                                         echo  "</td>";
-                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] . "'data-trailer='" . $row['trailer'] . "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a></td>";
+                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] .
+                                         "'data-trailer='" . $row['trailer'] . "' data-cat='"; echo htmlspecialchars(json_encode($data)); echo "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a>
+                                         <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='".$row['id']."'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -235,6 +318,7 @@ error_reporting(0);
             // Khi nút chỉnh sửa được click
             $(".btn-edit").click(function() {
                 // Lấy dữ liệu từ data attribute của nút chỉnh sửa
+                var id = $(this).data("id");
                 var name = $(this).data("name");
                 var avatar = $(this).data("avatar");
                 var premiere_date = $(this).data("premiere_date");
@@ -242,18 +326,30 @@ error_reporting(0);
                 var description = $(this).data("description");
                 var trailer = $(this).data("trailer");
                 // Điền dữ liệu vào form
-                var id = $(this).data("id");
                 $("#id").val(id);
+                console.log('edit', $("#id").val(id));
                 $("#name").val(name);
                 $("#premiere_date").val(premiere_date);
                 $("#country").val(country);
                 $("#description").val(description);
                 $("#trailer ").val(trailer);
                 $("#avatar").val(avatar);
-                // Mở modal chỉnh sửa
-                $("#editModal").modal("show");
+                //cat
+                var data = JSON.parse($(this).attr('data-cat'));
+                var cat=JSON.stringify(data);
+                $('input[name="cat[]"').each(function(){
+                    if (data.includes($(this).val())) {
+                        $(this).attr("checked", "")
+                    }
+                });
                 
             });
+            $(".btn-schedule").click(function() {
+                var id = $(this).data("id");
+                $("#schedule-id").val(id);
+                // console.log(id);
+                // console.log("schedule", $("#id").val(id));
+            })
         });
     </script>
 </body>

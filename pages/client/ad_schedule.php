@@ -1,3 +1,23 @@
+<?php
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "cinema";
+
+// Create connection
+$conn = mysqli_connect($host, $user, $password, $database);
+mysqli_set_charset($conn, "UTF8");
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+//  echo "Connected Successfully !";
+error_reporting(0);
+
+// 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +47,7 @@
             <div class="col-lg-2 background-left ">
                 <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">MoonLight</b></div>
                 <div class="row">
-                    <a href="ad_user.php" class="icon-item">
+                    <a href="ad_user.php" class="icon-play">
                         <ion-icon name="person"></ion-icon>
                         <b> User</b>
                     </a>
@@ -39,7 +59,7 @@
                     </a>
                 </div><br><br>
                 <div class="row">
-                    <a href="ad_schedule.php" class="icon-play">
+                    <a href="ad_schedule.php" class="icon-item">
                         <i class="fa-solid fa-calendar-days"></i>
                         <b> Schedule</b>
                     </a>
@@ -61,7 +81,7 @@
                     <div class="col-sm-3">
                         <span class="bar-user">User </span>
                         <span class="line-line">/</span>
-                        <span class="bar-film">Films</span>
+                        <span class="bar-film">Schedule</span>
                     </div>
                     <div class="col-sm-6">
                         <!--  -->
@@ -71,6 +91,7 @@
                         <span class="name-acc">Kieu hi</span>
                     </div>
                 </div>
+                
                 <div class="container"> <br><br>
                     <!-- table -->
                     <div class="table-responsive">
@@ -78,71 +99,41 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Full name</th>
-                                    <th>Create at</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
+                                    <th>Movie</th>
+                                    <th>Room</th>
+                                    <th>Movie Date</th>
+                                    <th>Time Begin</th>
+                                    <th>Time End</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>
+                            </thead>  
                             <tbody id="tab">
                                 <?php
-                                $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
-                                $query = "select * from users ";
-                                $result = mysqli_query($connect, $query) or die("query Erorr!");
-                                $i = 1;
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $account_id = $row['account_id'];
-                                    $account = mysqli_query($connect, "select * from account where id='$account_id'") or die("query Erorr!");
-                                ?>
-                                    <tr>
-                                        <td><?php echo $row['id'] ?></td>
-                                        <td><?php echo $row['full_name'] ?></td>
-                                        <td><?php echo $row['create_at'] ?></td>
-                                        <td><?php echo $row['phone'] ?></td>
-                                        <?php
-                                        while ($row1 = mysqli_fetch_assoc($account)) {
-                                        ?>
-                                            <td><?php echo $row1['email'] ?></td>
-                                            <td><?php {
-                                                    if ($row1['status']) {
-                                                        echo "Active";
-                                                ?>
-                                            </td>
-                                            <td>
-                                                <ion-icon name="trash-outline" class="del-icon"></ion-icon>
-                                                <ion-icon name="lock-closed-outline" class="lock-icon"></ion-icon>
-                                            </td>
-                                        <?php
-                                                    } else {
-                                                        echo "<p style='color: gray'>Inactive</p>"; ?>
-                                            </td>
-                                            <td>
-                                                <button id="btn_act"><ion-icon name="trash-outline" class="del-icon"></ion-icon></button>
-                                                <button id="btn_act"><ion-icon name="lock-open-outline" class="unlock-icon"></ion-icon>
-                                                </button>
-                                            </td>
-                                <?php
-                                                    }
-                                                }
-                                            }; ?>
-                                    </tr>
-                                <?php
-                                    $i++;
+                                $sql = "SELECT * FROM schedule";
+                                $sqli = mysqli_query($conn, $sql);
+                                $data=[];
+                                if (mysqli_num_rows($sqli) > 0) {
+                                    while ($row = mysqli_fetch_assoc($sqli)) {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['id'] . "</td>";
+                                        echo "<td><p>" . $row['movie_id'] . "</p></td>";
+                                        echo "<td>" . $row['room_id'] . "</td>";
+                                        echo "<td>" . $row['movie_date'] . "</td>";
+                                        echo "<td>" . $row['time_begin'] . "</td>";
+                                        echo "<td>" . $row['time_end'] . "</td>";
+                                        echo "<td>" . $row['price'] . "</td>";
+                                        
+                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] .
+                                         "'data-trailer='" . $row['trailer'] . "' data-cat='"; echo htmlspecialchars(json_encode($data)); echo "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a>
+                                         <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='".$row['id']."'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                    echo "Không có sản phẩm nào.";
                                 }
                                 ?>
-
-                                <td>01</td>
-                                <td>Kieu hi</td>
-                                <td>29/11/2023</td>
-                                <td>0987678901</td>
-                                <td>kieu.ho24@gmai.com</td>
-                                <td>Hoạt động</td>
-                                <td>
-                                    <ion-icon name="trash-outline" class="del-icon"></ion-icon>
-                                </td>
-                            </tbody>
+                            </tbody>   
                         </table>
                     </div>
                 </div>

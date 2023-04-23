@@ -159,7 +159,11 @@
     font-size: 1.3rem;
     margin-left: 0.2rem;
 }
-
+.icon-ac-add{
+    color: #16FF00;
+    font-size: 1.3rem;
+    margin-left: 0.2rem;
+}
 /* Modal */
 .input-btn {
     border-radius: 4px;
@@ -169,7 +173,10 @@
 .input-btn:hover {
     border-radius: 4px;
 }
-
+.btn-edit, .btn-schedule{
+    border: none;
+    background-color: #0B1A2A;
+}
 .modal-header {
     background: #E00813;
 }
@@ -209,3 +216,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 } */
+.form-form label{
+    color:#fff
+}
