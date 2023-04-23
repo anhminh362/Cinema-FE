@@ -1,0 +1,61 @@
+body{
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url("https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/605efb4da30cae001d8f2eee.jpg");
+    background-repeat: none;
+    background-size: cover;
+    
+   
+    /* opacity: 3px; */
+}
+.logo{
+    position: relative;
+    top: 5px;
+    left: 100px;
+    height: 100px;
+    width: 110px;
+}
+.logo_text{
+    position: absolute;
+    left: 230px;
+    top: 40px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    color: red;
+}
+
+
+.header{
+    position: fixed;
+    font-family: Verdana, Tahoma, sans-serif;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+}
+h1{
+    text-align: center;
+    color: red;
+}
+hr{
+    border: 1.6px dashed rgb(255, 255, 255);
+    width: 84%;
+}
+table{
+    position: relative;
+    bottom: 20px;
+    margin-left: 100px;
+    padding-left: 100px;
+    height: 20px;
+}
+
+.form-group{
+    
+    position: relative;
+    color: white;   
+}
+.name{
+    margin-left: 200px;
+   
+}
+.name-item{
+    margin-left: 80px;
+}

@@ -38,61 +38,74 @@
     <!-- Background-img -->
     <div class="background-img">
         <!-- Content -->
+    <?php
+
+        $connect = mysqli_connect("localhost", "root", "", "cinema") or die("abc");
+        $sql = "select * from movie where id=$id";
+        $sql_catag= "select * from category where id=$name";
+        $result = mysqli_query($connect, $sql, $sql_catag) or die("fail");
+        
+        $row = mysqli_fetch_array($result)
+        
+    ?>
         <div class="container"> 
             <br><br><br><br><br><br>
             <div class="row">
                 <div class="col-sm-4">
                     <img class="card-item"src="https://2sao.vietnamnetjsc.vn/2016/04/18/16/57/1.jpg" alt="">
+                    <?php echo $row['avata']?>
                 </div>
                 <div class="col-sm-6">
-                    <h1 class="title-film">Avatar</h1>
+                    <h1 class="title-film">Avatar 
+                        <?php echo $row['name']?>
+                    </h1>
                     <!-- icon -->
                     <div class="row">
                         <div class="col-sm-3">
                             </svg><link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
-                            <i  class="fi fi-rs-star"> 7.4</i>
+                            <i class="fi fi-rs-star"> 7.4 <?php echo $row['premiere_date']?> </i>
+                            
                         </div>
                         <div class="col-sm-3">
                             <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-                            <i class="fi fi-br-clock-five"> 1h 40min</i>
+                            <i class="fi fi-br-clock-five"> 1h 40min <?php echo $row['premiere_date']?> </i>
                         </div>
                         <div class="col-sm-3">
                             <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-                            <i class="fi fi-rr-social-network"> 90</i>
+                            <i class="fi fi-rr-social-network"> 90 <?php echo $row['premiere_date']?> </i>
                         </div>
                         <div class="col-sm-3">
                             <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
-                            <i class="fi fi-ss-calendar"> 2023</i>
+                            <i class="fi fi-ss-calendar"> 2023 <?php echo $row['premiere_date']?> </i>
                         </div>
                     </div> <br>
                     <div class="row"> 
                         <p class="text-detail">
-                            Avatar (also marketed as James Cameron's Avatar) is a 2009 epic science fiction 
-                            film directed, written, co-produced, and co-edited by James Cameron and starring
-                            Sam Worthington, Zoe Saldana , Stephen Lang, Michelle Rodriguez, and Sigourney Weaver.
+                            <?php echo $row['description']?>
                         </p>
                     </div> <br><br><br>
                     <div class="row">
                         <div class="col-sm-4">
                             <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-                            <i class="fi fi-sr-flag-alt"> Country</i>
+                            <i class="fi fi-sr-flag-alt"> Country </i>
                         </div>
                         <div class="col-sm-4">
-                            <button  class="contry-item">US</button>
+                            <button  class="contry-item">US <?php echo $row['country']?></button>
                         </div>
                         <div class="col-sm-4">
                             <!--  -->
                         </div>
                     </div> <br><br> 
+                    
                     <div class="row">
                         <div class="col-sm-4">
                             <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
                             <i class="fi fi-ss-tags"> Genres</i>
                         </div>
                         <div class="col-sm-6">
-                            <button class="type-tiem">Animation</button> &nbsp;
-                            <button class="type-tiem">Advanture</button>&nbsp;
-                            <button class="type-tiem">Comedy</button>
+                            <button class="type-tiem">Animation <?php echo $row['name']?> </button> &nbsp;
+                            <button class="type-tiem">Advanture <?php echo $row['name']?>  </button>&nbsp;
+                            <button class="type-tiem">Comedy <?php echo $row['name']?> </button>
                         </div>
                         <div class="col-sm-2">
                             <!--  -->
@@ -100,7 +113,7 @@
                     </div>
                     <div class="row">
                        <div class="col-sm-4"> <br><br>
-                            <a href="#" class="book-btn">Book now</a>
+                            <a href="#" class="book-btn"> Book now </a>
                        </div>
                        <div class="col-sm-8">
                         <!--  -->
@@ -110,11 +123,11 @@
                 <div class="col-sm-1"> <br><br><br><br><br><br><br><br><br><br><br><br><br>
                     <!-- traller film -->
                     <div class="play-btn" onclick="playVideo('https://youtu.be/gq2xKJXYZ80')">
-                        <ion-icon name="play-circle"></ion-icon>
+                      <ion-icon name="play-circle"></ion-icon>
                     </div> 
                 </div>
                 <div class="col-sm-1"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <h5 class="watch-trailer">Watch Trailer</h5>
+                    <h5 class="watch-trailer">Watch Trailer <?php echo $row['trailer']?></h5>
                 </div>
             </div>
         </div>
@@ -242,7 +255,7 @@
             </div>
         </div>
         </div>
-</footer>
+    </footer>
 <!--JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script>
