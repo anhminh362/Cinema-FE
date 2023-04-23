@@ -62,64 +62,47 @@
     <div class="row">
         <h3>Upcoming Movies</h3>
     </div><br>
-    <?php 
-        $sql = "SELECT * FROM movie";
-        $sqli = mysqli_query($conn,$sql);
-        if ($sqli->num_rows > 0){
-            while($row = mysqli_fetch_assoc($sqli)){
+ <?php
+        $sql = "SELECT movie.name AS movie_name, GROUP_CONCAT(category.name SEPARATOR ', ') AS cat_names, movie.avatar AS avatar
+        FROM movie
+        LEFT JOIN movie_cat ON movie.id = movie_cat.movie_id
+        LEFT JOIN category ON movie_cat.cat_id = category.id WHERE movie.premiere_date > NOW()
+        GROUP BY movie.id";
+        $sqli = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($sqli) > 0) {
+        echo '<div class="row">';
+        while ($row = mysqli_fetch_assoc($sqli)) {
+            echo '<div class="col-md-3">';
             ?>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card" style="width:260px; background: rgba(0, 0, 0, 0.3); ">
-                            <img class="card-img-top" src="<?php echo $row['avatar']; ?>" alt="Card image" style="width:100%">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $row['name']; ?></h5>
-                                <p class="card-text"><?php echo $row['name']; ?></p>
-                                <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                                <span><a href="#" class="btn btn-success" style="margin-left:25px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                            <img class="card-img-top" src="<?php echo $row['avatar']; ?>" alt="Card image" style="width:100%">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $row['name']; ?></h5>
-                                <p class="card-text"><?php echo $row['name']; ?></p>
-                                <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                                <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                            <img class="card-img-top" src="<?php echo $row['avatar']; ?>" alt="Card image" style="width:100%">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $row['name']; ?></h5>
-                                <p class="card-text"><?php echo $row['name']; ?></p>
-                                <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                                <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card" style="width:250px; background: rgba(0, 0, 0, 0.3);">
-                            <img class="card-img-top" src="<?php echo $row['avatar']; ?>" alt="Card image" style="width:100%">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $row['name']; ?></h5>
-                                <p class="card-text"><?php echo $row['name']; ?></p>
-                                <p><a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                                <span><a href="#" class="btn btn-success" style="margin-left:19px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span></p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="card" style="width:260px; background: rgba(0, 0, 0, 0.3); ">
+                <img class="card-img-top" src="<?php echo $row['avatar']; ?>" style="width:100%">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['movie_name']; ?></h5>
+                    <p class="card-text">Categories: <?php
+                    $cat_names = explode(', ', $row['cat_names']);
+                    foreach ($cat_names as $cat_name) {
+                        echo '<span class="badge badge-primary mr-1">'. $cat_name . '</span>';
+                    }
+                    ?></p>
+                    <p>
+                        <a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
+                        <span><a href="#" class="btn btn-success" style="margin-left:25px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span>
+                    </p>
                 </div>
-            <?php 
-                }
-            }else{
-                echo "0 results";
-            }
-    ?>
+            </div>  <br>  
+            <?php
+            echo '</div>';
+        }
+        echo '</div>';
+        }   
+        else {
+            echo "<script>
+                    alert(\"Không có phim nào phù hợp!\");
+                </script>";  
+    }  
+            // }  
+    
+?>
 </div>
 <!--  -->
 <footer>
@@ -169,3 +152,17 @@
 </footer>
 </body> 
 </html>
+<?php 
+    // $row = 1;
+    // while ($row <= 4) {
+    //     echo "<tr>";
+    //     $col = 1;
+    //     while ($col <= 3) {
+    //         echo "<td>Row: $row - Col: $col</td>";
+    //         $col++;
+    //     }
+    //     echo "</tr>";
+    //     $row++;
+    // }
+    ?>
+?>
