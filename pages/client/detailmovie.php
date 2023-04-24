@@ -26,7 +26,7 @@ session_start();
 
 <body>
     <!-- Header -->
-    <nav class="header">
+    <!-- <nav class="header">
         <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
         <ul>
             <li><a href="homepage.php">Home</a></li>
@@ -52,7 +52,8 @@ session_start();
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-    </nav>
+    </nav> -->
+    <?php include 'header.php'?>
     <!-- Background-img -->
     <div class="background-img">
         <!-- Content -->
@@ -77,9 +78,9 @@ session_start();
                 }
 
 
-                $_SESSION['id'] = 6;
-                if (isset($_SESSION['id'])) {
-                    $id = $_SESSION['id'];
+                
+                if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
                     $connect = mysqli_connect("localhost", "root", "", "cinema") or die("abc");
                     $sql = "SELECT * from movie where id='$id'";
                     $result = mysqli_query($connect, $sql) or die("fail");
@@ -103,13 +104,19 @@ session_start();
                                 <i class="fi fi-br-clock-five">
                                     <?php 
                                     $time = "SELECT * from schedule where movie_id='$id' limit 1 ";
-                                    $result1 = mysqli_query($connect, $time) or die("query Erorr!");
+                                    
+                                    $result1 = mysqli_query($connect, $time);
+                                    if(mysqli_num_rows($result1)>0){
                                     $row1 = mysqli_fetch_assoc($result1);
                                     $h_begin = date("H", strtotime($row1['time_begin']));
                                     $h_end = date("H", strtotime($row1['time_end']));
                                     $m_begin = date("i", strtotime($row1['time_begin']));
                                     $m_end = date("i", strtotime($row1['time_end']));
                                     echo movietime($h_begin, $m_begin, $h_end, $m_end); 
+                                    }
+                                    else{
+                                        echo "unknown";
+                                    }
                                     ?> 
                                 </i>
                             </div>
