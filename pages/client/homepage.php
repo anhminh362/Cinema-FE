@@ -17,55 +17,63 @@
             crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/11a9c95312.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../style/homepage.css">
+<!--    <link rel="stylesheet" href="../../style/search.css">-->
     <script src="https://code.jquery.com/jquery-3.6.4.js"
             integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <title>MoonLight</title>
 </head>
 <body>
-<nav class="header">
-    <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png"
-              alt=""><b class="logo_text">Moonlight</b></div>
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Movies</a>
-            <ul id="type-movies">
-                <li><a href="">Playing</a></li>
-                <li><a href="">Upcoming</a></li>
-            </ul>
-        </li>
-        <li>
-            <input id="search" type="text">
-            <a href=""><i class="fas fa-magnifying-glass"></i></a></li>
-        <li><a href="login.php">Login <i class="fas fa-user icon_user"></i></a></li>
-    </ul>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#search').keyup(function () {
-                const search_site = document.querySelector('.search_site');
 
-                search_site.classList.remove('display_none');
-                var search_text = $('#search').val();
-                $.post('search.php', {data: search_text}, function (data) {
-                    $('.search_result').html(data);
+<!--<nav class="header">-->
+<!--    <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png"-->
+<!--              alt=""><b class="logo_text">Moonlight</b></div>-->
+<!--    <ul>-->
+<!--        <li><a href="#">Home</a></li>-->
+<!--        <li><a href="#">Movies</a>-->
+<!--            <ul id="type-movies">-->
+<!--                <li><a href="">Playing</a></li>-->
+<!--                <li><a href="">Upcoming</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input id="search" type="text">-->
+<!--            <a href=""><i class="fas fa-magnifying-glass"></i></a></li>-->
+<!--        <li><a href="login.php">Login <i class="fas fa-user icon_user"></i></a></li>-->
+<!--    </ul>-->
+<!---->
+<!--    <script type="text/javascript">-->
+<!--        $(document).ready(function () {-->
+<!--            $('#search').keyup(function () {-->
+<!--                const search_site = document.querySelector('.search_site');-->
+<!---->
+<!--                search_site.classList.remove('display_none');-->
+<!--                var search_text = $('#search').val();-->
+<!--                $.post('search.php', {data: search_text}, function (data) {-->
+<!--                    $('.search_result').html(data);-->
+<!---->
+<!--                })-->
+<!---->
+<!--                document,addEventListener('click', function (ev) {-->
+<!--                    if (ev.target.closest('.search_site'))return-->
+<!--                    search_site.classList.add('display_none')-->
+<!---->
+<!--                })-->
+<!--            })-->
+<!---->
+<!--        })-->
+<!---->
+<!--    </script>-->
+<!---->
+<!--    <label for="check" class="checkbtn">-->
+<!--        <i class="fas fa-bars"></i>-->
+<!--    </label>-->
+<!--</nav>-->
+<?php
+include 'header.php'
+?>
+</body>
 
-                })
-
-                document,addEventListener('click', function (ev) {
-                    if (ev.target.closest('.search_site'))return
-                    search_site.classList.add('display_none')
-
-                })
-            })
-
-        })
-
-    </script>
-
-    <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-    </label>
-</nav>
 <div id="slider" class="carousel carousel-light slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active" aria-current="true"
@@ -432,10 +440,7 @@
 </footer>
 
 </body>
-<div class="search_site">
-    <div class="search_result">
-    </div>
-</div>
+
 
 </html>
 

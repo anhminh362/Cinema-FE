@@ -1,8 +1,8 @@
 <?php
 $conn = mysqli_connect("localhost", 'root', '', 'cinema');
-$quan = $_POST['data'];
-if (isset($quan)) {
-    $sql = "SELECT * FROM cinema.movie where name like '%$quan%' ";
+$search_info = $_POST['data'];
+if (isset($search_info)) {
+    $sql = "SELECT * FROM cinema.movie where name like '%$search_info%' ";
     $query = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($query);
     if ($num > 0) {
@@ -15,16 +15,12 @@ if (isset($quan)) {
                              src="<?php echo $row['avatar'] ?>">
                     </div>
                     <div class="movie_info">
-                        <p class="movie_name"><?php echo $row['name'] ?></p>
+                        <a href="detailmovie.php?id=<?php echo $row['id'] ?>"><?php echo $row['name'] ?></a>
                     </div>
                 </div>
             </div>
-
-
             <?php
-
         }
     } else ;
 }
-
 ?>
