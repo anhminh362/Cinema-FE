@@ -62,9 +62,6 @@ body{
 .header ul li a:hover{
     color: var(--title--color);
 }
-.header ul li a:hover > .icon_user {
-    color: var(--title--color);
-}
 .header #type-movies{
     display: inline-block;
     position: absolute;
