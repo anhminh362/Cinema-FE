@@ -59,22 +59,20 @@ session_start();
         die("Connection failed: " . $conn->connect_error);
         }
         echo "Connected successfully";
-        $query="SELECT * FROM `movie` WHERE id<'4';";
-        $result=mysqli_query($conn,$query)or die("Error");
-        $row =mysqli_fetch_assoc($result);
+        $query="SELECT * FROM `movie` WHERE id=1";
+        $result1=mysqli_query($conn,$query)or die("Error");
+        $row1 =mysqli_fetch_assoc($result1);
         
-        // Lấy số hàng trả về
-    
-    // if ($row) {
-    //     while ($row = mysqli_fetch_array($result)) {            
-    //     } 
-    // } 
-        // $dbs = array();
-        // while($db = mysqli_fetch_row($result))
-        // $dbs[] = $db[0];
-        // echo implode('<br/>', $dbs);
-
-
+?>
+<?php
+//     $query = mysqli_query($connect, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+//     while ($cat = mysqli_fetch_assoc($query)) {
+//     $cat_id = $cat['cat_id'];
+//     $sql1 = mysqli_query($connect, "SELECT * FROM category WHERE id='$cat_id'");
+//     while ($cat = mysqli_fetch_assoc($sql1)) {
+//     echo  "<button class='type-tiem'>".$cat['name']."</button> &nbsp;";
+//     }
+// }
 ?>
         <div id="slider" class="carousel carousel-light slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -84,9 +82,10 @@ session_start();
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active" data-bs-interval="10000">
-                  <div class="img" style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://cdnimg.vietnamplus.vn/uploaded/bokttj/2023_01_02/avatar_the_way_of_water.jpg');"></div>
+                  <div class="img" style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://cdnimg.vietnamplus.vn/uploaded/bokttj/2023_01_02/avatar_the_way_of_water.jpg')"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-movie"><?php echo $row['name']?></h3>
+                    <h3 class="text-movie"><?php  echo $row1['name'];?>
+                     </h3>
                     <p class="text-movies">
                         Avatar is a Hollywood blockbuster.The film was carefully<br>
                         invested in both technical effects and content when the <br>
@@ -96,9 +95,17 @@ session_start();
                 </div>
               </div>
               <div class="carousel-item" data-bs-interval="2000">
-                <div class="img" style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://touchcinema.com/storage/phim-gia-dinh-addams/phim-gia-dinh-addams.jpg');"></div>
+                <div class="img" style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)), url('https://touchcinema.com/storage/phim-gia-dinh-addams/phim-gia-dinh-addams.jpg')"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-movie"><?php echo $row['name']?></h3>
+                    <h3 class="text-movie"><?php  
+                        $query="SELECT * FROM `movie` WHERE id=2";
+                        $result2=mysqli_query($conn,$query)or die("Error");
+                        $row2 =mysqli_fetch_assoc($result2);
+                     if (isset($row2)) { 
+                            echo $row2['name'];                         
+                        } 
+                        
+                     ?></h3>
                     <p class="text-movies">
                         Wednesday is an American teen horror, comedy and supernatural<br>
                         television series based on the character Wednesday - the "dark"<br>
@@ -111,7 +118,13 @@ session_start();
               <div class="carousel-item" data-bs-interval="3000">
                 <div class="img" style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://images4.alphacoders.com/119/1199746.jpg');"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="text-movie"><?php echo $row['name']?></h3>
+                    <h3 class="text-movie"><?php  $query="SELECT * FROM `movie` WHERE id=3";
+                                $result3=mysqli_query($conn,$query)or die("Error");
+                                 $row3 =mysqli_fetch_assoc($result3);
+                     if (isset($row3)) { 
+                            echo $row3['name'];                         
+                        }              
+                     ?></h3>
                     <p class="text-movies">
                         It is a long established fact that a reader will be readable<br>
                         content of a page when looking at its layout. The point of using<br>
@@ -133,78 +146,101 @@ session_start();
           </div>
      <!-- Body -->
      <br><br>
-     <?php 
-     $query="Select * from movie where id<4";
-    //  $result=mysqli_query($conn,$query)or die("Error");
-    //  $row =mysqli_fetch_assoc($result);
-     if ($result->num_rows > 0) {
-         // output data of each row
-         while($row = $result->fetch_assoc()) {
-         }
-       } else {
-         echo "0 results";
-       }
-     ?>
      <h5 class="text-title">Trending</h5>
     <div class="direction">
         <button id="prev"><b><</b></button>
         <button id="next"><b>></b></button>
     </div>
+    <?php 
+    $query="SELECT * FROM `movie` WHERE id=4";
+    $result4=mysqli_query($conn,$query)or die("Error");
+    $row4 =mysqli_fetch_assoc($result4); 
+    ?>
         <div id="formlist">
             <div id="list">
                 <div class="item">
-                    <img src="https://i.ytimg.com/vi/l0_xBH0vhwM/maxresdefault.jpg" alt="" class="movies">
+                    <img src="../../asset/picture/<?php  echo $row4['avatar'];?>" alt="" class="movies">
                     <div class="overlay">
-                        <h5></h5>
+                        <h5><?php echo $row4['name']?></h5>
                         <p>Children/Advent</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+        <?php 
+        $query="SELECT * FROM `movie` WHERE id=5        ";
+        $result5=mysqli_query($conn,$query)or die("Error");
+        $row5 =mysqli_fetch_assoc($result5); 
+        ?>
                 <div class="item">
-                    <img src="https://congluan-cdn.congluan.vn/files/content/2022/04/27/301-10411099.jpg" alt="" class="movies">
+                    <img src="../../asset/picture/<?php  echo $row5['avatar'];?>" alt="" class="movies">
                     <div class="overlay">
-                        <h5>Morbius</h5>
+                        <h5><?php echo $row5['name']?></h5>
                         <p>Action/Fantasy</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                <?php 
+        $query="SELECT * FROM `movie` WHERE id=6        ";
+        $result6=mysqli_query($conn,$query)or die("Error");
+        $row6 =mysqli_fetch_assoc($result6); 
+        ?>
                 <div class="item">
-                    <img src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/t/e/teaser_cgtqk_640x396.jpg" alt="" class="movies">
+                <img src="../../asset/picture/<?php  echo $row6['avatar'];?>" alt="" class="movies">
                     <div class="overlay">
-                        <h5>Cô Gái Từ Quá Khứ</h5>
+                        <h5><?php echo $row6['name'] ?></h5>
                         <p>Children/Advent</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                <?php 
+        $query="SELECT * FROM `movie` WHERE id=7        ";
+        $result7=mysqli_query($conn,$query)or die("Error");
+        $row7 =mysqli_fetch_assoc($result7); 
+        ?>
                 <div class="item">
-                    <img src="https://i.ytimg.com/vi/33xtZdR0amI/maxresdefault.jpg" alt="" class="movies">
+                <img src="../../asset/picture/<?php  echo $row7['avatar'];?>" alt="" class="movies">
                     <div class="overlay">
-                        <h5>Mèo Béo Siêu Đẳng</h5>
+                        <h5><?php echo $row7['name'] ?></h5>                        
                         <p>Children/Comedy</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                <?php 
+        $query="SELECT * FROM `movie` WHERE id=8        ";
+        $result8=mysqli_query($conn,$query)or die("Error");
+        $row8 =mysqli_fetch_assoc($result8); 
+        ?>
                 <div class="item">
-                    <img src="https://genk.mediacdn.vn/139269124445442048/2022/12/27/1-16720443428991073681271-1672126337007-16721263374062074075884.jpg" alt="" class="movies">
-                    <div class="overlay">
-                        <h5>Harry Potter</h5>
+                <img src="../../asset/picture/<?php  echo $row8['avatar'];?>" alt="" class="movies">                    
+                <div class="overlay">
+                        <h5><?php echo $row8['name'] ?></h5>                        
                         <p>Children/Advent</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                <?php 
+        $query="SELECT * FROM `movie` WHERE id=9";
+        $result9=mysqli_query($conn,$query)or die("Error");
+        $row9 =mysqli_fetch_assoc($result9); 
+        ?>
                 <div class="item">
-                    <img src="https://canhrau.com/wp-content/uploads/2021/12/top-phim-chieu-rap-hay-nhat-moi-thoi-dai-hinh-9.jpg" alt="" class="movies">
-                    <div class="overlay">
-                        <h5>Em của thời niên thiếu</h5>
-                        <p>Drama/Romance</p>
+                <img src="../../asset/picture/<?php  echo $row9['avatar'];?>" alt="" class="movies">                    
+                <div class="overlay">
+                    <h5><?php echo $row9['name'] ?></h5>                        
+                    <p>Drama/Romance</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                <?php 
+        $query="SELECT * FROM `movie` WHERE id=10 ";
+        $result10 =mysqli_query($conn,$query)or die("Error");
+        $row10  =mysqli_fetch_assoc($result10 ); 
+        ?>
                 <div class="item">
-                    <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-2.jpg" alt="" class="movies">
-                    <div class="overlay">
-                        <h5>Vong nhi</h5>
-                        <p>Mystic/Horror</p>
+                <img src="../../asset/picture/<?php  echo $row10['avatar'];?>" alt="" class="movies">                    
+                <div class="overlay">
+                    <h5><?php echo $row10['name'] ?></h5>                        
+                    <p>Mystic/Horror</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -229,58 +265,93 @@ session_start();
             </div>
              <div id="formlist1">
                  <div id="list1">
+                      <?php 
+    $query="SELECT * FROM `movie` WHERE id=11";
+    $result11=mysqli_query($conn,$query)or die("Error");
+    $row11 =mysqli_fetch_assoc($result11); 
+    ?>
                      <div class="item1">
-                         <img src="https://kenh14cdn.com/thumb_w/620/203336854389633024/2023/3/26/photo-1-16798021860451966063186.jpg" alt="" class="movies1">
+                     <img src="../../asset/picture/<?php  echo $row11['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
-                            <h5>Tri Kỷ</h5>
+                         <h5><?php echo $row11['name'] ?></h5>                        
                             <p>Suspense, Psychology</p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
+                      <?php 
+    $query="SELECT * FROM `movie` WHERE id=12";
+    $result12=mysqli_query($conn,$query)or die("Error");
+    $row12 =mysqli_fetch_assoc($result12); 
+    ?>
                      <div class="item1">
-                         <img src="https://newsmd2fr.keeng.net/tiin/archive/imageslead/2023/03/29/thumb4_5dcf561fb49e1a9b409e25b2cde7a7e4.jpg" alt="" class="movies1">
+                     <img src="../../asset/picture/<?php  echo $row12['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
-                            <h5>Đảo tội ác</h5>
+                         <h5><?php echo $row12['name'] ?></h5>                        
                             <p>Horrified</p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
+                      <?php 
+    $query="SELECT * FROM `movie` WHERE id=13";
+    $result13=mysqli_query($conn,$query)or die("Error");
+    $row13 =mysqli_fetch_assoc($result13); 
+    ?>
                      <div class="item1">
-                         <img src="https://i.ytimg.com/vi/-3y_dBRX_Hc/maxresdefault.jpg" alt="" class="movies1">
+                     <img src="../../asset/picture/<?php  echo $row13['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
-                            <h5>Trận chiến thời tiền sử</h5>
+                         <h5><?php echo $row13['name'] ?></h5>                        
                             <p>Science Fiction/Action</p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
+                      <?php 
+    $query="SELECT * FROM `movie` WHERE id=14";
+    $result14=mysqli_query($conn,$query)or die("Error");
+    $row14 =mysqli_fetch_assoc($result14); 
+    ?>
                      <div class="item1">
-                         <img src="https://khenphim.com/wp-content/uploads/2022/02/MOONFALL-4-banner.jpg" alt="" class="movies1">
+                     <img src="../../asset/picture/<?php  echo $row14['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
-                            <h5>Moonfall</h5>
+                         <h5><?php echo $row14['name'] ?></h5>                        
                             <p>Science Fiction/Action</p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
+                      <?php 
+    $query="SELECT * FROM `movie` WHERE id=15";
+    $result15=mysqli_query($conn,$query)or die("Error");
+    $row15 =mysqli_fetch_assoc($result15); 
+    ?>
                      <div class="item1">
-                         <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-6.jpg" alt="" class="movies1">
+                     <img src="../../asset/picture/<?php  echo $row15['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
-                            <h5>Babylon</h5>
+                         <h5><?php echo $row15['name'] ?></h5>                        
                             <p>History, Psychology</p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
+                      <?php 
+    $query="SELECT * FROM `movie` WHERE id=16";
+    $result16=mysqli_query($conn,$query)or die("Error");
+    $row16 =mysqli_fetch_assoc($result16); 
+    ?>
                      <div class="item1">
-                         <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-4.jpg" alt="" class="movies1">
+                     <img src="../../asset/picture/<?php  echo $row16['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
-                            <h5>M3gan</h5>
+                         <h5><?php echo $row16['name'] ?></h5>                        
                             <p>Horrified</p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
+                      <?php 
+    $query="SELECT * FROM `movie` WHERE id=17";
+    $result17=mysqli_query($conn,$query)or die("Error");
+    $row17 =mysqli_fetch_assoc($result17); 
+    ?>
                      <div class="item1">
-                         <img src="https://s.yimg.com/ny/api/res/1.2/JK2Co4CUbuMfsA54VAwPlA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQ4Mg--/https://s.yimg.com/os/creatr-uploaded-images/2023-01/852bb1e0-9812-11ed-bffa-402342adaf95" alt="" class="movies1">
+                     <img src="../../asset/picture/<?php  echo $row17['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
-                            <h5>Dune 2</h5>
+                         <h5><?php echo $row17['name'] ?></h5>                        
                             <p>Science Fiction/Adventure</p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
@@ -311,58 +382,93 @@ session_start();
         </div>
         <div id="formlist2">
             <div id="list2">
+                 <?php 
+    $query="SELECT * FROM `movie` WHERE id=18";
+    $result18=mysqli_query($conn,$query)or die("Error");
+    $row18 =mysqli_fetch_assoc($result18); 
+    ?>
                 <div class="item2">
-                    <img src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/t/h/thumb-_q.jpg" alt="" class="movies2">
+                <img src="../../asset/picture/<?php  echo $row18['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
-                        <h5>Động quỷ</h5>
+                    <h5><?php echo $row18['name'] ?></h5>                        
                         <p>Horrified</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                 <?php 
+    $query="SELECT * FROM `movie` WHERE id=19";
+    $result19=mysqli_query($conn,$query)or die("Error");
+    $row19 =mysqli_fetch_assoc($result19); 
+    ?>
                 <div class="item2">
-                    <img src="https://lh3.googleusercontent.com/Vp_YCC8pHCZJsB-bifndGRBs88QX0fFLv3Y_wT6nh_8oPyTT2DyZ9LD3hsX88FpOKqfDaUtzgjhtmA" alt="" class="movies2">
+                <img src="../../asset/picture/<?php  echo $row19['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
-                        <h5>Xứ Sở Các Nguyên Tố</h5>
+                    <h5><?php echo $row19['name'] ?></h5>                        
                         <p>Comedy, Animation</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                 <?php 
+    $query="SELECT * FROM `movie` WHERE id=20";
+    $result20=mysqli_query($conn,$query)or die("Error");
+    $row20 =mysqli_fetch_assoc($result20); 
+    ?>
                 <div class="item2">
-                    <img src="https://vov.vn/sites/default/files/styles/front_large/public/2020-09/z_firstlook_poster_qhnd.jpg" alt="" class="movies2">
+                <img src="../../asset/picture/<?php  echo $row20['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
-                        <h5>Quỳnh Hoa Nhất Dạ</h5>
+                    <h5><?php echo $row20['name'] ?></h5>                        
                         <p>History</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                 <?php 
+    $query="SELECT * FROM `movie` WHERE id=21";
+    $result21=mysqli_query($conn,$query)or die("Error");
+    $row21 =mysqli_fetch_assoc($result21); 
+    ?>
                 <div class="item2">
-                    <img src="https://i.ytimg.com/vi/WWWDskI46Js/hq720.jpg" alt="" class="movies2">
+                <img src="../../asset/picture/<?php  echo $row21['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
-                        <h5>Quái Thú Nổi Dậy</h5>
+                    <h5><?php echo $row21['name'] ?></h5>                        
                         <p>Action, Adventure</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                 <?php 
+    $query="SELECT * FROM `movie` WHERE id=22";
+    $result22=mysqli_query($conn,$query)or die("Error");
+    $row22 =mysqli_fetch_assoc($result22); 
+    ?>
                 <div class="item2">
-                    <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/03/phim-khac-tinh-cua-quy-thumb-1.jpg" alt="" class="movies2">
+                <img src="../../asset/picture/<?php  echo $row22['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
-                        <h5>Khắc Tinh Của quỷ</h5>
+                    <h5><?php echo $row22['name'] ?></h5>                        
                         <p>Horrified</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                 <?php 
+    $query="SELECT * FROM `movie` WHERE id=23";
+    $result23=mysqli_query($conn,$query)or die("Error");
+    $row23 =mysqli_fetch_assoc($result23); 
+    ?>
                 <div class="item2">
-                    <img src="https://i.ytimg.com/vi/KzmMXT0sHWo/maxresdefault.jpg" alt="" class="movies2">
+                <img src="../../asset/picture/<?php  echo $row23['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
-                        <h5>Troll 3</h5>
+                    <h5><?php echo $row23['name'] ?></h5>                        
                         <p>Comedy, Animation</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
+                 <?php 
+    $query="SELECT * FROM `movie` WHERE id=24";
+    $result24=mysqli_query($conn,$query)or die("Error");
+    $row24 =mysqli_fetch_assoc($result24); 
+    ?>
                 <div class="item2">
-                    <img src="https://thegioidienanh.vn/stores/news_dataimages/anhvu/012022/08/12/0932_F9-ava-2-cuong-phim.jpg?rt=20220108120952" alt="" class="movies2">
+                <img src="../../asset/picture/<?php  echo $row24['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
-                        <h5>Fast and Furiou</h5>
+                    <h5><?php echo $row24['name'] ?></h5>                        
                         <p>Action/Adventure</p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
