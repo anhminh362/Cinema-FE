@@ -128,7 +128,7 @@ session_start();
                 // all values have been selected, redirect to another page
                 const url = "http://localhost:8080/cinema/pages/client/bookseat.php?day=" + selectedValues["btn_day"] +
                     "&sub=" + selectedValues["btn_sub"] +
-                    "&time=" + selectedValues["btn_time"];
+                    "&time=" + selectedValues["btn_time"]+"&m_id="+$id;
                 window.location.href = url;
             } else {
                 alert("Please select an option from each div");

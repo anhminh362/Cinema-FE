@@ -113,3 +113,15 @@ p.text{
 p.text span{
     color: rgb(158, 248, 158);
 }
+.book-btn{
+  border-radius: 5px;
+  border: none;
+  background-color: #E00813;
+  color: #ffff;
+  text-decoration: none;
+  padding: 5px;
+}
+.book-btn:hover{
+  color: #E00813;
+  background-color: #ffff;
+}
