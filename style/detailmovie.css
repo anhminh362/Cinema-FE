@@ -87,12 +87,30 @@ body{
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 30, 0.9),rgba(0, 0, 30, 0.9)), url(https://znews-photo.zingcdn.me/w660/Uploaded/rohunaa/2022_09_04/2021_Avatar_2_Films_HD_Poster_3840x2400.jpg);
+    background-image: linear-gradient(rgba(0, 0, 30, 0.9),rgba(0, 0, 30, 0.9));
     background-position: center;
     background-size: 100% auto ;
     background-repeat: no-repeat;
     column-gap: 30px;
+    /* filter: brightness(30%);
+    z-index: -10;
+    width: 100%;
+    position: absolute; */
 }
+/* .background_img{
+    filter: brightness(30%);
+    z-index: -10;
+    width: 100%;
+    position: absolute;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 30, 0.9),rgba(0, 0, 30, 0.9));
+    background-position: center;
+    background-size: 100% auto ;
+    background-repeat: no-repeat;
+    column-gap: 30px;
+} */
 /* card-img */
 .card-item{
     max-width: 500px;
