@@ -216,55 +216,7 @@ session_start();
                         }
                     ?>
 
-                    <!-- <div class="sell">
-                        <div class="icon-play">
-                            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-                            <ion-icon name="play-circle"></ion-icon>
-                        </div>
-                        <img src="https://i.ytimg.com/vi/33xtZdR0amI/maxresdefault.jpg">
-                    </div>
-
-                    <div class="sell">
-                        <div class="icon-play">
-                            <ion-icon name="play-circle"></ion-icon>
-                        </div>
-                        <img src="https://static2.vieon.vn/vieplay-image/thumbnail_big_v4/2021/12/01/84wg13sf_1920x1080_bietdoisieuanhhung_1267_712.jpg">
-                    </div>
-
-                    <div class="sell">
-                        <div class="icon-play">
-                            <ion-icon name="play-circle"></ion-icon>
-                        </div>
-                        <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/01/phim-nha-ba-nu-1.jpg">
-                    </div>
-
-                    <div class="sell">
-                        <div class="icon-play">
-                            <ion-icon name="play-circle"></ion-icon>
-                        </div>
-                        <img src="https://simg.zalopay.com.vn/zlp-website/assets/phim_chieu_rap_Viet_Nam_moi_nhat_co_gai_tu_qua_khu_995a16d6a7.jpg">
-                    </div>
-
-                    <div class="sell">
-                        <div class="icon-play">
-                            <ion-icon name="play-circle"></ion-icon>
-                        </div>
-                        <img src="https://i.ytimg.com/vi/fVRchcTboNM/maxresdefault.jpg">
-                    </div>
-
-                    <div class="sell">
-                        <div class="icon-play">
-                            <ion-icon name="play-circle"></ion-icon>
-                        </div>
-                        <img src="https://i.ytimg.com/vi/UYgH1TJGXGU/maxresdefault.jpg">
-                    </div>
-
-                    <div class="sell">
-                        <div class="icon-play">
-                            <ion-icon name="play-circle"></ion-icon>
-                        </div>
-                        <img src="https://static1.dienanh.net/upload/202203/cd10ed7b-5122-4812-9346-3e5f04457fa7.jpg">
-                    </div> -->
+                    
                 </div>
             </div>
         </div> <br><br><br>

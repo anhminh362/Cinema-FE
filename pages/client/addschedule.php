@@ -41,7 +41,7 @@ if(!$conn){
                $sqli="INSERT INTO `ticket`(`schedule_id`) VALUES ('$id')";
                if(mysqli_query($conn, $sqli)){
                     echo  'Record inserted successfully into m_cat';
-                    header('location:ad_film.php');
+                    header('location:ad_schedule.php');
                }
                else {
                     echo "Lỗi: " . mysqli_error($conn);
