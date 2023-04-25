@@ -10,7 +10,7 @@
 <body>
         <div class="body">
           <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt="">
-            <b class="logo_text">Moonlight</b>
+            <b class="logo_text">Moonlight</b> <br><br><br>
             <h1>Vé Xem Phim</h1>
             <hr><br>
 

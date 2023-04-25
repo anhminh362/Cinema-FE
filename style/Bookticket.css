@@ -1,15 +1,21 @@
+body{
+    margin:0
+}
 .book-ticket {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
+    /* padding-top: 80px; */
+    /* padding-bottom: 50px; */
+    /* padding-right: 50px;
+    padding-left: 50px; */
     background-color: #06121E;
     display: flex;
+    height: 100vh;
 }
 
 .container {
     max-width: 1220px;
-    margin: 0 auto;
+    margin: auto;
+    
+    
 }
 
 .book-ticket-container {

@@ -51,79 +51,25 @@ session_start()
       <?php 
         $x=array('A','B','C','D','E');
         $ticket=array();
+        $status=array();
         $query=mysqli_query($connect,"SELECT * from ticket where schedule_id='$schedule_id' ");
         While($row=mysqli_fetch_assoc( $query)){
          array_push( $ticket,$row['id']);
+         array_push( $status,$row['status']);
         };
         // var_dump($ticket);
         $k=0;
         for($i=0;$i<5;$i++){ 
       ?>
       <div class="row" name='<?=$x[$i]?>' id='<?=$x[$i]?>'>
-          <?php for($j=1;$j<9;$j++){?>
+          <?php for($j=1;$j<9;$j++){
+             
+          ?>
             <input type="hidden" id="ticket_id" name="ticket_id"  value='<?=$ticket[$k]?>'>
-        <div class="seat" name='<?=$j?>' id='<?=$j?>'></div>
+        <div class="seat <?php if($status[$k]==0)echo 'sold'?>" name='<?=$j?>' id='<?=$j?>'></div>
         <?php $k++;} ?>
-        <!-- <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div> -->
       </div>
       <?php }?>
-<!-- 
-      <div class="row">
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat sold"></div>
-        <div class="seat sold"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-      </div>
-      <div class="row">
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat sold"></div>
-        <div class="seat sold"></div>
-      </div>
-      <div class="row">
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-      </div>
-      <div class="row">
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat sold"></div>
-        <div class="seat sold"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-      </div>
-      <div class="row">
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat"></div>
-        <div class="seat sold"></div>
-        <div class="seat sold"></div>
-        <div class="seat sold"></div>
-        <div class="seat"></div>
-      </div> -->
     </div>
 
     <p class="text">

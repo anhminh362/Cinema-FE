@@ -6,7 +6,7 @@
     <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png"
               alt=""><b class="logo_text">Moonlight</b></div>
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="homepage.php">Home</a></li>
         <li><a href="#">Movies</a>
             <ul id="type-movies">
                 <li><a href="playing.php">Playing</a></li>
