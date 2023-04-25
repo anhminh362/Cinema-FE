@@ -51,8 +51,8 @@ session_start();
         $result = mysqli_query($connect, $sql) or die("fail");
         $row = mysqli_fetch_array($result);
     ?>
-<img class ='background_img' src="../../asset/picture/<?php echo $row['avatar'] ?>" alt="">
     <?php include 'header.php'?>
+<img class ='background_img' src="../../asset/picture/<?php echo $row['avatar'] ?>" alt="">
     <!-- Background-img -->
     <div class="background-img">
         <!-- Content -->

@@ -94,7 +94,7 @@ session_start();
                     </div>
                 </div>
             </div>
-            <button id="submit-btn">Submit</button>
+            <center><button id="submit-btn">Ok</button></center>
         </div>
     </section>
     <script>
