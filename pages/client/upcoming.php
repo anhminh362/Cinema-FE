@@ -91,7 +91,7 @@ session_start();
                 <img class="card-img-top" src="<?php echo $row['avatar']; ?>" style="width:100%">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['movie_name']; ?></h5>
-                    <p class="card-text">Categories: <?php
+                    <p class="card-text"><?php
                     $cat_names = explode(', ', $row['cat_names']);
                     foreach ($cat_names as $cat_name) {
                         echo '<span class="badge badge-primary mr-1">'. $cat_name . '</span>';
