@@ -23,52 +23,6 @@
     <title>MoonLight</title>
 </head>
 <body>
-
-
-<!--<nav class="header">-->
-<!--    <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png"-->
-<!--              alt=""><b class="logo_text">Moonlight</b></div>-->
-<!--    <ul>-->
-<!--        <li><a href="#">Home</a></li>-->
-<!--        <li><a href="#">Movies</a>-->
-<!--            <ul id="type-movies">-->
-<!--                <li><a href="">Playing</a></li>-->
-<!--                <li><a href="">Upcoming</a></li>-->
-<!--            </ul>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <input id="search" type="text">-->
-<!--            <a href=""><i class="fas fa-magnifying-glass"></i></a></li>-->
-<!--        <li><a href="login.php">Login <i class="fas fa-user icon_user"></i></a></li>-->
-<!--    </ul>-->
-<!---->
-<!--    <script type="text/javascript">-->
-<!--        $(document).ready(function () {-->
-<!--            $('#search').keyup(function () {-->
-<!--                const search_site = document.querySelector('.search_site');-->
-<!---->
-<!--                search_site.classList.remove('display_none');-->
-<!--                var search_text = $('#search').val();-->
-<!--                $.post('search.php', {data: search_text}, function (data) {-->
-<!--                    $('.search_result').html(data);-->
-<!---->
-<!--                })-->
-<!---->
-<!--                document,addEventListener('click', function (ev) {-->
-<!--                    if (ev.target.closest('.search_site'))return-->
-<!--                    search_site.classList.add('display_none')-->
-<!---->
-<!--                })-->
-<!--            })-->
-<!---->
-<!--        })-->
-<!---->
-<!--    </script>-->
-<!---->
-<!--    <label for="check" class="checkbtn">-->
-<!--        <i class="fas fa-bars"></i>-->
-<!--    </label>-->
-<!--</nav>-->
 <?php
 include 'header.php'
 ?>
@@ -385,59 +339,9 @@ include 'header.php'
     }
 </script>
 <!-- FOOTER -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <ul>
-                    <li>
-                        <div><img class="logo"
-                                  src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png"
-                                  alt="">Moonlight
-                        </div>
-                    </li>
-                    <li><p class="text">We guarantee quality and satisfaction when coming to our movie ticket booking
-                            site.</p></li>
-                </ul>
-
-                <div class="contact_icon">
-                    <i class="fa-brands fa-square-facebook"></i>
-                    <i class="fa-brands fa-square-twitter"></i>
-                    <i class="fa-brands fa-square-whatsapp"></i>
-                    <i class="fa-brands fa-square-instagram"></i>
-                </div>
-            </div>
-            <div class="col-sm-3"><br>
-                <h4 class="text-footer">Quick Link</h4>
-                <ul>
-                    <li><a href="homepage.php">About Us</a></li>
-                    <li><a href="homepage.php">Movies</a></li>
-                    <li><a href="homepage.php">Partner</a></li>
-                    <li><a href="homepage.php">Help</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-3"><br>
-                <h5 class="text-footer">Important</h5>
-                <ul>
-                    <li><a href="homepage.php">Support</a></li>
-                    <li><a href="homepage.php">FAQ</a></li>
-                    <li><a href="homepage.php">Check</a></li>
-                    <li><a href="homepage.php">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-3"><br>
-                <h5 class="text-footer">Contact</h5>
-                <ul>
-                    <li><p class="text">Subscribe our newsletter to get latest update & news.</p></li>
-                    <li><input type="text" name="Send" class="Send" placeholder="   Enter Email">
-                        <button type="submit" class="btn btn-primary">Send</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    </div>
-</footer>
+<?php
+include 'footer.php'
+?>
 
 </body>
 

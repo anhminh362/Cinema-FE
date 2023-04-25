@@ -25,34 +25,33 @@ session_start();
 </head>
 
 <body>
-    <!-- Header -->
-    <!-- <nav class="header">
-        <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt=""><b class="logo_text">Moonlight</b></div>
-        <ul>
-            <li><a href="homepage.php">Home</a></li>
-            <li><a href="#">Movies</a>
-                <ul id="type-movies">
-                    <li><a href="playing.php">Playing</a></li>
-                    <li><a href="upcoming.php">Upcoming</a></li>
-                </ul>
-            </li>
-            <li><a href=""><i class="fas fa-magnifying-glass"></i></a></li>
-            <?php if (isset($_SESSION['user'])) {
-            ?>
-                <li><a href="logout.php"><?php echo $_SESSION['user'] ?><i class="fas fa-user" style="color: aliceblue;"></i></a></li>
-            <?php
-            } else {
-            ?>
-                <li><a href="login.php">Login <i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+    <?php
+    function movietime($h1, $m1, $h2, $m2)
+    {
+        if ($m2 >= $m1) {
+            $m = $m2 - $m1;
+        } else {
+            $m = $m2 + 60 - $m1;
+            $h1 += 1;
+        }
+        if ($h2 >= $h1) {
+            $h = $h2 - $h1;
+        } else {
+            $h = 24 + $h2 - $h1;
+        }
+        return $h . "h " . $m . "min";
+    }
 
-            <?php
-            }
-            ?>
-        </ul>
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-    </nav> -->
+
+    
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $connect = mysqli_connect("localhost", "root", "", "cinema") or die("abc");
+        $sql = "SELECT * from movie where id='$id'";
+        $result = mysqli_query($connect, $sql) or die("fail");
+        $row = mysqli_fetch_array($result);
+    ?>
+<img class ='background_img' src="../../asset/picture/<?php echo $row['avatar'] ?>" alt="">
     <?php include 'header.php'?>
     <!-- Background-img -->
     <div class="background-img">
@@ -60,32 +59,6 @@ session_start();
         <div class="container">
             <br><br><br><br><br><br>
             <div class="row">
-                <?php
-                function movietime($h1, $m1, $h2, $m2)
-                {
-                    if ($m2 >= $m1) {
-                        $m = $m2 - $m1;
-                    } else {
-                        $m = $m2 + 60 - $m1;
-                        $h1 += 1;
-                    }
-                    if ($h2 >= $h1) {
-                        $h = $h2 - $h1;
-                    } else {
-                        $h = 24 + $h2 - $h1;
-                    }
-                    return $h . "h " . $m . "min";
-                }
-
-
-                
-                if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-                    $connect = mysqli_connect("localhost", "root", "", "cinema") or die("abc");
-                    $sql = "SELECT * from movie where id='$id'";
-                    $result = mysqli_query($connect, $sql) or die("fail");
-                    $row = mysqli_fetch_array($result);
-                ?>
 
                     <div class="col-sm-4">
                         <img class="card-item" src="../../asset/picture/<?php echo $row['avatar'] ?>" alt="">
@@ -229,59 +202,9 @@ session_start();
         </div> <br><br><br>
     </div>
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <ul>
-                        <li>
-                            <div><img class="logo" src="../../asset/picture/3e1b693d-9dc1-43e7-b517-763a153989af-removebg-preview (2).png" alt="">Moonlight</div>
-                        </li>
-                        <li>
-                            <p class="text">We guarantee quality and satisfaction when coming to our movie ticket booking site.</p>
-                        </li>
-                    </ul>
-
-                    <div class="contact_icon">
-                        <i class="fa-brands fa-square-facebook"></i>
-                        <i class="fa-brands fa-square-twitter"></i>
-                        <i class="fa-brands fa-square-whatsapp"></i>
-                        <i class="fa-brands fa-square-instagram"></i>
-                    </div>
-                </div>
-                <div class="col-sm-3"><br>
-                    <h5 class="text-footer">Quick Link</h4>
-                        <ul>
-                            <li><a href="">About Us</a></li>
-                            <li><a href="">Movies</a></li>
-                            <li><a href="">Partner</a></li>
-                            <li><a href="">Help</a></li>
-                        </ul>
-                </div>
-                <div class="col-sm-3"><br>
-                    <h5 class="text-footer">Important</h5>
-                    <ul>
-                        <li><a href="">Support</a></li>
-                        <li><a href="">FAQ</a></li>
-                        <li><a href="">Contact Us</a></li>
-                        <li><a href="">Check</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3"><br>
-                    <h5 class="text-footer">Contact</h5>
-                    <ul>
-                        <li>
-                            <p class="text">Subscribe our newsletter to get latest update & news.</p>
-                        </li>
-                        <li><input type="text" name="Send" class="Send" placeholder="   Enter Email">
-                            <button type="submit" class="btn btn-primary">Send</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </div>
-    </footer>
+    <?php
+    include 'footer.php'
+    ?>
     <!--JavaScript -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script>

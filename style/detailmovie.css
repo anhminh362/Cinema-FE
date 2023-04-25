@@ -82,7 +82,7 @@ body{
 }
 
 /* Backgroud-img */
-.background-img{
+/* .background-img{
     height: 100vh;
     width: 100%;
     align-items: center;
@@ -92,11 +92,11 @@ body{
     background-size: 100% auto ;
     background-repeat: no-repeat;
     column-gap: 30px;
-    /* filter: brightness(30%);
+    filter: brightness(30%);
     z-index: -10;
     width: 100%;
-    position: absolute; */
-}
+    position: absolute;
+} */
 /* .background_img{
     filter: brightness(30%);
     z-index: -10;
@@ -111,6 +111,20 @@ body{
     background-repeat: no-repeat;
     column-gap: 30px;
 } */
+.background_img{
+    filter: brightness(30%);
+    height: 100vh;
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 30, 0.9),rgba(0, 0, 30, 0.9));
+    background-position: center;
+    background-size: 100% auto ;
+    background-repeat: no-repeat;
+    column-gap: 30px;
+}
 /* card-img */
 .card-item{
     max-width: 500px;
