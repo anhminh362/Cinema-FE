@@ -3,7 +3,9 @@ const seats = document.querySelectorAll(".row .seat:not(.sold)");
 const count = document.getElementById("count");
 const total = document.getElementById("total");
 const movieSelect = document.getElementById("movie");
-// const location=document.querySelectorAll(".row .seat:not(.sold)");
+const code=document.getElementById("code");
+const m_code=document.getElementById("ticket_code");
+
 
 populateUI();
 
@@ -15,19 +17,39 @@ function setMovieData(movieIndex, moviePrice) {
   localStorage.setItem("selectedMoviePrice", moviePrice);
 }
 
+
 // Update total and count
 function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
-
+  let ids = [];
+  let values=[];
+  for (let i = 0; i < selectedSeats.length; i++) {
+    let idValue = selectedSeats[i].getAttribute('id');
+    ids.push(idValue);
+    let ticketInput = selectedSeats[i].querySelector('input[type="hidden"]');
+    let ticketId = ticketInput.getAttribute('id');
+    let ticketValue = ticketInput.getAttribute('value');
+    values.push(ticketValue);
+    console.log(ticketId, ticketValue);
+    // console.log(ticketInput);
+  }
+  
+  console.log("Ids of selected seats: " + ids);
   const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
-
+  // const seatsCode=
+  console.log('selectedSeats',selectedSeats);
+  console.log('seatsIndex',seatsIndex);
+ 
   localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
 
   const selectedSeatsCount = selectedSeats.length;
 
   count.innerText = selectedSeatsCount;
   total.innerText = selectedSeatsCount * ticketPrice;
-
+  code.innerText = ids;
+  m_code.value=values;
+ 
+  if(selectedSeats)
   setMovieData(movieSelect.selectedIndex, movieSelect.value);
 }
 

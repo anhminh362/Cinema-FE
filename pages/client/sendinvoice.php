@@ -45,11 +45,6 @@
               <a class="name-item">8:00 PM - 10:00 PM</a>
             </div>
             <br>
-            <!-- <div class="form-group">
-              <a class="name">Số lượng n:</a>
-              <a class="name-item">2 người</a>
-            </div> -->
-            <!-- <br> -->
             
             <div class="form-group">
               <a class="name">Ghế ngồi   : </a>
