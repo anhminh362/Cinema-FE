@@ -66,14 +66,14 @@ session_start()
              
           ?>
             <input type="hidden" id="ticket_id" name="ticket_id"  value='<?=$ticket[$k]?>'>
-        <div class="seat <?php if($status[$k]==0)echo 'sold'?>" name='<?=$j?>' id='<?=$j?>'></div>
+        <div class="seat <?php if($status[$k]==0)echo 'sold'?>" name='<?=$j?>' id='<?=$x[$i].$j?>'></div>
         <?php $k++;} ?>
       </div>
       <?php }?>
     </div>
 
     <p class="text">
-      You have selected <span id="count">0</span> seat <span id="location">0</span> for a price of RS.<span
+      You have selected <span id="count">0</span> seat <span id="code">0</span> for a price of RS.<span
         id="total"
         >0</span
       >
