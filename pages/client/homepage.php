@@ -74,6 +74,7 @@ session_start();
 //     }
 // }
 ?>
+
         <div id="slider" class="carousel carousel-light slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -162,7 +163,19 @@ session_start();
                     <img src="../../asset/picture/<?php  echo $row4['avatar'];?>" alt="" class="movies">
                     <div class="overlay">
                         <h5><?php echo $row4['name']?></h5>
-                        <p>Children/Advent</p>
+                        <p>
+                    <?php
+                    $id=1;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }
+                    ?>
+                    </p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -175,7 +188,16 @@ session_start();
                     <img src="../../asset/picture/<?php  echo $row5['avatar'];?>" alt="" class="movies">
                     <div class="overlay">
                         <h5><?php echo $row5['name']?></h5>
-                        <p>Action/Fantasy</p>
+                        <p><?php
+                    $id=2;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -188,7 +210,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row6['avatar'];?>" alt="" class="movies">
                     <div class="overlay">
                         <h5><?php echo $row6['name'] ?></h5>
-                        <p>Children/Advent</p>
+                        <p><?php
+                    $id=3;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -201,7 +232,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row7['avatar'];?>" alt="" class="movies">
                     <div class="overlay">
                         <h5><?php echo $row7['name'] ?></h5>                        
-                        <p>Children/Comedy</p>
+                        <p><?php
+                    $id=4;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -214,7 +254,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row8['avatar'];?>" alt="" class="movies">                    
                 <div class="overlay">
                         <h5><?php echo $row8['name'] ?></h5>                        
-                        <p>Children/Advent</p>
+                        <p><?php
+                    $id=5;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -227,7 +276,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row9['avatar'];?>" alt="" class="movies">                    
                 <div class="overlay">
                     <h5><?php echo $row9['name'] ?></h5>                        
-                    <p>Drama/Romance</p>
+                    <p><?php
+                    $id=6;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -240,7 +298,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row10['avatar'];?>" alt="" class="movies">                    
                 <div class="overlay">
                     <h5><?php echo $row10['name'] ?></h5>                        
-                    <p>Mystic/Horror</p>
+                    <p><?php
+                    $id=7;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -274,7 +341,16 @@ session_start();
                      <img src="../../asset/picture/<?php  echo $row11['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
                          <h5><?php echo $row11['name'] ?></h5>                        
-                            <p>Suspense, Psychology</p>
+                            <p><?php
+                    $id=8;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
@@ -287,7 +363,16 @@ session_start();
                      <img src="../../asset/picture/<?php  echo $row12['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
                          <h5><?php echo $row12['name'] ?></h5>                        
-                            <p>Horrified</p>
+                            <p><?php
+                    $id=9;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
@@ -300,7 +385,16 @@ session_start();
                      <img src="../../asset/picture/<?php  echo $row13['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
                          <h5><?php echo $row13['name'] ?></h5>                        
-                            <p>Science Fiction/Action</p>
+                           <p><?php
+                    $id=10;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
@@ -313,7 +407,16 @@ session_start();
                      <img src="../../asset/picture/<?php  echo $row14['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
                          <h5><?php echo $row14['name'] ?></h5>                        
-                            <p>Science Fiction/Action</p>
+                            <p><?php
+                    $id=11;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
@@ -326,7 +429,16 @@ session_start();
                      <img src="../../asset/picture/<?php  echo $row15['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
                          <h5><?php echo $row15['name'] ?></h5>                        
-                            <p>History, Psychology</p>
+                            <p><?php
+                    $id=12;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
@@ -339,7 +451,16 @@ session_start();
                      <img src="../../asset/picture/<?php  echo $row16['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
                          <h5><?php echo $row16['name'] ?></h5>                        
-                            <p>Horrified</p>
+                            <p><?php
+                    $id=13;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
@@ -352,7 +473,16 @@ session_start();
                      <img src="../../asset/picture/<?php  echo $row17['avatar'];?>" alt="" class="movies1">                    
                          <div class="overlay1">
                          <h5><?php echo $row17['name'] ?></h5>                        
-                            <p>Science Fiction/Adventure</p>
+                            <p><?php
+                    $id=14;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                             <button type="button" class="btn btn-success">More Details</button>
                          </div>
                      </div>
@@ -391,7 +521,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row18['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
                     <h5><?php echo $row18['name'] ?></h5>                        
-                        <p>Horrified</p>
+                        <p><?php
+                    $id=15;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -404,7 +543,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row19['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
                     <h5><?php echo $row19['name'] ?></h5>                        
-                        <p>Comedy, Animation</p>
+                        <p><?php
+                    $id=16;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -417,7 +565,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row20['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
                     <h5><?php echo $row20['name'] ?></h5>                        
-                        <p>History</p>
+                        <p><?php
+                    $id=17;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -430,7 +587,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row21['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
                     <h5><?php echo $row21['name'] ?></h5>                        
-                        <p>Action, Adventure</p>
+                        <p><?php
+                    $id=18;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -443,7 +609,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row22['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
                     <h5><?php echo $row22['name'] ?></h5>                        
-                        <p>Horrified</p>
+                        <p><?php
+                    $id=19;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -456,7 +631,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row23['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
                     <h5><?php echo $row23['name'] ?></h5>                        
-                        <p>Comedy, Animation</p>
+                        <p><?php
+                    $id=20;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                 </div>
@@ -469,7 +653,16 @@ session_start();
                 <img src="../../asset/picture/<?php  echo $row24['avatar'];?>" alt="" class="movies2">                    
                     <div class="overlay2">
                     <h5><?php echo $row24['name'] ?></h5>                        
-                        <p>Action/Adventure</p>
+                        <p><?php
+                    $id=21;
+                    $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+                    while ($cat = mysqli_fetch_assoc($query)) {
+                    $cat_id = $cat['cat_id'];
+                    $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+                    while ($cat = mysqli_fetch_assoc($sql1)) {
+                        echo  "<span'>".$cat['names']."</span> &nbsp;";
+                    }
+                }?></p>
                         <button type="button" class="btn btn-success">More Details</button>
                     </div>
                  </div>
