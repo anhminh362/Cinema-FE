@@ -4,6 +4,7 @@ const count = document.getElementById("count");
 const total = document.getElementById("total");
 const movieSelect = document.getElementById("movie");
 const code=document.getElementById("code");
+const m_code=document.getElementById("ticket_code");
 
 
 populateUI();
@@ -21,9 +22,16 @@ function setMovieData(movieIndex, moviePrice) {
 function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
   let ids = [];
+  let values=[];
   for (let i = 0; i < selectedSeats.length; i++) {
     let idValue = selectedSeats[i].getAttribute('id');
     ids.push(idValue);
+    let ticketInput = selectedSeats[i].querySelector('input[type="hidden"]');
+    let ticketId = ticketInput.getAttribute('id');
+    let ticketValue = ticketInput.getAttribute('value');
+    values.push(ticketValue);
+    console.log(ticketId, ticketValue);
+    // console.log(ticketInput);
   }
   
   console.log("Ids of selected seats: " + ids);
@@ -39,6 +47,8 @@ function updateSelectedCount() {
   count.innerText = selectedSeatsCount;
   total.innerText = selectedSeatsCount * ticketPrice;
   code.innerText = ids;
+  m_code.value=values;
+ 
   if(selectedSeats)
   setMovieData(movieSelect.selectedIndex, movieSelect.value);
 }

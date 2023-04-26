@@ -16,6 +16,8 @@ session_start();
 </head>
 
 <body>
+    <?php
+    if(isset($_GET['id'])){?>
     <section class="book-ticket">
         <div class="container">
 
@@ -23,7 +25,8 @@ session_start();
 
                 <div class="date-list">
                     <?php
-                    $id = 6;
+                    
+                    $id = $_GET['id'];
                     $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
                     $query = "select * from schedule where movie_id='$id' ";
                     $result = mysqli_query($connect, $query) or die("query Erorr!");
@@ -34,6 +37,7 @@ session_start();
                         $day = date('j', $dateValue);
                         $name_day = substr(date('l', $dateValue), 0, 3);
                     ?>
+                        <input type="hidden" name="movie_id" value="<?=$id?>">
                         <button type="button" class="day " name="btn_day" value="<?php echo $row['movie_date'] ?>">
                             <span><?php if ($mon > 9) {
                                         echo $mon;
@@ -97,6 +101,7 @@ session_start();
             <center><button id="submit-btn">Ok</button></center>
         </div>
     </section>
+    <?php }?>
     <script>
         let selectedValues = {};
 
@@ -126,9 +131,10 @@ session_start();
                 selectedValues["btn_time"]
             ) {
                 // all values have been selected, redirect to another page
+                let id=document.querySelector('input[name="movie_id"]').value
                 const url = "http://localhost:8080/cinema/pages/client/bookseat.php?day=" + selectedValues["btn_day"] +
                     "&sub=" + selectedValues["btn_sub"] +
-                    "&time=" + selectedValues["btn_time"]+"&m_id="+$id;
+                    "&time=" + selectedValues["btn_time"]+"&m_id="+id;
                 window.location.href = url;
             } else {
                 alert("Please select an option from each div");

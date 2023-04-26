@@ -143,7 +143,7 @@ session_start();
                         </div>
                         <div class="row">
                             <div class="col-sm-4"> <br><br>
-                                <a href="bookticket.php" class="book-btn">Book now</a>
+                                <a href="bookticket.php?id=<?=$id?>" class="book-btn">Book now</a>
                             </div>
                             <div class="col-sm-8">
                                 <!--  -->
@@ -159,9 +159,7 @@ session_start();
                     <div class="col-sm-1"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                         <h5 class="watch-trailer">Watch Trailer</h5>
                     </div>
-                <?php
-                }
-                ?>
+                
             </div>
         </div>
     </div>
@@ -201,9 +199,11 @@ session_start();
             </div>
         </div> <br><br><br>
     </div>
+    
     <!-- Footer -->
     <?php
-    include 'footer.php'
+    include 'footer.php';
+    }
     ?>
     <!--JavaScript -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
