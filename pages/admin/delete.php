@@ -1,5 +1,5 @@
 <?php
-  include "connect.php";
+  include "../client/connect.php";
     $id = $_GET['id'];
     // Truy vấn SQL để xóa sản phẩm
     // $sql = "SET FOREIGN_KEY_CHECKS=0;";

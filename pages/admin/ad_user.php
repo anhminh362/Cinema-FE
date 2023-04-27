@@ -82,6 +82,7 @@
                                     <th>Create at</th>
                                     <th>Phone</th>
                                     <th>Email</th>
+                                    <th>Role</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -94,6 +95,7 @@
                                 $i = 1;
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $account_id = $row['account_id'];
+                                    $user_id=$row['id'];
                                     $account = mysqli_query($connect, "select * from account where id='$account_id'") or die("query Erorr!");
                                 ?>
                                     <tr>
@@ -105,23 +107,23 @@
                                         while ($row1 = mysqli_fetch_assoc($account)) {
                                         ?>
                                             <td><?php echo $row1['email'] ?></td>
+                                            <td><?php if($row1['role']=='1') {echo 'user';} else {echo 'admin';}?></td>
                                             <td><?php {
-                                                    if ($row1['status']) {
+                                                    if ($row['status']) {
                                                         echo "Active";
                                                 ?>
                                             </td>
                                             <td>
-                                                <ion-icon name="trash-outline" class="del-icon"></ion-icon>
-                                                <ion-icon name="lock-closed-outline" class="lock-icon"></ion-icon>
+                                                <a href="handleUser.php?user_id=<?=$row['id']?>&account_id=<?=$account_id?>"><button id="btn_act"><ion-icon name="trash-outline" class="del-icon"></ion-icon></button></a>
+                                                <a href="handleUser.php?user_id=<?=$row['id']?>"><button id="btn_act">    <ion-icon name="lock-closed-outline" class="lock-icon"></ion-icon></button></a>
                                             </td>
                                         <?php
                                                     } else {
                                                         echo "<p style='color: gray'>Inactive</p>"; ?>
                                             </td>
                                             <td>
-                                                <button id="btn_act"><ion-icon name="trash-outline" class="del-icon"></ion-icon></button>
-                                                <button id="btn_act"><ion-icon name="lock-open-outline" class="unlock-icon"></ion-icon>
-                                                </button>
+                                                <a href="handleUser.php?account_id=<?=$account_id?>"><button id="btn_act"><ion-icon name="trash-outline" class="del-icon"></ion-icon></button></a>
+                                                <a href="handleUser.php?user_id=<?=$row['id']?>"><button id="btn_act"><ion-icon name="lock-open-outline" class="unlock-icon"></ion-icon></button></a>
                                             </td>
                                 <?php
                                                     }
@@ -133,15 +135,7 @@
                                 }
                                 ?>
 
-                                <td>01</td>
-                                <td>Kieu hi</td>
-                                <td>29/11/2023</td>
-                                <td>0987678901</td>
-                                <td>kieu.ho24@gmai.com</td>
-                                <td>Hoạt động</td>
-                                <td>
-                                    <ion-icon name="trash-outline" class="del-icon"></ion-icon>
-                                </td>
+                              
                             </tbody>
                         </table>
                     </div>
