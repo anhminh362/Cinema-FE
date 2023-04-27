@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include "../client/connect.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

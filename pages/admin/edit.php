@@ -1,6 +1,6 @@
 <?php
 
-include "connect.php";
+include "../client/connect.php";
     // Đẩy data lên database
     if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
         $id = $_POST['id'];
