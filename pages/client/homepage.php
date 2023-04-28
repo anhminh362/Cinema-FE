@@ -88,21 +88,7 @@ $result1=mysqli_query($conn,$query)or die("Error");
 <div id="formlist">
     <div id="list">
         <?php 
-    //   $id=1;
-    //     $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
-    //     while ($cat = mysqli_fetch_assoc($query)) {
-    //     $cat_id = $cat['cat_id'];
-    //     $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id' ");
-    //     while ($cat = mysqli_fetch_assoc($sql1)) {
-    //         var_dump($cat['name']) ;
-    //     }}
-  $query = mysqli_query($conn, "SELECT category.name FROM movie
-    INNER JOIN movie_cat ON movie.id = movie_cat.movie_id
-    INNER JOIN category ON movie_cat.cat_id = category.id
-    WHERE movie.id='$id' AND movie.id>=4 AND movie.id<=7");
-  while ($cat = mysqli_fetch_assoc($query)) {
-    var_dump($cat['name']);
-  }       
+ 
         ?>
 
         <?php 
@@ -112,7 +98,20 @@ $result1=mysqli_query($conn,$query)or die("Error");
             <img src="../../asset/picture/<?=$row1['avatar']?>" alt="" class="movies">
             <div class="overlay">
                 <h5><?=$row1['name']?></h5>
-                <p></p>
+                <p>
+                <?php
+                    $id=$row1['id'];
+                $query = mysqli_query($conn, "SELECT category.name FROM movie
+                INNER JOIN movie_cat ON movie.id = movie_cat.movie_id
+                INNER JOIN category ON movie_cat.cat_id = category.id
+                WHERE movie.id='$id'");
+                $cat = mysqli_fetch_assoc($query);
+                echo $cat['name'];
+              while ($cat = mysqli_fetch_assoc($query)) {
+                echo "/".($cat['name']);
+              }
+              ?>
+              </p>
                 <a href="detailmovie.php?id=<?php echo $row1['id']?>"><button type="button" class="btn btn-success">More Details</button></a>
             </div>
         </div>
@@ -160,7 +159,20 @@ $result1=mysqli_query($conn,$query)or die("Error");
             <img src="../../asset/picture/<?=$row1['avatar']?>" alt="" class="movies1">
             <div class="overlay1">
                 <h5><?=$row1['name']?></h5>
-                <p>Suspense, Psychology</p>
+                <p>
+                <?php
+                    $id=$row1['id'];
+                $query = mysqli_query($conn, "SELECT category.name FROM movie
+                INNER JOIN movie_cat ON movie.id = movie_cat.movie_id
+                INNER JOIN category ON movie_cat.cat_id = category.id
+                WHERE movie.id='$id'");
+                $cat = mysqli_fetch_assoc($query);
+                echo $cat['name'];
+              while ($cat = mysqli_fetch_assoc($query)) {
+                echo "/".($cat['name']);
+              }
+              ?>
+              </p>
                 <a href="detailmovie.php?id=<?php echo $row1['id']?>"><button type="button" class="btn btn-success">More Details</button></a>
             </div>
         </div>
@@ -215,7 +227,20 @@ $result1=mysqli_query($conn,$query)or die("Error");
         <img src="../../asset/picture/<?=$row1['avatar']?>" alt="" class="movies2">
             <div class="overlay2">
                 <h5><?=$row1['name']?></h5>
-                <p>Horrified</p>
+                <p>
+                <?php
+                    $id=$row1['id'];
+                $query = mysqli_query($conn, "SELECT category.name FROM movie
+                INNER JOIN movie_cat ON movie.id = movie_cat.movie_id
+                INNER JOIN category ON movie_cat.cat_id = category.id
+                WHERE movie.id='$id'");
+                $cat = mysqli_fetch_assoc($query);
+                echo $cat['name'];
+              while ($cat = mysqli_fetch_assoc($query)) {
+                echo "/".($cat['name']);
+              }
+              ?>
+              </p>
                 <a href="detailmovie.php?id=<?php echo $row1['id']?>"><button type="button" class="btn btn-success">More Details</button></a>
             </div>
         </div>
