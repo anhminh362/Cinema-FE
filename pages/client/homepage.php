@@ -24,11 +24,17 @@
 </head>
 <body>
 <?php
-include 'header.php'
+include 'header.php';
+include 'connect.php';
+$query="SELECT * FROM `movie` WHERE id<4";
+$result1=mysqli_query($conn,$query)or die("Error");
+        
+        
 ?>
 </body>
 
 <div id="slider" class="carousel carousel-light slide" data-bs-ride="carousel">
+    
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active" aria-current="true"
                 aria-label="Slide 1"></button>
@@ -36,47 +42,27 @@ include 'header.php'
         <button type="button" data-bs-target="#slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000">
+    <?php
+        $time=1000;
+        $act='active';
+        while($row1 =mysqli_fetch_assoc($result1)){
+            // var_dump($row1['name']) ;
+    ?>
+        <div class="carousel-item <?=$act?>" data-bs-interval="<?=$time?>">
             <div class="img"
-                 style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://cdnimg.vietnamplus.vn/uploaded/bokttj/2023_01_02/avatar_the_way_of_water.jpg');"></div>
+                 style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('../../asset/picture/<?=$row1['avatar']?>');"></div>
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-movie">AVATAR</h3>
-                <p class="text-movies">
-                    Avatar is a Hollywood blockbuster.The film was carefully<br>
-                    invested in both technical effects and content when the <br>
-                    script was made by director James Cameron, becoming a <br>
-                    billion-dollar brand movie. <br>
-                    <a class="more-details" href="">More Details</a></p>
+                <h3 class="text-movie"><?=$row1['name']?></h3>
+                <p class="text-movies"><?=$row1['description']?><br>
+                    <a class="more-details" href="detailmovie.php?id=<?php echo $row1['id']?>">More Details</a></p>
             </div>
         </div>
-        <div class="carousel-item" data-bs-interval="2000">
-            <div class="img"
-                 style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://touchcinema.com/storage/phim-gia-dinh-addams/phim-gia-dinh-addams.jpg');"></div>
-            <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-movie">WEDNESDAY</h3>
-                <p class="text-movies">
-                    Wednesday is an American teen horror, comedy and supernatural<br>
-                    television series based on the character Wednesday - the "dark"<br>
-                    eldest daughter of the Addams family. The film was co-created<br>
-                    by Alfred Gough and Miles Millar. <br>
-                    <a class="more-details" href="">More Details</a>
-                </p>
-            </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-            <div class="img"
-                 style="background-image: linear-gradient(to right, rgba(0, 0, 6, 1),rgba(0, 0, 0, 0.3)),url('https://images4.alphacoders.com/119/1199746.jpg');"></div>
-            <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-movie">DEATH ON NILE</h3>
-                <p class="text-movies">
-                    It is a long established fact that a reader will be readable<br>
-                    content of a page when looking at its layout. The point of using<br>
-                    Lorem Ipsum is that it has a more-or-less normal distribution of letters.<br>
-                    The film was the second big screen adaptation of Christie's novel, <br>
-                    <a class="more-details" href="">More Details</a>
-                </p>
-            </div>
-        </div>
+        
+        <?php
+        $time+=1000;
+        $act='';
+        }
+        ?>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -89,6 +75,11 @@ include 'header.php'
 </div>
 <!-- Body -->
 <br><br>
+<?php
+$query="SELECT * FROM `movie` WHERE id>=4 AND id<=10";
+$result1=mysqli_query($conn,$query)or die("Error");
+
+?>
 <h5 class="text-title">Trending</h5>
 <div class="direction">
     <button id="prev"><b><</b></button>
@@ -96,66 +87,49 @@ include 'header.php'
 </div>
 <div id="formlist">
     <div id="list">
+        <?php 
+        $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id' AND id<=4 AND id<=10");
+        while ($cat = mysqli_fetch_assoc($query)) {
+        $cat_id = $cat['cat_id'];
+        $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
+        while ($cat = mysqli_fetch_assoc($sql1)) {
+        ?>
+
+        <?php 
+            while($row1 =mysqli_fetch_assoc($result1)){
+              
+                    
+            
+        ?>
+       
+
         <div class="item">
-            <img src="https://i.ytimg.com/vi/l0_xBH0vhwM/maxresdefault.jpg" alt="" class="movies">
+            <img src="../../asset/picture/<?=$row1['avatar']?>" alt="" class="movies">
             <div class="overlay">
-                <h5>the last god dragon</h5>
-                <p>Children/Advent</p>
-                <button type="button" class="btn btn-success">More Details</button>
+                <h5><?=$row1['name']?></h5>
+                <p><?php
+              
+            echo  $cat['name'];
+            ?></p>
+                <a href="detailmovie.php?id=<?php echo $row1['id']?>"><button type="button" class="btn btn-success">More Details</button></a>
             </div>
         </div>
-        <div class="item">
-            <img src="https://congluan-cdn.congluan.vn/files/content/2022/04/27/301-10411099.jpg" alt="" class="movies">
-            <div class="overlay">
-                <h5>Morbius</h5>
-                <p>Action/Fantasy</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/t/e/teaser_cgtqk_640x396.jpg"
-                 alt="" class="movies">
-            <div class="overlay">
-                <h5>Cô Gái Từ Quá Khứ</h5>
-                <p>Children/Advent</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="https://i.ytimg.com/vi/33xtZdR0amI/maxresdefault.jpg" alt="" class="movies">
-            <div class="overlay">
-                <h5>Mèo Béo Siêu Đẳng</h5>
-                <p>Children/Comedy</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="https://genk.mediacdn.vn/139269124445442048/2022/12/27/1-16720443428991073681271-1672126337007-16721263374062074075884.jpg"
-                 alt="" class="movies">
-            <div class="overlay">
-                <h5>Harry Potter</h5>
-                <p>Children/Advent</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="https://canhrau.com/wp-content/uploads/2021/12/top-phim-chieu-rap-hay-nhat-moi-thoi-dai-hinh-9.jpg"
-                 alt="" class="movies">
-            <div class="overlay">
-                <h5>Em của thời niên thiếu</h5>
-                <p>Drama/Romance</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item">
-            <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-2.jpg" alt=""
-                 class="movies">
-            <div class="overlay">
-                <h5>Vong nhi</h5>
-                <p>Mystic/Horror</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
+ 
+        <div class="item"></div>
+        <div class="item"></div>
+        
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    <?php }}?>
+        <?php  
+        }
+        ?>
+       
+        
+ 
+       
     </div>
 </div>
 <script>
@@ -169,7 +143,11 @@ include 'header.php'
     }
 </script>
 
+<?php
+$query="SELECT * FROM `movie` WHERE id>10 AND id<=17";
+$result1=mysqli_query($conn,$query)or die("Error");
 
+?>
 <h5 class="text-title">New</h5>
 <hr>
 <div class="direction1">
@@ -178,68 +156,29 @@ include 'header.php'
 </div>
 <div id="formlist1">
     <div id="list1">
+    <?php 
+            while($row1 =mysqli_fetch_assoc($result1)){
+            
+        ?>
         <div class="item1">
-            <img src="https://kenh14cdn.com/thumb_w/620/203336854389633024/2023/3/26/photo-1-16798021860451966063186.jpg"
-                 alt="" class="movies1">
+            <img src="../../asset/picture/<?=$row1['avatar']?>" alt="" class="movies1">
             <div class="overlay1">
-                <h5>Tri Kỷ</h5>
+                <h5><?=$row1['name']?></h5>
                 <p>Suspense, Psychology</p>
-                <button type="button" class="btn btn-success">More Details</button>
+                <a href="detailmovie.php?id=<?php echo $row1['id']?>"><button type="button" class="btn btn-success">More Details</button></a>
             </div>
         </div>
-        <div class="item1">
-            <img src="https://newsmd2fr.keeng.net/tiin/archive/imageslead/2023/03/29/thumb4_5dcf561fb49e1a9b409e25b2cde7a7e4.jpg"
-                 alt="" class="movies1">
-            <div class="overlay1">
-                <h5>Đảo tội ác</h5>
-                <p>Horrified</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item1">
-            <img src="https://i.ytimg.com/vi/-3y_dBRX_Hc/maxresdefault.jpg" alt="" class="movies1">
-            <div class="overlay1">
-                <h5>Trận chiến thời tiền sử</h5>
-                <p>Science Fiction/Action</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item1">
-            <img src="https://khenphim.com/wp-content/uploads/2022/02/MOONFALL-4-banner.jpg" alt="" class="movies1">
-            <div class="overlay1">
-                <h5>Moonfall</h5>
-                <p>Science Fiction/Action</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item1">
-            <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-6.jpg" alt=""
-                 class="movies1">
-            <div class="overlay1">
-                <h5>Babylon</h5>
-                <p>History, Psychology, Comedy</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item1">
-            <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/02/phim-chieu-rap-4.jpg" alt=""
-                 class="movies1">
-            <div class="overlay1">
-                <h5>M3gan</h5>
-                <p>Horrified</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item1">
-            <img src="https://s.yimg.com/ny/api/res/1.2/JK2Co4CUbuMfsA54VAwPlA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQ4Mg--/https://s.yimg.com/os/creatr-uploaded-images/2023-01/852bb1e0-9812-11ed-bffa-402342adaf95"
-                 alt="" class="movies1">
-            <div class="overlay1">
-                <h5>Dune 2</h5>
-                <p>Science Fiction/Adventure</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <?php 
+    }
+    ?>
     </div>
+    
 </div>
 <script>
     document.getElementById('next1').onclick = function () {
@@ -258,74 +197,41 @@ include 'header.php'
         <source src="../../asset/picture/trailer.mp4" type="video/mp4">
     </video>
 </div>
+
+<?php
+$query="SELECT * FROM `movie` WHERE id>17 AND id<=24";
+$result1=mysqli_query($conn,$query)or die("Error");
+
+?>
 <h5 class="text-title">Upcoming Movies</h5>
 <div class="direction2">
     <button id="prev2"><b><</b></button>
     <button id="next2"><b>></b></button>
 </div>
+
 <div id="formlist2">
     <div id="list2">
+    <?php 
+            while($row1 =mysqli_fetch_assoc($result1)){
+            
+        ?>
         <div class="item2">
-            <img src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/t/h/thumb-_q.jpg"
-                 alt="" class="movies2">
+        <img src="../../asset/picture/<?=$row1['avatar']?>" alt="" class="movies2">
             <div class="overlay2">
-                <h5>Động quỷ</h5>
+                <h5><?=$row1['name']?></h5>
                 <p>Horrified</p>
-                <button type="button" class="btn btn-success">More Details</button>
+                <a href="detailmovie.php?id=<?php echo $row1['id']?>"><button type="button" class="btn btn-success">More Details</button></a>
             </div>
         </div>
-        <div class="item2">
-            <img src="https://lh3.googleusercontent.com/Vp_YCC8pHCZJsB-bifndGRBs88QX0fFLv3Y_wT6nh_8oPyTT2DyZ9LD3hsX88FpOKqfDaUtzgjhtmA"
-                 alt="" class="movies2">
-            <div class="overlay2">
-                <h5>Xứ Sở Các Nguyên Tố</h5>
-                <p>Family, Comedy, Animation</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item2">
-            <img src="https://vov.vn/sites/default/files/styles/front_large/public/2020-09/z_firstlook_poster_qhnd.jpg"
-                 alt="" class="movies2">
-            <div class="overlay2">
-                <h5>Quỳnh Hoa Nhất Dạ</h5>
-                <p>History</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item2">
-            <img src="https://i.ytimg.com/vi/WWWDskI46Js/hq720.jpg" alt="" class="movies2">
-            <div class="overlay2">
-                <h5>Quái Thú Nổi Dậy</h5>
-                <p>Action, Sci-Fi, Adventure</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item2">
-            <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/03/phim-khac-tinh-cua-quy-thumb-1.jpg" alt=""
-                 class="movies2">
-            <div class="overlay2">
-                <h5>Khắc Tinh Của quỷ</h5>
-                <p>Horrified</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item2">
-            <img src="https://i.ytimg.com/vi/KzmMXT0sHWo/maxresdefault.jpg" alt="" class="movies2">
-            <div class="overlay2">
-                <h5>Troll 3</h5>
-                <p>Comedy, Animation</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
-        <div class="item2">
-            <img src="https://thegioidienanh.vn/stores/news_dataimages/anhvu/012022/08/12/0932_F9-ava-2-cuong-phim.jpg?rt=20220108120952"
-                 alt="" class="movies2">
-            <div class="overlay2">
-                <h5>Fast and Furiou</h5>
-                <p>Action/Adventure</p>
-                <button type="button" class="btn btn-success">More Details</button>
-            </div>
-        </div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <?php
+            }
+            ?>
     </div>
 </div>
 <script>
