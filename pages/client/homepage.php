@@ -88,48 +88,44 @@ $result1=mysqli_query($conn,$query)or die("Error");
 <div id="formlist">
     <div id="list">
         <?php 
-        $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id' AND id<=4 AND id<=10");
-        while ($cat = mysqli_fetch_assoc($query)) {
-        $cat_id = $cat['cat_id'];
-        $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id'");
-        while ($cat = mysqli_fetch_assoc($sql1)) {
+    //   $id=1;
+    //     $query = mysqli_query($conn, "SELECT * FROM movie_cat WHERE movie_id='$id'");
+    //     while ($cat = mysqli_fetch_assoc($query)) {
+    //     $cat_id = $cat['cat_id'];
+    //     $sql1 = mysqli_query($conn, "SELECT * FROM category WHERE id='$cat_id' ");
+    //     while ($cat = mysqli_fetch_assoc($sql1)) {
+    //         var_dump($cat['name']) ;
+    //     }}
+  $query = mysqli_query($conn, "SELECT category.name FROM movie
+    INNER JOIN movie_cat ON movie.id = movie_cat.movie_id
+    INNER JOIN category ON movie_cat.cat_id = category.id
+    WHERE movie.id='$id' AND movie.id>=4 AND movie.id<=7");
+  while ($cat = mysqli_fetch_assoc($query)) {
+    var_dump($cat['name']);
+  }       
         ?>
 
         <?php 
             while($row1 =mysqli_fetch_assoc($result1)){
-              
-                    
-            
         ?>
-       
-
         <div class="item">
             <img src="../../asset/picture/<?=$row1['avatar']?>" alt="" class="movies">
             <div class="overlay">
                 <h5><?=$row1['name']?></h5>
-                <p><?php
-              
-            echo  $cat['name'];
-            ?></p>
+                <p></p>
                 <a href="detailmovie.php?id=<?php echo $row1['id']?>"><button type="button" class="btn btn-success">More Details</button></a>
             </div>
         </div>
- 
         <div class="item"></div>
-        <div class="item"></div>
-        
+        <div class="item"></div> 
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
-    <?php }}?>
         <?php  
         }
         ?>
-       
-        
  
-       
     </div>
 </div>
 <script>
