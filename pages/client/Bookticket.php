@@ -25,7 +25,6 @@ session_start();
 
                 <div class="date-list">
                     <?php
-                    
                     $id = $_GET['id'];
                     $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
                     $query = "select * from schedule where movie_id='$id' ";
@@ -60,7 +59,7 @@ session_start();
                 </div>
 
 
-                <div class="sub-list">
+                <!-- <div class="sub-list">
                     <h2>Sub</h2>
                     <div class="place">
                         <?php
@@ -79,7 +78,7 @@ session_start();
                         }
                         ?>
                     </div>
-                </div>
+                </div> -->
                 <div class="show-time">
                     <h2>Time</h2>
                     <div class="time">
@@ -127,14 +126,14 @@ session_start();
             console.log(selectedValues["btn_day"]);
             if (
                 selectedValues["btn_day"] &&
-                selectedValues["btn_sub"] &&
+                // selectedValues["btn_sub"] &&
                 selectedValues["btn_time"]
             ) {
                 // all values have been selected, redirect to another page
                 let id=document.querySelector('input[name="movie_id"]').value
                 const url = "http://localhost:8080/cinema/pages/client/bookseat.php?day=" + selectedValues["btn_day"] +
-                    "&sub=" + selectedValues["btn_sub"] +
-                    "&time=" + selectedValues["btn_time"]+"&m_id="+id;
+                    // "&sub=" + selectedValues["btn_sub"] 
+                    +"&time=" + selectedValues["btn_time"]+"&m_id="+id;
                 window.location.href = url;
             } else {
                 alert("Please select an option from each div");
