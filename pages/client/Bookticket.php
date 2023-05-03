@@ -83,8 +83,11 @@ session_start();
     </section>
     <?php }
     else{
-        echo"<script>Please sign up your account: <a href='login.php'>Log in</a></script>";
-    }}
+        echo
+        "<script>
+        alert(\"Please sign in your account: \");
+        window.location='http://localhost:8080/cinema/pages/client/login.php';
+        </script>";     }}
     ?>
     <script>
         let selectedValues = {};

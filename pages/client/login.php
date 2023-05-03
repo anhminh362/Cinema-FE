@@ -32,7 +32,7 @@ session_start();
         </div>
       </div>
       <div class="form-group register">
-        <div><p><a href="">Register</a></p></div>
+        <div><p><a href="register.php">Register</a></p></div>
         <div><p><a href="">Forgot password ?</a></p></div>
       </div>
       <button type="submit" class="btn btn-default" name="btn">LOGIN</button>
