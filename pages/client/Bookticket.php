@@ -17,12 +17,14 @@ session_start();
 
 <body>
     <?php
-    if(isset($_GET['id'])){?>
+    if(isset($_GET['id'])){
+        if(isset($_SESSION['user_id'])){?>
     <section class="book-ticket">
         <div class="container">
 
             <div class="book-ticket-container">
-
+                <div class="show-date">
+                <h2>Date</h2>
                 <div class="date-list">
                     <?php
                     $id = $_GET['id'];
@@ -57,28 +59,7 @@ session_start();
                     }
                     ?>
                 </div>
-
-
-                <!-- <div class="sub-list">
-                    <h2>Sub</h2>
-                    <div class="place">
-                        <?php
-                        $sub = "select * from movie_sub where movie_id='$id' ";
-                        $result = mysqli_query($connect, $sub) or die("query Erorr!");
-                        $i = 1;
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $sub_id = $row['sub_id'];
-                            $sub_name = mysqli_query($connect, "select * from sub where id='$sub_id'") or die("query Erorr!");
-                            $sub = mysqli_fetch_assoc($sub_name)['name'];
-
-                        ?>
-                            <button class='btn_sub' name='btn_sub' type="button" value="<?php echo  $sub ?>"><?php echo $sub ?></button>
-                        <?php
-                            $i++;
-                        }
-                        ?>
-                    </div>
-                </div> -->
+                </div>
                 <div class="show-time">
                     <h2>Time</h2>
                     <div class="time">
@@ -96,11 +77,15 @@ session_start();
                         ?>
                     </div>
                 </div>
+                <center><button id="submit-btn">Ok</button></center>
             </div>
-            <center><button id="submit-btn">Ok</button></center>
         </div>
     </section>
-    <?php }?>
+    <?php }
+    else{
+        echo"<script>Please sign up your account: <a href='login.php'>Log in</a></script>";
+    }}
+    ?>
     <script>
         let selectedValues = {};
 
@@ -133,7 +118,7 @@ session_start();
                 let id=document.querySelector('input[name="movie_id"]').value
                 const url = "http://localhost:8080/cinema/pages/client/bookseat.php?day=" + selectedValues["btn_day"] +
                     // "&sub=" + selectedValues["btn_sub"] 
-                    +"&time=" + selectedValues["btn_time"]+"&m_id="+id;
+                    "&time=" + selectedValues["btn_time"]+"&m_id="+id;
                 window.location.href = url;
             } else {
                 alert("Please select an option from each div");

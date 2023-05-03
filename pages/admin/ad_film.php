@@ -92,7 +92,7 @@ include "../client/connect.php";
                                 <div class="modal-body">
                                     <form method="post" class="form-form" action="add.php" enctype="multipart/form-data" > <br>
                                         <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
-                                        <!-- <input type="hidden" name="id" value="<?php echo $row['id']; ?>"> -->
+                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                         <label for="name" class="title-title">Name:</label>
                                         <input type="text" class="input-btn" name="name"  ><br><br>
                                         <label for="avatar" class="title-title">Avatar:</label>
@@ -135,50 +135,51 @@ include "../client/connect.php";
                     <div id="editModal" tabindex="-1" role="dialog" class="modal fade" data-backdrop="static">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">EDIT</h5>
-                                    <button type="button" name="close" class="close" data-dismiss="modal" aria-label="Đóng">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body" id="modal-body">
-                                    <form method="post" class="form-form" action="edit.php" enctype="multipart/form-data"> <br>
-                                        <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
-                                        <input type="hidden" id="id" name="id" >
-                                        <label for="name" class="title-title">Name:</label>
-                                        <input type="text" id="name" class="input-btn" name="name" ><br><br>
-                                        <label for="avatar" class="title-title">Avatar:</label>
-                                        <input disabled style="border:none; color:white; background-color: #0B1A2A" id="avatar" class="input-btn" type="text" name="avatar" >
-                                        <input type="file" style="color:white;" name="up_avatar" > <br><br>
-                                        <label for="date" class="title-title">Premiere date:</label>
-                                        <input type="date" id="premiere_date" class="input-btn" name="premiere_date" ><br><br>
-                                        <label for="country" class="title-title">Country:</label>
-                                        <input name="country" id="country" class="input-btn" ><br> <br>
-                                        <label for="describe" class="title-title">Describe:</label>
-                                        <textarea rows="6" cols="50" name="description" id="description" type="text" class="input-btn" ></textarea><br> <br>
-                                        <label for="trailer" class="title-title">Trailer:</label>
-                                        <input disable style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" >
-                                        <input type="file" style="color:white;" name="up_trailer" ><br> <br>
-                                        <div class='category'>
-                                            <label for="name" class="title-title">Category</label>
-                                            <input type="hidden" name="cat" id="cat" value="" />
-                                            <?php
-                                            $sql_cat = mysqli_query($conn, "SELECT * from category");
-                                            $i = 0;
-                                            while ($category = mysqli_fetch_assoc($sql_cat)) {
-                                            ?>
-                                                <label>
-                                                    <input type="checkbox" class="input-btn" name="cat[]" value="<?= $category['name'] ?>"><?php echo $category['name'] ?>
-                                                </label>
-                                            <?php $i++;
-                                            } ?>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
-                                        </div>
-                                    </form>
-                                </div>
-
+                                <form method="post" class="form-form" action="edit.php" enctype="multipart/form-data">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">EDIT</h5>
+                                        <button
+                                        type="button" name="close" class="btn-close" data-dismiss="modal" aria-label="Đóng">
+                                            <span aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" id="modal-body">
+                                            <!-- <input type="hidden" name="action" value="add"> Trường ẩn để xác định hành động -->
+                                            <input type="hidden" id="id" name="id" >
+                                            <label for="name" class="title-title">Name:</label>
+                                            <input type="text" id="name" class="input-btn" name="name" ><br><br>
+                                            <label for="avatar" class="title-title">Avatar:</label>
+                                            <input disabled style="border:none; color:white; background-color: #0B1A2A" id="avatar" class="input-btn" type="text" name="avatar" >
+                                            <input type="file" style="color:white;" name="up_avatar" > <br><br>
+                                            <label for="date" class="title-title">Premiere date:</label>
+                                            <input type="date" id="premiere_date" class="input-btn" name="premiere_date" ><br><br>
+                                            <label for="country" class="title-title">Country:</label>
+                                            <input name="country" id="country" class="input-btn" ><br> <br>
+                                            <label for="describe" class="title-title">Describe:</label>
+                                            <textarea rows="6" cols="50" name="description" id="description" type="text" class="input-btn" ></textarea><br> <br>
+                                            <label for="trailer" class="title-title">Trailer:</label>
+                                            <input disable style="border:none; color:white; background-color: #0B1A2A" class="input-btn" name="trailer" id="trailer" class="input-btn" type="text" >
+                                            <input type="file" style="color:white;" name="up_trailer" ><br> <br>
+                                            <div class='category'>
+                                                <label for="name" class="title-title">Category</label>
+                                                <input type="hidden" name="cat" id="cat" value="" />
+                                                <?php
+                                                $sql_cat = mysqli_query($conn, "SELECT * from category");
+                                                $i = 0;
+                                                while ($category = mysqli_fetch_assoc($sql_cat)) {
+                                                ?>
+                                                    <label>
+                                                        <input type="checkbox" class="input-btn"  name="cat[]" value="<?= $category['name'] ?>"><?= $category['name'] ?>
+                                                    </label>
+                                                <?php $i++;
+                                                } ?>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" name='submit' class="btn bg-danger text-white" value="Update">
+                                            </div>
+                                    </div>
+                                    
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -293,10 +294,12 @@ include "../client/connect.php";
 
 
 
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+       
         $(document).ready(function() {
             // Khi nút chỉnh sửa được click
             $(".btn-edit").click(function() {
@@ -319,14 +322,22 @@ include "../client/connect.php";
                 $("#avatar").val(avatar);
                 //cat
                 var data = JSON.parse($(this).attr('data-cat'));
+                // console.log(data);
                 var cat=JSON.stringify(data);
                 $('input[name="cat[]"').each(function(){
                     if (data.includes($(this).val())) {
                         $(this).attr("checked", "")
                     }
                 });
-                
             });
+          
+            $(".btn-close").click(function() {
+                // var id = $(this).data("close");
+                var id = $(this).data("cat[]");
+                
+                console.log(id,"aaxca");
+                // console.log("schedule", $("#id").val(id));
+            })
             $(".btn-schedule").click(function() {
                 var id = $(this).data("id");
                 $("#schedule-id").val(id);

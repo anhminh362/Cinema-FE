@@ -32,7 +32,7 @@ body{
 .sub-list {
     display: flex;
     flex-wrap: wrap;
-    padding: 20px;
+    /* padding: 20px; */
 }
 .provinces-list {
     border-top: 2px solid rgb(212, 202, 202);
@@ -48,7 +48,7 @@ body{
 }
 
 
-.show-time {
+.show-time,.show-date {
     padding: 20px 40px;
     border-top: 2px solid rgb(212, 202, 202);
     border-bottom: 2px solid rgb(212, 202, 202);
@@ -80,7 +80,7 @@ button{
     font-size: 20px;
     height: 60px;
     width: 65px;
-    margin-left: 1.5rem;
+    /* margin-left: 1.5rem; */
     position: relative;
     left: 13px;
 
@@ -140,3 +140,6 @@ h2{
     padding-right: 2rem;
     /* margin-right: 1rem; */
   }
+#submit-btn{
+    margin-top:2rem
+}
