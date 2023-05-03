@@ -142,3 +142,7 @@ footer{
     bottom: 20px;
     color: white;
 }
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }

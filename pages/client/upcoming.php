@@ -1,22 +1,6 @@
 <?php
+include "connect.php";
 
-   $host = "localhost";
-   $user = "root";
-   $password = "";
-   $database = "cinema";
-
-   // Create connection
-   $conn = mysqli_connect($host,$user,$password,$database);
-   mysqli_set_charset($conn,"UTF8");
-
-   // Check connection
-   if(!$conn){
-        die("Connection failed: ".mysqli_connect_error());
-   }
-   
-      //  echo "Connected Successfully !";
-
-session_start();
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +36,7 @@ session_start();
         <h3>Upcoming Movies</h3>
     </div><br>
  <?php
-        $sql = "SELECT movie.name AS movie_name, GROUP_CONCAT(category.name SEPARATOR ', ') AS cat_names, movie.avatar AS avatar
+        $sql = "SELECT movie.name AS movie_name, GROUP_CONCAT(category.name SEPARATOR ', ') AS cat_names, movie.avatar AS avatar, movie.id as m_id
         FROM movie
         LEFT JOIN movie_cat ON movie.id = movie_cat.movie_id
         LEFT JOIN category ON movie_cat.cat_id = category.id WHERE movie.premiere_date > NOW()
@@ -67,15 +51,29 @@ session_start();
                 <img class="card-img-top" src="<?php echo $row['avatar']; ?>" style="width:100%">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['movie_name']; ?></h5>
-                    <p class="card-text">Categories: <?php
+                    <p class="card-text"><?php
                     $cat_names = explode(', ', $row['cat_names']);
                     foreach ($cat_names as $cat_name) {
                         echo '<span class="badge badge-primary mr-1">'. $cat_name . '</span>';
                     }
                     ?></p>
                     <p>
-                        <a href="#" class="btn btn-primary" style="font-size:12px; width:5.5rem; height:1.9rem"><i class='fas fa-thumbs-up'></i> Like 56</a>
-                        <span><a href="#" class="btn btn-success" style="margin-left:25px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span>
+                        <?php 
+                        $movie_id=$row['m_id'];
+                        $like=mysqli_query($conn,"SELECT * from likes where movie_id='$movie_id'");
+                        if(isset($_SESSION['user_id']) ){
+                        $user_id=$_SESSION['user_id'];
+                        $checkLike=mysqli_query($conn,"SELECT *from likes where movie_id='$movie_id' and user_id='$user_id'");
+                        ?>
+                        
+                        <?php if ( mysqli_num_rows($checkLike)){
+                             echo '<a href="" class="btn btn-secondary disabled" style="font-size:12px; width:5.5rem; height:1.9rem">';}
+                            
+                        else
+                        {echo '<a href="like.php?m_id='.$movie_id.'" class="btn btn-primary " style="font-size:12px; width:5.5rem; height:1.9rem">';}}
+                        ?> 
+                       <i class='fas fa-thumbs-up'></i> Like <?= mysqli_num_rows($like)?></a>
+                        <span><a href="detailmovie.php?id=<?=$movie_id?>" class="btn btn-success" style="margin-left:25px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span>
                     </p>
                 </div>
             </div>  <br>  

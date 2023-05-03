@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <head>
     <link rel="stylesheet" href="../../style/search.css">
 </head>
