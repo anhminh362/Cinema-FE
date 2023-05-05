@@ -13,7 +13,7 @@ if(isset($_GET['m_id'])){
         // echo 1;
         echo 
         "<script>
-            alert(\"Please sign up your account: \");
+            alert(\"Please sign in your account: \");
             window.location='http://localhost:8080/cinema/pages/client/login.php';
         </script>"; 
 

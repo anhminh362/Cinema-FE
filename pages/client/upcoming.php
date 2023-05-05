@@ -48,7 +48,7 @@ include "connect.php";
             echo '<div class="col-md-3">';
             ?>
             <div class="card" style="width:260px; background: rgba(0, 0, 0, 0.3); ">
-                <img class="card-img-top" src="<?php echo $row['avatar']; ?>" style="width:100%">
+                <img class="card-img-top" src="../../asset/picture/<?=$row['avatar']; ?>" style="width:100%; height:145.35px">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['movie_name']; ?></h5>
                     <p class="card-text"><?php
@@ -71,6 +71,9 @@ include "connect.php";
                             
                         else
                         {echo '<a href="like.php?m_id='.$movie_id.'" class="btn btn-primary " style="font-size:12px; width:5.5rem; height:1.9rem">';}}
+                        else{
+                            echo '<a href="like.php?m_id='.$movie_id.'" class="btn btn-primary " style="font-size:12px; width:5.5rem; height:1.9rem">';
+                        }
                         ?> 
                        <i class='fas fa-thumbs-up'></i> Like <?= mysqli_num_rows($like)?></a>
                         <span><a href="detailmovie.php?id=<?=$movie_id?>" class="btn btn-success" style="margin-left:25px; width:6.5rem; height:2.2rem; font-size:13px; ">More Details</a></span>

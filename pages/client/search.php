@@ -12,7 +12,7 @@ if (isset($search_info)) {
                 <div class="movie_item">
                     <div class="movie_img">
                         <img alt=""
-                             src="<?php echo $row['avatar'] ?>">
+                             src="../../asset/picture/<?= $row['avatar'] ?>">
                     </div>
                     <div class="movie_info">
                         <a href="detailmovie.php?id=<?php echo $row['id'] ?>"><?php echo $row['name'] ?></a>

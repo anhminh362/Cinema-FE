@@ -22,7 +22,12 @@ session_start();
         <!-- <li><a href="login.php">Login <i class="fas fa-user icon_user"></i></a></li> -->
         <?php if(isset($_SESSION['user'])){
             ?>
-        <li><a href="logout.php"><?php echo $_SESSION['user'] ?><i class="fas fa-user" style="color: aliceblue;"></i></a></li>
+        <li>
+            <a id="log_out" href="">
+                <div><?php echo $_SESSION['user'] ?><i class="fas fa-user" style="color: aliceblue;"></i></div>
+                <div id="log-out" class='display_none'><a href='logout.php'>Log out</a></div>
+            </a>
+        </li>
         <?php
         }
         else{
@@ -45,10 +50,20 @@ session_start();
                 })
                 document, addEventListener('click', function (ev) {
                     if (ev.target.closest('.search_site')) return
-                    search_site.classList.add('display_none')
+                    search_site.classList.add('display_none');
+                  
 
                 })
             })
+            $('#log_out').hover(function(){
+                $('#log-out').removeAttr("class");
+                // $('#log_out').live("mouseover", function () {
+                // $('#log-out').stop(true, true).removeAttr("class");
+                // });
+                // $('#log_out').live("mouseleave", function () {
+                //     $('#log-out').attr("class='display_none'"); });
+            })
+            
 
         })
     </script>
