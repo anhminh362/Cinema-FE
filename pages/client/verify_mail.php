@@ -152,7 +152,7 @@ session_start();
             if(codeLine==<?php echo $code?>){
                 
                 alert ("successfull")
-                window.location="http://localhost:8080/cinema/pages/client/formUser.php?"
+                window.location.href="formUser.php"
             }
             else{
                 alert ("The verification code you entered is incorrect. Please try again")

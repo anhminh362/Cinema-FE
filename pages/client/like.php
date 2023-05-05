@@ -7,14 +7,17 @@ if(isset($_GET['m_id'])){
         $user_id=$_SESSION['user_id'];
         var_dump($m_id,$user_id);
         mysqli_query($conn,"INSERT into likes (`movie_id`, `user_id`) VALUES ('$m_id','$user_id')");
-        header("Location: http://localhost:8080/cinema/pages/client/homepage.php");
+        // header("Location: http://localhost:8080/cinema/pages/client/homepage.php");
+        echo "<script>
+            window.location.href='homepage.php';
+            </script>"; 
     }
     else{
         // echo 1;
         echo 
         "<script>
             alert(\"Please sign in your account: \");
-            window.location='http://localhost:8080/cinema/pages/client/login.php';
+            window.location.href='login.php';
         </script>"; 
 
     }

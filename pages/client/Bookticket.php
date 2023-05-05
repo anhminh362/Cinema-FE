@@ -86,7 +86,7 @@ session_start();
         echo
         "<script>
         alert(\"Please sign in your account: \");
-        window.location='http://localhost:8080/cinema/pages/client/login.php';
+        window.location.href='login.php';
         </script>";     }}
     ?>
     <script>
@@ -119,7 +119,7 @@ session_start();
             ) {
                 // all values have been selected, redirect to another page
                 let id=document.querySelector('input[name="movie_id"]').value
-                const url = "http://localhost:8080/cinema/pages/client/bookseat.php?day=" + selectedValues["btn_day"] +
+                const url = "bookseat.php?day=" + selectedValues["btn_day"] +
                     // "&sub=" + selectedValues["btn_sub"] 
                     "&time=" + selectedValues["btn_time"]+"&m_id="+id;
                 window.location.href = url;

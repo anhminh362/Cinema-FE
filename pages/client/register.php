@@ -80,8 +80,10 @@ session_start();
                         $password=password_hash($pass,PASSWORD_DEFAULT);
                         $insert=mysqli_query($connect,"INSERT INTO `account`( `email`, `password`) VALUES ('$email','$password')");
                         
-                        header("Location: http://localhost:8080/cinema/pages/client/verify_mail.php");
-
+                        // header("Location: http://localhost:8080/cinema/pages/client/verify_mail.php");
+                        echo "<script>
+                            window.location.href='verify_mail.php';
+                        </script>"; 
                       }
                 }
 
