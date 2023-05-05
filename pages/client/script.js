@@ -4,7 +4,8 @@ const count = document.getElementById("count");
 const total = document.getElementById("total");
 const movieSelect = document.getElementById("movie");
 const code=document.getElementById("code");
-const m_code=document.getElementById("ticket_code");
+const m_code=document.getElementById("ticket_value");
+const s_code=document.getElementById("seat_code");
 
 
 populateUI();
@@ -48,7 +49,7 @@ function updateSelectedCount() {
   total.innerText = selectedSeatsCount * ticketPrice;
   code.innerText = ids;
   m_code.value=values;
- 
+  s_code.value=ids;
   if(selectedSeats)
   setMovieData(movieSelect.selectedIndex, movieSelect.value);
 }

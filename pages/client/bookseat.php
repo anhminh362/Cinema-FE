@@ -82,8 +82,10 @@ session_start()
       <p class="text">
         You have selected <span id="count">0</span>  for a price of RS.<span id="total">0</span>
       </p>
-      <p>Seat: <span id="code">0</span></p>
-      <input type="hidden" name='code' id='ticket_code' >
+      <p>Seat: <span id="code" ></span></p>
+      
+      <input type="hidden" name='code' id='ticket_value' >
+      <input type="hidden" name='seat_code'id='seat_code' value='' >
     </div>
     <div class="row">
       <div class="col-sm-4"> <br><br>
