@@ -45,7 +45,7 @@
             echo '<div class="col-md-3">';
             ?>
             <div class="card" style="width:260px; background: rgba(0, 0, 0, 0.3); ">
-                <img class="card-img-top" src="<?php echo $row['avatar']; ?>" style="width:100%">
+                <img class="card-img-top" src="../../asset/picture/<?=$row['avatar']; ?>" style="width:100%; height:145.35px">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['movie_name']; ?></h5>
                     <p class="card-text"><?php
