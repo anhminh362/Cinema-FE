@@ -38,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
     $body = '
 <div>
     <h1>thank you <span>' . $full_name . '</span></h1>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque error hic nisi nostrum perferendis quam quis similique soluta voluptate.</h1>
+    <h3>Thank you for choosing Monlight Cinema. Your transaction has been processed sucessfully.</h3>
+    <p>Please show email order confirmation to collect your tickets from the Counter.</p>
     <div style="display: flex; flex-direction: column; align-items: center;" class="ticketContainer">
         <div style="background-color: wheat; color: darkslategray; border-radius: 12px;" class="ticket">
             <div style="font-size: 1.5rem; font-weight: 700; padding: 12px 16px 4px;" class="ticketTitle">Moon Light
@@ -72,17 +73,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
 
     ';
 
-//    $price_1 = $row1['price'];
-//    for ($i = 0; $i < count($code); $i++) {
-//        mysqli_query($connect, "UPDATE `ticket` SET `status`='0' WHERE id='$code[$i]'");
-//        mysqli_query($connect, "INSERT INTO `invoices` ( `ticket_id`, `user_id`, `total_price`, `code`) VALUES ($code[$i], $user_id, $price_1, '$code_invoice');");
-//
-//    }
-//    $mail->invoice_mail($body, $email);
-//    echo ("<script >
-//    window.alert('Ban da dat ve thanh cong ');
-//    window.location.href=' /cinema/pages/client/homepage.php';
-//    </script>");
+   $price_1 = $row1['price'];
+   for ($i = 0; $i < count($code); $i++) {
+       mysqli_query($connect, "UPDATE `ticket` SET `status`='0' WHERE id='$code[$i]'");
+       mysqli_query($connect, "INSERT INTO `invoices` ( `ticket_id`, `user_id`, `total_price`, `code`) VALUES ($code[$i], $user_id, $price_1, '$code_invoice');");
+
+   }
+   $mail->invoice_mail($body, $email);
+   echo ("<script >
+   window.alert('Ban da dat ve thanh cong ');
+   window.location.href=' /cinema/pages/client/homepage.php';
+   </script>");
 
 
 }
