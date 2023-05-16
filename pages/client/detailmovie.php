@@ -58,7 +58,7 @@
             <br><br><br><br><br><br>
             <div class="row">
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
                         <img class="card-item" src="../../asset/picture/<?php echo $row['avatar'] ?>" alt="">
                     </div>
                     <div class="col-sm-6">

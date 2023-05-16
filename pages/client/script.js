@@ -4,10 +4,13 @@ const count = document.getElementById("count");
 const total = document.getElementById("total");
 const movieSelect = document.getElementById("movie");
 const code=document.getElementById("code");
-const m_code=document.getElementById("ticket_code");
+const m_code=document.getElementById("ticket_value");
+const s_code=document.getElementById("seat_code");
 
 
-populateUI();
+
+
+// populateUI();
 
 let ticketPrice = +movieSelect.value;
 
@@ -33,13 +36,13 @@ function updateSelectedCount() {
     console.log(ticketId, ticketValue);
     // console.log(ticketInput);
   }
-  
+
   console.log("Ids of selected seats: " + ids);
   const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
   // const seatsCode=
   console.log('selectedSeats',selectedSeats);
   console.log('seatsIndex',seatsIndex);
- 
+
   localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
 
   const selectedSeatsCount = selectedSeats.length;
@@ -48,9 +51,9 @@ function updateSelectedCount() {
   total.innerText = selectedSeatsCount * ticketPrice;
   code.innerText = ids;
   m_code.value=values;
- 
+  s_code.value=ids;
   if(selectedSeats)
-  setMovieData(movieSelect.selectedIndex, movieSelect.value);
+    setMovieData(movieSelect.selectedIndex, movieSelect.value);
 }
 
 
@@ -73,7 +76,7 @@ function populateUI() {
     console.log(selectedMovieIndex)
   }
 }
-console.log(populateUI())
+// console.log(populateUI())
 // Movie select event
 movieSelect.addEventListener("change", (e) => {
   ticketPrice = +e.target.value;
@@ -84,8 +87,8 @@ movieSelect.addEventListener("change", (e) => {
 // Seat click event
 container.addEventListener("click", (e) => {
   if (
-    e.target.classList.contains("seat") &&
-    !e.target.classList.contains("sold")
+      e.target.classList.contains("seat") &&
+      !e.target.classList.contains("sold")
   ) {
     e.target.classList.toggle("selected");
 

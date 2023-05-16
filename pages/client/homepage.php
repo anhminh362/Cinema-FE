@@ -119,6 +119,7 @@ $result1=mysqli_query($conn,$query)or die("Error");
         <div class="item"></div> 
         <div class="item"></div>
         <div class="item"></div>
+
         <div class="item"></div>
         <div class="item"></div>
         <?php  
