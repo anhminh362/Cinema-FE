@@ -29,7 +29,7 @@ session_start();
                     <?php
                     $id = $_GET['id'];
                     $connect = mysqli_connect("localhost", "root", "", "cinema") or die('Connect Error!');
-                    $query = "select * from schedule where movie_id='$id' ";
+                    $query = "select distinct movie_date from schedule where movie_id='$id' ";
                     $result = mysqli_query($connect, $query) or die("query Erorr!");
                     $i = 1;
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -64,8 +64,9 @@ session_start();
                     <h2>Time</h2>
                     <div class="time">
                         <?php
-                        $i = 1;
+                        $query = "select time_begin from schedule where movie_id='$id' ";
                         $result = mysqli_query($connect, $query) or die("query Erorr!");
+                        $i = 1;
 
                         while ($row = mysqli_fetch_assoc($result)) {
                             $time = date("H:i", strtotime($row['time_begin']));
