@@ -72,7 +72,11 @@ session_start();
             $account = $row['id'];
             $insert = mysqli_query($connect, "INSERT INTO `users`( `account_id`, `full_name`, `create_at`, `phone`) VALUES ('$account','$name',NOW(),'$phone')");
 
-            header("Location: http://localhost:8080/cinema/pages/client/login.php");
+            // header("Location: http://localhost:8080/cinema/pages/client/login.php");
+            echo
+            "<script>
+            window.location.href='login.php';
+            </script>"; 
             }
             
           }

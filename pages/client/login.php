@@ -65,9 +65,16 @@ session_start();
 
                 $_SESSION['user']=substr($string, $a+1);
                 $_SESSION['user_id']=$query['id'];
-                echo "<script>
+                if($query['role']==1){
+                    echo "<script>
                             window.location.href='homepage.php';
-                        </script>"; 
+                        </script>";
+                } 
+                else{
+                    echo "<script>
+                    window.location.href='../admin/ad_film.php';
+                </script>";
+                }
              } else {
                  echo  "Your password is incorrect";
              }
