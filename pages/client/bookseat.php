@@ -86,6 +86,9 @@ session_start()
       
       <input type="hidden" name='code' id='ticket_value' >
       <input type="hidden" name='seat_code'id='seat_code' value='' >
+      <input type="hidden" name='m_id' value='<?php echo $id ?>'>
+      <input type="hidden" name='day' value='<?php echo $day ?>'>
+      <input type="hidden" name='time' value='<?php echo $time ?>'>
     </div>
     <div class="row">
       <div class="col-sm-4"> <br><br>

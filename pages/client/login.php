@@ -60,11 +60,11 @@ session_start();
                         $a=$i;
                     }
                 }
-                $_SESSION['user']=substr($string, -$a-1);
+                // var_dump($string[$a+1]);
+                // var_dump(substr($string, $a+1));
+
+                $_SESSION['user']=substr($string, $a+1);
                 $_SESSION['user_id']=$query['id'];
-                // var_dump($_SESSION['user_id']);
-                // echo "Đăng nhập thành công! Hãy đến " . "<a href='check.php' >Trang chủ";
-                // header("Location: http://localhost:8080/cinema/pages/client/homepage.php");
                 echo "<script>
                             window.location.href='homepage.php';
                         </script>"; 
