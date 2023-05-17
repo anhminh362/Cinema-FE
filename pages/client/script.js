@@ -8,7 +8,7 @@ const m_code=document.getElementById("ticket_value");
 const s_code=document.getElementById("seat_code");
 
 
-populateUI();
+// populateUI();
 
 let ticketPrice = +movieSelect.value;
 
@@ -74,7 +74,7 @@ function populateUI() {
     console.log(selectedMovieIndex)
   }
 }
-console.log(populateUI())
+// console.log(populateUI())
 // Movie select event
 movieSelect.addEventListener("change", (e) => {
   ticketPrice = +e.target.value;
