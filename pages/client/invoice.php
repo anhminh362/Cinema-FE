@@ -12,19 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
 
 
     $user_id = $_SESSION['user_id'];
-    $schedule_id = $_POST['m_id'];
-
+    $movie_id = $_POST['m_id'];
+    var_dump($movie_id);
     $connect = mysqli_connect("localhost", "root", "", "cinema") or die("abc");
     $sql = "select * from  cinema.account, cinema.users where users.id = '$user_id' and users.account_id = account.id";
 
-    $sql1 = "select room.name as room, movie.name, movie_date, time_begin, time_end ,price from room, movie, cinema.schedule where cinema.schedule.id =room.id and room.id =movie.id and  movie.id = '$schedule_id';";
+    $sql1 = "select room.name as room, movie.name, movie_date, time_begin, time_end ,price from room, movie, cinema.schedule where cinema.schedule.id =room.id and room.id =movie.id and  movie.id = '$movie_id';";
     require('mail.php');
     $result = mysqli_query($connect, $sql) or die("fail");
 
     $result1 = mysqli_query($connect, $sql1) or die("fail");
     $row = mysqli_fetch_assoc($result);
     $row1 = mysqli_fetch_assoc($result1);
-
+    var_dump($result1);
     $email = $row['email'];
     $full_name = $row['full_name'];
     $mail = new Mailer();
@@ -38,11 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
     $body = '
 <div>
     <h1>thank you <span>' . $full_name . '</span></h1>
-    <h3>Thank you for choosing Monlight Cinema. Your transaction has been processed sucessfully.</h3>
+    
+    <h3>Thank you for choosing MoonLight Cinema. Your transaction has been processed sucessfully.</h3>
     <p>Please show email order confirmation to collect your tickets from the Counter.</p>
     <div style="display: flex; flex-direction: column; align-items: center;" class="ticketContainer">
         <div style="background-color: wheat; color: darkslategray; border-radius: 12px;" class="ticket">
-            <div style="font-size: 1.5rem; font-weight: 700; padding: 12px 16px 4px;" class="ticketTitle">Moon Light
+            <div style="font-size: 1.5rem; font-weight: 700; padding: 12px 16px 4px;" class="ticketTitle">MoonLight
                 Cinema
             </div>
             <hr style="width: 90%; border: 1px solid #efefef;">
@@ -67,10 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
                 <div class="date"> ' . $row1["movie_date"] . '</div>
             </div>
         </div>
-
     </div>
 </div>
-
     ';
 
    $price_1 = $row1['price'];
@@ -85,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
    window.location.href=' /cinema/pages/client/homepage.php';
    </script>");
 
+    
 
 }
 ?>
