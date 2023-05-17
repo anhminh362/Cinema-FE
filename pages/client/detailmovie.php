@@ -58,15 +58,15 @@
             <br><br><br><br><br><br>
             <div class="row">
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
                         <img class="card-item" src="../../asset/picture/<?php echo $row['avatar'] ?>" alt="">
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                         <h1 class="title-film"><?php echo $row['name'] ?></h1>
                         <!-- icon -->
                         <div class="row">
                             <div class="col-sm-3">
-                                </svg>
+                               
                                 <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
                                 <i class="fi fi-rs-star"> 7.4</i>
                             </div>
@@ -100,7 +100,8 @@
                                 <i class="fi fi-ss-calendar"> <?php $date = $row['premiere_date'];
                                                                 echo date('Y', strtotime($date)) ?></i>
                             </div>
-                        </div> <br>
+                        </div>
+                        <br>
                         <div class="row">
                             <p class="text-detail">
                                 <?php echo $row['description'] ?>
