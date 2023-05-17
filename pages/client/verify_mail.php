@@ -106,10 +106,7 @@ session_start();
             <small>
                 If you didn't receive a code !! <strong><a href="verify_mail.php"> Resend</a></strong>
             </small><br>
-            <?php
-            echo $code;
-         
-            ?>
+            
         </div>
     </form>
     </div>
