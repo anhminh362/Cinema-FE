@@ -7,6 +7,7 @@
     $sql="SELECT * FROM schedule WHERE movie_id= $id ";
     $result=mysqli_query($conn,$sql);
     while($row=mysqli_fetch_assoc($result)){
+
         $schedule_id=$row['id'];
         $query="SELECT * FROM ticket WHERE schedule_id= $schedule_id";
         $kq=mysqli_query($conn,$query);
@@ -21,13 +22,16 @@
     mysqli_query($conn,$sql);
     $sql = "DELETE FROM movie_cat WHERE movie_id =$id";
     mysqli_query($conn,$sql);
-
-    $sql = "DELETE FROM movie_cat WHERE movie_id =$id";
-    mysqli_query($conn,$sql);
-    $sql ="DELETE FROM movie_sub WHERE movie_id =$id";
-    mysqli_query($conn,$sql);
+    
+    // $sql = "DELETE FROM movie_cat WHERE movie_id =$id";
+    // mysqli_query($conn,$sql);
+    // $sql ="DELETE FROM movie_sub WHERE movie_id =$id";
+    // mysqli_query($conn,$sql);
+    
+    var_dump($id);
     $sql="SELECT * from movie WHERE id =$id";
     $avatar=mysqli_fetch_assoc(mysqli_query($conn,$sql))['avatar'];
+    // var_dump($id);
     // echo $avatar;
     $avatar = trim($avatar);
     $link="../../asset/picture/$avatar";
@@ -42,7 +46,12 @@
     }
     $sql = "DELETE FROM movie WHERE id=$id";
     if (mysqli_query($conn, $sql)) {
-            header('location:ad_film.php');
+        // var_dump(11);
+            // header('location:ad_film.php');
+            echo
+            "<script>
+            window.location.href='ad_film.php';
+            </script>"; 
     } else {
         echo "Lỗi: " . mysqli_error($conn);
     }

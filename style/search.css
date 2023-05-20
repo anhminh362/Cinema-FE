@@ -49,3 +49,13 @@
 
 
 }
+
+.user-name{
+    color: aliceblue;
+}
+#log-out{
+    display: none;
+}
+.user-name:hover #log-out{
+    display: block;
+}

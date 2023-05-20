@@ -62,10 +62,12 @@ session_start();
                 }
                 // var_dump($string[$a+1]);
                 // var_dump(substr($string, $a+1));
-
+                // $user = mysqli_query($connect,"select * from account where id='$account'" ) or die("fail");
+                // $query=mysqli_fetch_assoc($user);
                 $_SESSION['user']=substr($string, $a+1);
                 $_SESSION['user_id']=$query['id'];
-                if($query['role']==1){
+                if($row['role']==='1'){
+                   
                     echo "<script>
                             window.location.href='homepage.php';
                         </script>";

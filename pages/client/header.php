@@ -24,9 +24,11 @@ session_start();
             ?>
         <li>
             <a id="log_out" href="">
-                <div><?php echo $_SESSION['user'] ?><i class="fas fa-user" style="color: aliceblue;"></i></div>
-                <div id="log-out" class='display_none'><a href='logout.php'>Log out</a></div>
-            </a>
+                <div class="user-name"><?php echo $_SESSION['user'] ?><i class="fas fa-user" ></i>
+                <div id="log-out"><a href='logout.php'>Log out</a></div>
+            
+            </div>
+            </a>    
         </li>
         <?php
         }
@@ -55,14 +57,14 @@ session_start();
 
                 })
             })
-            $('#log_out').hover(function(){
-                $('#log-out').removeAttr("class");
-                // $('#log_out').live("mouseover", function () {
-                // $('#log-out').stop(true, true).removeAttr("class");
-                // });
-                // $('#log_out').live("mouseleave", function () {
-                //     $('#log-out').attr("class='display_none'"); });
-            })
+            // $('#log_out').hover(function(){
+            //     $('#log-out').removeAttr("class");
+            //     // $('#log_out').live("mouseover", function () {
+            //     // $('#log-out').stop(true, true).removeAttr("class");
+            //     // });
+            //     // $('#log_out').live("mouseleave", function () {
+            //     //     $('#log-out').attr("class='display_none'"); });
+            // })
             
 
         })
