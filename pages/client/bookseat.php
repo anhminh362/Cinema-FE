@@ -67,7 +67,6 @@ session_start()
     $k = 0;
     for ($i = 0; $i < 5; $i++) {
       ?>
-      <!-- <input type="text" hidden id='schedule_id' name='schedule_id' value='<?= $schedule_id ?>' > -->
       <div class="row" name='<?= $x[$i] ?>' id='<?= $x[$i] ?>'>
         <?php for ($j = 1; $j < 9; $j++) {
 
@@ -86,7 +85,8 @@ session_start()
       
       <input type="hidden" name='code' id='ticket_value' >
       <input type="hidden" name='seat_code'id='seat_code' value='' >
-      <input type="hidden" name='m_id' value='<?php echo $id ?>'>
+      <input type="hidden" name='m_id' value='<?php echo $id ?>' >
+      <input type="hidden" name='schedule_id' value='<?php echo $schedule_id ?>'>
       <input type="hidden" name='day' value='<?php echo $day ?>'>
       <input type="hidden" name='time' value='<?php echo $time ?>'>
     </div>

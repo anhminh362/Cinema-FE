@@ -13,11 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
 
     $user_id = $_SESSION['user_id'];
     $movie_id = $_POST['m_id'];
+    $schedule_id=$_POST['schedule_id'];
     var_dump($movie_id);
     $connect = mysqli_connect("localhost", "root", "", "cinema") or die("abc");
     $sql = "select * from  cinema.account, cinema.users where users.id = '$user_id' and users.account_id = account.id";
 
-    $sql1 = "select room.name as room, movie.name, movie_date, time_begin, time_end ,price from room, movie, cinema.schedule where cinema.schedule.id =room.id and room.id =movie.id and  movie.id = '$movie_id';";
+    $sql1 = "select room.name as room, movie.name, movie_date, time_begin, time_end ,price from room, movie, cinema.schedule where cinema.schedule.room_id=room.id and  cinema.schedule.movie_id=movie.id and schedule.id='$schedule_id';";
     require('mail.php');
     $result = mysqli_query($connect, $sql) or die("fail");
 
