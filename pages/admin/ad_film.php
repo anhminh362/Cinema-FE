@@ -257,7 +257,8 @@ include "../client/connect.php";
                                         // echo "<td id='getid' value='".$row['id']."'>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td class='name'><p>" . $row['name'] . "</p></td>";
-                                        echo "<td>" . $row['avatar'] . "</td>";
+                                        echo "<td>" . $row['avatar'] . "
+                                        <img style='width:100px' src='../../asset/picture/".$row['avatar'] ."'alt='' ></td>";
                                         echo "<td>" . $row['premiere_date'] . "</td>";
                                         echo "<td>" . $row['country'] . "</td>";
                                         echo "<td class='desc'><p>" . $row['description'] . "</p></td>";

@@ -88,7 +88,7 @@ include "../client/connect.php"
                                     <th>Time Begin</th>
                                     <th>Time End</th>
                                     <th>Price</th>
-                                    <th>Action</th>
+                                    <!-- <th>Action</th> -->
                                 </tr>
                             </thead>  
                             <tbody id="tab">
@@ -107,9 +107,9 @@ include "../client/connect.php"
                                         echo "<td>" . $row['time_end'] . "</td>";
                                         echo "<td>" . $row['price'] . "</td>";
                                         
-                                        echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] .
-                                         "'data-trailer='" . $row['trailer'] . "' data-cat='"; echo htmlspecialchars(json_encode($data)); echo "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a>
-                                         <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='".$row['id']."'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
+                                        // echo "<td><span data-toggle='modal' data-target='#editModal' class='btn-edit' data-id='" . $row['id'] . "' data-name='" . $row['name'] . "' data-avatar='" . $row['avatar'] . "'data-premiere_date='" . $row['premiere_date'] . "'data-country='" . $row['country'] . "'data-description='" . $row['description'] .
+                                        //  "'data-trailer='" . $row['trailer'] . "' data-cat='"; echo htmlspecialchars(json_encode($data)); echo "'><ion-icon name='pencil-outline'class='icon-ac-edit'></span><a href='delete.php?id=" . $row['id'] . "'><ion-icon name='trash-outline' class='icon-ac-del'></a>
+                                        //  <button type='button' class='btn-schedule' data-toggle='modal' data-target='#scheduleModal' data-id='".$row['id']."'> <ion-icon class='icon-ac-add' name='add-circle-outline'></ion-icon></button></td>";
                                         echo "</tr>";
                                     }
                                 } else {
