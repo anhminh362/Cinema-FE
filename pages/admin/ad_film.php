@@ -150,6 +150,7 @@ include "../client/connect.php";
                                             <input type="text" id="name" class="input-btn" name="name" ><br><br>
                                             <label for="avatar" class="title-title">Avatar:</label>
                                             <input disabled style="border:none; color:white; background-color: #0B1A2A" id="avatar" class="input-btn" type="text" name="avatar" >
+                                            <input type="hidden" id="old_img" name="old_img" >                                            
                                             <input type="file" style="color:white;" name="up_avatar" > <br><br>
                                             <label for="date" class="title-title">Premiere date:</label>
                                             <input type="date" id="premiere_date" class="input-btn" name="premiere_date" ><br><br>
@@ -321,6 +322,8 @@ include "../client/connect.php";
                 $("#description").val(description);
                 $("#trailer ").val(trailer);
                 $("#avatar").val(avatar);
+                $("#old_img").val(avatar);
+                // console.log('avatar', $("#avatar").val(avatar));
                 //cat
                 var data = JSON.parse($(this).attr('data-cat'));
                 // console.log(data);

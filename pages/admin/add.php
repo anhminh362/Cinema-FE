@@ -18,7 +18,7 @@ include "../client/connect.php";
             $trailer =null;
         }
         $sql = "INSERT INTO `movie`( `name`, `avatar`, `premiere_date`, `country`, `description`, `trailer`) 
-        VALUES ('$name',' $avatar','$date','$country','$describe',' $trailer')";
+        VALUES ('$name','$avatar','$date','$country','$describe','$trailer')";
            if (mysqli_query($conn, $sql)) {
             $id=mysqli_insert_id($conn);
             echo 'Record inserted successfully into movie';

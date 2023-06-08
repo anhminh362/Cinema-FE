@@ -5,19 +5,22 @@ include "../client/connect.php";
     if($_SERVER['REQUEST_METHOD'] == 'POST' || isset($_POST['submit'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
-        $avatar = $_POST['avatar'];
+        $avatar = $_POST['old_img'];
         $date = $_POST['premiere_date'];
         $country = $_POST['country'];
         $describe = $_POST['description'];
         $trailer = $_POST['trailer'];
         $cat=$_POST['cat'];
-        var_dump($cat);
-        // $cat=$_POST['cat[]'];
-        if(isset($_FILES['up_avatar'])){
-            $file=$_FILES['up_avatar'];
+        $file=$_FILES['up_avatar'];
             $filename= $file['name'];
+        var_dump('11',$_POST['old_img']);
+        var_dump('f',$file['name']);
+        // $cat=$_POST['cat[]'];
+        if($file['name']!==""){
+            
             move_uploaded_file($file['tmp_name'],"../../asset/picture/$filename");
             $avatar=$filename;
+            var_dump('22',$avatar) ;
         }
         if(isset($_POST['cat'])){
         mysqli_query($conn,"DELETE from movie_cat where movie_id=$id");
@@ -38,7 +41,7 @@ include "../client/connect.php";
 
         $sqli = mysqli_query($conn,"UPDATE movie SET `name`='$name', `avatar` = '$avatar', `premiere_date` = '$date', `country` ='$country',`description` ='$describe',`trailer`=' $trailer' WHERE id = '$id'");
         header('location:ad_film.php');
-        var_dump($id,$cat);
+        // var_dump($id,$cat);
     }
 
 ?>
